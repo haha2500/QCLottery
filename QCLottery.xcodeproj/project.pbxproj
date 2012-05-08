@@ -1,0 +1,266 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		EE99FC001559E2D90068E101 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE99FBFF1559E2D90068E101 /* UIKit.framework */; };
+		EE99FC021559E2D90068E101 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE99FC011559E2D90068E101 /* Foundation.framework */; };
+		EE99FC041559E2D90068E101 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE99FC031559E2D90068E101 /* CoreGraphics.framework */; };
+		EE99FC0A1559E2D90068E101 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EE99FC081559E2D90068E101 /* InfoPlist.strings */; };
+		EE99FC0C1559E2D90068E101 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE99FC0B1559E2D90068E101 /* main.m */; };
+		EE99FC101559E2D90068E101 /* QCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE99FC0F1559E2D90068E101 /* QCAppDelegate.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		EE99FBFB1559E2D90068E101 /* QCLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QCLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		EE99FBFF1559E2D90068E101 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		EE99FC011559E2D90068E101 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		EE99FC031559E2D90068E101 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		EE99FC071559E2D90068E101 /* QCLottery-Info.plist */ = {isa = PBXFileReference; path = "QCLottery-Info.plist"; sourceTree = "<group>"; };
+		EE99FC091559E2D90068E101 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		EE99FC0B1559E2D90068E101 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		EE99FC0D1559E2D90068E101 /* QCLottery-Prefix.pch */ = {isa = PBXFileReference; path = "QCLottery-Prefix.pch"; sourceTree = "<group>"; };
+		EE99FC0E1559E2D90068E101 /* QCAppDelegate.h */ = {isa = PBXFileReference; path = QCAppDelegate.h; sourceTree = "<group>"; };
+		EE99FC0F1559E2D90068E101 /* QCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QCAppDelegate.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		EE99FBF81559E2D90068E101 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE99FC001559E2D90068E101 /* UIKit.framework in Frameworks */,
+				EE99FC021559E2D90068E101 /* Foundation.framework in Frameworks */,
+				EE99FC041559E2D90068E101 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		EE99FBF01559E2D90068E101 = {
+			isa = PBXGroup;
+			children = (
+				EE99FC051559E2D90068E101 /* QCLottery */,
+				EE99FBFE1559E2D90068E101 /* Frameworks */,
+				EE99FBFC1559E2D90068E101 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		EE99FBFC1559E2D90068E101 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				EE99FBFB1559E2D90068E101 /* QCLottery.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		EE99FBFE1559E2D90068E101 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EE99FBFF1559E2D90068E101 /* UIKit.framework */,
+				EE99FC011559E2D90068E101 /* Foundation.framework */,
+				EE99FC031559E2D90068E101 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EE99FC051559E2D90068E101 /* QCLottery */ = {
+			isa = PBXGroup;
+			children = (
+				EE99FC0E1559E2D90068E101 /* QCAppDelegate.h */,
+				EE99FC0F1559E2D90068E101 /* QCAppDelegate.m */,
+				EE99FC061559E2D90068E101 /* Supporting Files */,
+			);
+			path = QCLottery;
+			sourceTree = "<group>";
+		};
+		EE99FC061559E2D90068E101 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				EE99FC071559E2D90068E101 /* QCLottery-Info.plist */,
+				EE99FC081559E2D90068E101 /* InfoPlist.strings */,
+				EE99FC0B1559E2D90068E101 /* main.m */,
+				EE99FC0D1559E2D90068E101 /* QCLottery-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		EE99FBFA1559E2D90068E101 /* QCLottery */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = EE99FC131559E2D90068E101 /* Build configuration list for PBXNativeTarget "QCLottery" */;
+			buildPhases = (
+				EE99FBF71559E2D90068E101 /* Sources */,
+				EE99FBF81559E2D90068E101 /* Frameworks */,
+				EE99FBF91559E2D90068E101 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = QCLottery;
+			productName = QCLottery;
+			productReference = EE99FBFB1559E2D90068E101 /* QCLottery.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		EE99FBF21559E2D90068E101 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = QC;
+				LastUpgradeCheck = 0430;
+			};
+			buildConfigurationList = EE99FBF51559E2D90068E101 /* Build configuration list for PBXProject "QCLottery" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = EE99FBF01559E2D90068E101;
+			productRefGroup = EE99FBFC1559E2D90068E101 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				EE99FBFA1559E2D90068E101 /* QCLottery */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		EE99FBF91559E2D90068E101 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE99FC0A1559E2D90068E101 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		EE99FBF71559E2D90068E101 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EE99FC0C1559E2D90068E101 /* main.m in Sources */,
+				EE99FC101559E2D90068E101 /* QCAppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		EE99FC081559E2D90068E101 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				EE99FC091559E2D90068E101 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		EE99FC111559E2D90068E101 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+			};
+			name = Debug;
+		};
+		EE99FC121559E2D90068E101 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 5.1;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = 2;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		EE99FC141559E2D90068E101 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QCLottery/QCLottery-Prefix.pch";
+				INFOPLIST_FILE = "QCLottery/QCLottery-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		EE99FC151559E2D90068E101 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "QCLottery/QCLottery-Prefix.pch";
+				INFOPLIST_FILE = "QCLottery/QCLottery-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		EE99FBF51559E2D90068E101 /* Build configuration list for PBXProject "QCLottery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE99FC111559E2D90068E101 /* Debug */,
+				EE99FC121559E2D90068E101 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		EE99FC131559E2D90068E101 /* Build configuration list for PBXNativeTarget "QCLottery" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				EE99FC141559E2D90068E101 /* Debug */,
+				EE99FC151559E2D90068E101 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = EE99FBF21559E2D90068E101 /* Project object */;
+}
