@@ -7,6 +7,8 @@
 //
 
 #import "QCAppDelegate.h"
+#import "QCMainTabBarController.h"
+
 
 @implementation QCAppDelegate
 
@@ -16,7 +18,13 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor whiteColor];
+    // 创建主TAB页界面
+    mainTabBarController = [[QCMainTabBarController alloc] init];
+    
+    // 创建导航视图控制并设为主视图控制器
+    UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:mainTabBarController];
+    
+    [[self window] setRootViewController:navController];
     [self.window makeKeyAndVisible];
     return YES;
 }

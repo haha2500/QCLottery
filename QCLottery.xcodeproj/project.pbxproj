@@ -13,6 +13,15 @@
 		EE99FC0A1559E2D90068E101 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = EE99FC081559E2D90068E101 /* InfoPlist.strings */; };
 		EE99FC0C1559E2D90068E101 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = EE99FC0B1559E2D90068E101 /* main.m */; };
 		EE99FC101559E2D90068E101 /* QCAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = EE99FC0F1559E2D90068E101 /* QCAppDelegate.m */; };
+		EE99FC1B1559E41B0068E101 /* QCMainTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE99FC1A1559E41B0068E101 /* QCMainTabBarController.m */; };
+		EE99FC1E1559E76B0068E101 /* QCGraphMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE99FC1D1559E76B0068E101 /* QCGraphMainViewController.m */; };
+		EE99FC261559EB640068E101 /* QCGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE99FC251559EB640068E101 /* QCGraphView.m */; };
+		EE99FC2E155B34600068E101 /* QCConditionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE99FC2C155B34600068E101 /* QCConditionViewController.m */; };
+		EE99FC2F155B34600068E101 /* QCConditionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE99FC2D155B34600068E101 /* QCConditionViewController.xib */; };
+		EEAB580D155B3B1E00108022 /* QCRandomMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB580C155B3B1E00108022 /* QCRandomMainViewController.m */; };
+		EEAB5811155B3B6000108022 /* QCHistoryMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB5810155B3B6000108022 /* QCHistoryMainViewController.m */; };
+		EEAB5815155C890C00108022 /* QCGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB5813155C890C00108022 /* QCGraphViewController.m */; };
+		EEAB5816155C890C00108022 /* QCGraphViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAB5814155C890C00108022 /* QCGraphViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,12 +29,28 @@
 		EE99FBFF1559E2D90068E101 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EE99FC011559E2D90068E101 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		EE99FC031559E2D90068E101 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		EE99FC071559E2D90068E101 /* QCLottery-Info.plist */ = {isa = PBXFileReference; path = "QCLottery-Info.plist"; sourceTree = "<group>"; };
+		EE99FC071559E2D90068E101 /* QCLottery-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "QCLottery-Info.plist"; sourceTree = "<group>"; };
 		EE99FC091559E2D90068E101 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		EE99FC0B1559E2D90068E101 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		EE99FC0D1559E2D90068E101 /* QCLottery-Prefix.pch */ = {isa = PBXFileReference; path = "QCLottery-Prefix.pch"; sourceTree = "<group>"; };
-		EE99FC0E1559E2D90068E101 /* QCAppDelegate.h */ = {isa = PBXFileReference; path = QCAppDelegate.h; sourceTree = "<group>"; };
+		EE99FC0D1559E2D90068E101 /* QCLottery-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "QCLottery-Prefix.pch"; sourceTree = "<group>"; };
+		EE99FC0E1559E2D90068E101 /* QCAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = QCAppDelegate.h; sourceTree = "<group>"; };
 		EE99FC0F1559E2D90068E101 /* QCAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = QCAppDelegate.m; sourceTree = "<group>"; };
+		EE99FC191559E41B0068E101 /* QCMainTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCMainTabBarController.h; sourceTree = "<group>"; };
+		EE99FC1A1559E41B0068E101 /* QCMainTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCMainTabBarController.m; sourceTree = "<group>"; };
+		EE99FC1C1559E76B0068E101 /* QCGraphMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCGraphMainViewController.h; sourceTree = "<group>"; };
+		EE99FC1D1559E76B0068E101 /* QCGraphMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCGraphMainViewController.m; sourceTree = "<group>"; };
+		EE99FC241559EB640068E101 /* QCGraphView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCGraphView.h; sourceTree = "<group>"; };
+		EE99FC251559EB640068E101 /* QCGraphView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCGraphView.m; sourceTree = "<group>"; };
+		EE99FC2B155B34600068E101 /* QCConditionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCConditionViewController.h; sourceTree = "<group>"; };
+		EE99FC2C155B34600068E101 /* QCConditionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCConditionViewController.m; sourceTree = "<group>"; };
+		EE99FC2D155B34600068E101 /* QCConditionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCConditionViewController.xib; sourceTree = "<group>"; };
+		EEAB580B155B3B1E00108022 /* QCRandomMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCRandomMainViewController.h; sourceTree = "<group>"; };
+		EEAB580C155B3B1E00108022 /* QCRandomMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCRandomMainViewController.m; sourceTree = "<group>"; };
+		EEAB580F155B3B6000108022 /* QCHistoryMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCHistoryMainViewController.h; sourceTree = "<group>"; };
+		EEAB5810155B3B6000108022 /* QCHistoryMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCHistoryMainViewController.m; sourceTree = "<group>"; };
+		EEAB5812155C890C00108022 /* QCGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCGraphViewController.h; sourceTree = "<group>"; };
+		EEAB5813155C890C00108022 /* QCGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCGraphViewController.m; sourceTree = "<group>"; };
+		EEAB5814155C890C00108022 /* QCGraphViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCGraphViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +99,22 @@
 			children = (
 				EE99FC0E1559E2D90068E101 /* QCAppDelegate.h */,
 				EE99FC0F1559E2D90068E101 /* QCAppDelegate.m */,
+				EE99FC191559E41B0068E101 /* QCMainTabBarController.h */,
+				EE99FC1A1559E41B0068E101 /* QCMainTabBarController.m */,
+				EE99FC1C1559E76B0068E101 /* QCGraphMainViewController.h */,
+				EE99FC1D1559E76B0068E101 /* QCGraphMainViewController.m */,
+				EEAB580B155B3B1E00108022 /* QCRandomMainViewController.h */,
+				EEAB580C155B3B1E00108022 /* QCRandomMainViewController.m */,
+				EEAB580F155B3B6000108022 /* QCHistoryMainViewController.h */,
+				EEAB5810155B3B6000108022 /* QCHistoryMainViewController.m */,
+				EE99FC2B155B34600068E101 /* QCConditionViewController.h */,
+				EE99FC2C155B34600068E101 /* QCConditionViewController.m */,
+				EE99FC2D155B34600068E101 /* QCConditionViewController.xib */,
+				EEAB5812155C890C00108022 /* QCGraphViewController.h */,
+				EEAB5813155C890C00108022 /* QCGraphViewController.m */,
+				EEAB5814155C890C00108022 /* QCGraphViewController.xib */,
+				EE99FC241559EB640068E101 /* QCGraphView.h */,
+				EE99FC251559EB640068E101 /* QCGraphView.m */,
 				EE99FC061559E2D90068E101 /* Supporting Files */,
 			);
 			path = QCLottery;
@@ -142,6 +183,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				EE99FC0A1559E2D90068E101 /* InfoPlist.strings in Resources */,
+				EE99FC2F155B34600068E101 /* QCConditionViewController.xib in Resources */,
+				EEAB5816155C890C00108022 /* QCGraphViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,6 +197,13 @@
 			files = (
 				EE99FC0C1559E2D90068E101 /* main.m in Sources */,
 				EE99FC101559E2D90068E101 /* QCAppDelegate.m in Sources */,
+				EE99FC1B1559E41B0068E101 /* QCMainTabBarController.m in Sources */,
+				EE99FC1E1559E76B0068E101 /* QCGraphMainViewController.m in Sources */,
+				EE99FC261559EB640068E101 /* QCGraphView.m in Sources */,
+				EE99FC2E155B34600068E101 /* QCConditionViewController.m in Sources */,
+				EEAB580D155B3B1E00108022 /* QCRandomMainViewController.m in Sources */,
+				EEAB5811155B3B6000108022 /* QCHistoryMainViewController.m in Sources */,
+				EEAB5815155C890C00108022 /* QCGraphViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -221,6 +271,7 @@
 		EE99FC141559E2D90068E101 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QCLottery/QCLottery-Prefix.pch";
 				INFOPLIST_FILE = "QCLottery/QCLottery-Info.plist";
@@ -232,6 +283,7 @@
 		EE99FC151559E2D90068E101 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "QCLottery/QCLottery-Prefix.pch";
 				INFOPLIST_FILE = "QCLottery/QCLottery-Info.plist";
@@ -259,6 +311,7 @@
 				EE99FC151559E2D90068E101 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

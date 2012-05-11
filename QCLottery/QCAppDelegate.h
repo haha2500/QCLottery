@@ -7,9 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+@class QCMainTabBarController;
 
-@interface QCAppDelegate : UIResponder <UIApplicationDelegate>
-
+@interface QCAppDelegate : UIResponder <UIApplicationDelegate, UITabBarControllerDelegate>
+{
+    QCMainTabBarController *mainTabBarController;
+}
 @property (strong, nonatomic) UIWindow *window;
 
 @end
