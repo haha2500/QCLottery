@@ -22,6 +22,7 @@
 		EEAB5811155B3B6000108022 /* QCHistoryMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB5810155B3B6000108022 /* QCHistoryMainViewController.m */; };
 		EEAB5815155C890C00108022 /* QCGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB5813155C890C00108022 /* QCGraphViewController.m */; };
 		EEAB5816155C890C00108022 /* QCGraphViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAB5814155C890C00108022 /* QCGraphViewController.xib */; };
+		EED4DA1915607C9400873D16 /* QCDataManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EED4DA1715607C9400873D16 /* QCDataManViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -51,6 +52,8 @@
 		EEAB5812155C890C00108022 /* QCGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCGraphViewController.h; sourceTree = "<group>"; };
 		EEAB5813155C890C00108022 /* QCGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCGraphViewController.m; sourceTree = "<group>"; };
 		EEAB5814155C890C00108022 /* QCGraphViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCGraphViewController.xib; sourceTree = "<group>"; };
+		EED4DA1615607C9400873D16 /* QCDataManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCDataManViewController.h; sourceTree = "<group>"; };
+		EED4DA1715607C9400873D16 /* QCDataManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCDataManViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +118,8 @@
 				EEAB5814155C890C00108022 /* QCGraphViewController.xib */,
 				EE99FC241559EB640068E101 /* QCGraphView.h */,
 				EE99FC251559EB640068E101 /* QCGraphView.m */,
+				EED4DA1615607C9400873D16 /* QCDataManViewController.h */,
+				EED4DA1715607C9400873D16 /* QCDataManViewController.m */,
 				EE99FC061559E2D90068E101 /* Supporting Files */,
 			);
 			path = QCLottery;
@@ -204,6 +209,7 @@
 				EEAB580D155B3B1E00108022 /* QCRandomMainViewController.m in Sources */,
 				EEAB5811155B3B6000108022 /* QCHistoryMainViewController.m in Sources */,
 				EEAB5815155C890C00108022 /* QCGraphViewController.m in Sources */,
+				EED4DA1915607C9400873D16 /* QCDataManViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

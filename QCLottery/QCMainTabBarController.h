@@ -12,10 +12,13 @@
 @class QCRandomMainViewController;
 @class QCHistoryMainViewController;
 
-@interface QCMainTabBarController : UITabBarController <UISplitViewControllerDelegate>
+@interface QCMainTabBarController : UITabBarController <UISplitViewControllerDelegate, UITabBarControllerDelegate>
 {
-    QCGraphMainViewController *graphMainVC;
-    QCRandomMainViewController *randomMainVC;
-    QCHistoryMainViewController *historyMainVC;
+    QCGraphMainViewController *graphMainVC;         // 看图选号主界面
+    QCRandomMainViewController *randomMainVC;       // 随机选号主界面
+    QCHistoryMainViewController *historyMainVC;     // 选号记录主界面
+    
+    UIBarButtonItem *bbiData;                       // 导航栏上的“开奖号码”按钮
+    UIPopoverController *popoverController;         // 弹出视图控制器
 }
 @end
