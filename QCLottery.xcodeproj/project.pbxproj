@@ -18,6 +18,22 @@
 		EE99FC261559EB640068E101 /* QCGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE99FC251559EB640068E101 /* QCGraphView.m */; };
 		EE99FC2E155B34600068E101 /* QCConditionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE99FC2C155B34600068E101 /* QCConditionViewController.m */; };
 		EE99FC2F155B34600068E101 /* QCConditionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE99FC2D155B34600068E101 /* QCConditionViewController.xib */; };
+		EEA6117D1562639500482FFE /* BallBitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA611581562639500482FFE /* BallBitmap.cpp */; };
+		EEA6117E1562639500482FFE /* Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA6115A1562639500482FFE /* Data.cpp */; };
+		EEA6117F1562639500482FFE /* Data_Private.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA6115C1562639500482FFE /* Data_Private.cpp */; };
+		EEA611801562639500482FFE /* DataFactory.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA6115D1562639500482FFE /* DataFactory.cpp */; };
+		EEA611811562639500482FFE /* DistributeGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA611621562639500482FFE /* DistributeGrid.cpp */; };
+		EEA611821562639500482FFE /* GraphGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA611641562639500482FFE /* GraphGrid.cpp */; };
+		EEA611831562639500482FFE /* GraphGridBody.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA611661562639500482FFE /* GraphGridBody.cpp */; };
+		EEA611841562639500482FFE /* GraphGridHead.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA611681562639500482FFE /* GraphGridHead.cpp */; };
+		EEA611851562639500482FFE /* GraphGridPublic.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA6116A1562639500482FFE /* GraphGridPublic.cpp */; };
+		EEA611861562639500482FFE /* HistoryValueStat.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA6116C1562639500482FFE /* HistoryValueStat.cpp */; };
+		EEA611871562639500482FFE /* MFCClass.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA611701562639500482FFE /* MFCClass.cpp */; };
+		EEA611881562639500482FFE /* Numbers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA611721562639500482FFE /* Numbers.cpp */; };
+		EEA611891562639500482FFE /* NumbersUndo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA611741562639500482FFE /* NumbersUndo.cpp */; };
+		EEA6118A1562639500482FFE /* NumsTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA611761562639500482FFE /* NumsTable.cpp */; };
+		EEA6118B1562639500482FFE /* QuickAddString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA611781562639500482FFE /* QuickAddString.cpp */; };
+		EEA6118C1562639500482FFE /* TrendGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA6117A1562639500482FFE /* TrendGrid.cpp */; };
 		EEAB580D155B3B1E00108022 /* QCRandomMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB580C155B3B1E00108022 /* QCRandomMainViewController.m */; };
 		EEAB5811155B3B6000108022 /* QCHistoryMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB5810155B3B6000108022 /* QCHistoryMainViewController.m */; };
 		EEAB5815155C890C00108022 /* QCGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB5813155C890C00108022 /* QCGraphViewController.m */; };
@@ -45,6 +61,43 @@
 		EE99FC2B155B34600068E101 /* QCConditionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCConditionViewController.h; sourceTree = "<group>"; };
 		EE99FC2C155B34600068E101 /* QCConditionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCConditionViewController.m; sourceTree = "<group>"; };
 		EE99FC2D155B34600068E101 /* QCConditionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCConditionViewController.xib; sourceTree = "<group>"; };
+		EEA611581562639500482FFE /* BallBitmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BallBitmap.cpp; sourceTree = "<group>"; };
+		EEA611591562639500482FFE /* BallBitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallBitmap.h; sourceTree = "<group>"; };
+		EEA6115A1562639500482FFE /* Data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Data.cpp; sourceTree = "<group>"; };
+		EEA6115B1562639500482FFE /* Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Data.h; sourceTree = "<group>"; };
+		EEA6115C1562639500482FFE /* Data_Private.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Data_Private.cpp; sourceTree = "<group>"; };
+		EEA6115D1562639500482FFE /* DataFactory.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DataFactory.cpp; sourceTree = "<group>"; };
+		EEA6115E1562639500482FFE /* DataFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataFactory.h; sourceTree = "<group>"; };
+		EEA6115F1562639500482FFE /* Def_CfgItem_Data.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Def_CfgItem_Data.h; sourceTree = "<group>"; };
+		EEA611601562639500482FFE /* Def_ConditionValue.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Def_ConditionValue.h; sourceTree = "<group>"; };
+		EEA611611562639500482FFE /* Def_GraphGrid_ID.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Def_GraphGrid_ID.h; sourceTree = "<group>"; };
+		EEA611621562639500482FFE /* DistributeGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DistributeGrid.cpp; sourceTree = "<group>"; };
+		EEA611631562639500482FFE /* DistributeGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DistributeGrid.h; sourceTree = "<group>"; };
+		EEA611641562639500482FFE /* GraphGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphGrid.cpp; sourceTree = "<group>"; };
+		EEA611651562639500482FFE /* GraphGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphGrid.h; sourceTree = "<group>"; };
+		EEA611661562639500482FFE /* GraphGridBody.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphGridBody.cpp; sourceTree = "<group>"; };
+		EEA611671562639500482FFE /* GraphGridBody.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphGridBody.h; sourceTree = "<group>"; };
+		EEA611681562639500482FFE /* GraphGridHead.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphGridHead.cpp; sourceTree = "<group>"; };
+		EEA611691562639500482FFE /* GraphGridHead.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphGridHead.h; sourceTree = "<group>"; };
+		EEA6116A1562639500482FFE /* GraphGridPublic.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = GraphGridPublic.cpp; sourceTree = "<group>"; };
+		EEA6116B1562639500482FFE /* GraphGridPublic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GraphGridPublic.h; sourceTree = "<group>"; };
+		EEA6116C1562639500482FFE /* HistoryValueStat.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HistoryValueStat.cpp; sourceTree = "<group>"; };
+		EEA6116D1562639500482FFE /* HistoryValueStat.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HistoryValueStat.h; sourceTree = "<group>"; };
+		EEA6116E1562639500482FFE /* IData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IData.h; sourceTree = "<group>"; };
+		EEA6116F1562639500482FFE /* INumbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = INumbers.h; sourceTree = "<group>"; };
+		EEA611701562639500482FFE /* MFCClass.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = MFCClass.cpp; sourceTree = "<group>"; };
+		EEA611711562639500482FFE /* MFCClass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MFCClass.h; sourceTree = "<group>"; };
+		EEA611721562639500482FFE /* Numbers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Numbers.cpp; sourceTree = "<group>"; };
+		EEA611731562639500482FFE /* Numbers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Numbers.h; sourceTree = "<group>"; };
+		EEA611741562639500482FFE /* NumbersUndo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NumbersUndo.cpp; sourceTree = "<group>"; };
+		EEA611751562639500482FFE /* NumbersUndo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumbersUndo.h; sourceTree = "<group>"; };
+		EEA611761562639500482FFE /* NumsTable.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = NumsTable.cpp; sourceTree = "<group>"; };
+		EEA611771562639500482FFE /* NumsTable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NumsTable.h; sourceTree = "<group>"; };
+		EEA611781562639500482FFE /* QuickAddString.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuickAddString.cpp; sourceTree = "<group>"; };
+		EEA611791562639500482FFE /* QuickAddString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickAddString.h; sourceTree = "<group>"; };
+		EEA6117A1562639500482FFE /* TrendGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrendGrid.cpp; sourceTree = "<group>"; };
+		EEA6117B1562639500482FFE /* TrendGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendGrid.h; sourceTree = "<group>"; };
+		EEA6117C1562639500482FFE /* WinDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinDef.h; sourceTree = "<group>"; };
 		EEAB580B155B3B1E00108022 /* QCRandomMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCRandomMainViewController.h; sourceTree = "<group>"; };
 		EEAB580C155B3B1E00108022 /* QCRandomMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCRandomMainViewController.m; sourceTree = "<group>"; };
 		EEAB580F155B3B6000108022 /* QCHistoryMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCHistoryMainViewController.h; sourceTree = "<group>"; };
@@ -73,6 +126,7 @@
 		EE99FBF01559E2D90068E101 = {
 			isa = PBXGroup;
 			children = (
+				EEA611571562639500482FFE /* C++ class */,
 				EE99FC051559E2D90068E101 /* QCLottery */,
 				EE99FBFE1559E2D90068E101 /* Frameworks */,
 				EE99FBFC1559E2D90068E101 /* Products */,
@@ -134,6 +188,50 @@
 				EE99FC0D1559E2D90068E101 /* QCLottery-Prefix.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		EEA611571562639500482FFE /* C++ class */ = {
+			isa = PBXGroup;
+			children = (
+				EEA611581562639500482FFE /* BallBitmap.cpp */,
+				EEA611591562639500482FFE /* BallBitmap.h */,
+				EEA6115A1562639500482FFE /* Data.cpp */,
+				EEA6115B1562639500482FFE /* Data.h */,
+				EEA6115C1562639500482FFE /* Data_Private.cpp */,
+				EEA6115D1562639500482FFE /* DataFactory.cpp */,
+				EEA6115E1562639500482FFE /* DataFactory.h */,
+				EEA6115F1562639500482FFE /* Def_CfgItem_Data.h */,
+				EEA611601562639500482FFE /* Def_ConditionValue.h */,
+				EEA611611562639500482FFE /* Def_GraphGrid_ID.h */,
+				EEA611621562639500482FFE /* DistributeGrid.cpp */,
+				EEA611631562639500482FFE /* DistributeGrid.h */,
+				EEA611641562639500482FFE /* GraphGrid.cpp */,
+				EEA611651562639500482FFE /* GraphGrid.h */,
+				EEA611661562639500482FFE /* GraphGridBody.cpp */,
+				EEA611671562639500482FFE /* GraphGridBody.h */,
+				EEA611681562639500482FFE /* GraphGridHead.cpp */,
+				EEA611691562639500482FFE /* GraphGridHead.h */,
+				EEA6116A1562639500482FFE /* GraphGridPublic.cpp */,
+				EEA6116B1562639500482FFE /* GraphGridPublic.h */,
+				EEA6116C1562639500482FFE /* HistoryValueStat.cpp */,
+				EEA6116D1562639500482FFE /* HistoryValueStat.h */,
+				EEA6116E1562639500482FFE /* IData.h */,
+				EEA6116F1562639500482FFE /* INumbers.h */,
+				EEA611701562639500482FFE /* MFCClass.cpp */,
+				EEA611711562639500482FFE /* MFCClass.h */,
+				EEA611721562639500482FFE /* Numbers.cpp */,
+				EEA611731562639500482FFE /* Numbers.h */,
+				EEA611741562639500482FFE /* NumbersUndo.cpp */,
+				EEA611751562639500482FFE /* NumbersUndo.h */,
+				EEA611761562639500482FFE /* NumsTable.cpp */,
+				EEA611771562639500482FFE /* NumsTable.h */,
+				EEA611781562639500482FFE /* QuickAddString.cpp */,
+				EEA611791562639500482FFE /* QuickAddString.h */,
+				EEA6117A1562639500482FFE /* TrendGrid.cpp */,
+				EEA6117B1562639500482FFE /* TrendGrid.h */,
+				EEA6117C1562639500482FFE /* WinDef.h */,
+			);
+			path = "C++ class";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -210,6 +308,22 @@
 				EEAB5811155B3B6000108022 /* QCHistoryMainViewController.m in Sources */,
 				EEAB5815155C890C00108022 /* QCGraphViewController.m in Sources */,
 				EED4DA1915607C9400873D16 /* QCDataManViewController.m in Sources */,
+				EEA6117D1562639500482FFE /* BallBitmap.cpp in Sources */,
+				EEA6117E1562639500482FFE /* Data.cpp in Sources */,
+				EEA6117F1562639500482FFE /* Data_Private.cpp in Sources */,
+				EEA611801562639500482FFE /* DataFactory.cpp in Sources */,
+				EEA611811562639500482FFE /* DistributeGrid.cpp in Sources */,
+				EEA611821562639500482FFE /* GraphGrid.cpp in Sources */,
+				EEA611831562639500482FFE /* GraphGridBody.cpp in Sources */,
+				EEA611841562639500482FFE /* GraphGridHead.cpp in Sources */,
+				EEA611851562639500482FFE /* GraphGridPublic.cpp in Sources */,
+				EEA611861562639500482FFE /* HistoryValueStat.cpp in Sources */,
+				EEA611871562639500482FFE /* MFCClass.cpp in Sources */,
+				EEA611881562639500482FFE /* Numbers.cpp in Sources */,
+				EEA611891562639500482FFE /* NumbersUndo.cpp in Sources */,
+				EEA6118A1562639500482FFE /* NumsTable.cpp in Sources */,
+				EEA6118B1562639500482FFE /* QuickAddString.cpp in Sources */,
+				EEA6118C1562639500482FFE /* TrendGrid.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -237,6 +351,7 @@
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -262,6 +377,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_INPUT_FILETYPE = sourcecode.cpp.objcpp;
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNINITIALIZED_AUTOS = YES;

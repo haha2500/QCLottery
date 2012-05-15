@@ -26,7 +26,7 @@
         // 初始化左侧和右侧的视图控制器
         conditionVC = [[QCConditionViewController alloc]init];
         graphVC = [[QCGraphViewController alloc]init];
-        NSArray *vcs = [NSArray arrayWithObjects:conditionVC, graphVC, nil];
+        NSArray *vcs = [NSArray arrayWithObjects:conditionVC, graphVC, Nil];
         [self setViewControllers:vcs];
     }
     

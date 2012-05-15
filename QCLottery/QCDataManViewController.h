@@ -12,4 +12,6 @@
 {
     NSArray *cmdArray;
 }
+
+@property (strong, nonatomic) UIPopoverController *popoverContorller;
 @end

@@ -28,7 +28,7 @@
         randomMainVC = [[QCRandomMainViewController alloc]init];
         historyMainVC = [[QCHistoryMainViewController alloc]init];
         
-        NSArray *tabVCs = [NSArray arrayWithObjects:graphMainVC, randomMainVC, historyMainVC, nil];
+        NSArray *tabVCs = [NSArray arrayWithObjects:graphMainVC, randomMainVC, historyMainVC, Nil];
         [self setViewControllers:tabVCs];
         [self setDelegate:self];
         
@@ -75,30 +75,31 @@
     {
         if ([self selectedViewController] == graphMainVC)
         {
-            bbiSep = [[UIBarButtonItem alloc]initWithTitle:@"条件列表" style:UIBarButtonItemStylePlain target:self action:@selector(popoverMainView)];         
+            bbiSep = [[UIBarButtonItem alloc]initWithTitle:@"条件列表" style:UIBarButtonItemStylePlain target:self action:@selector(popoverMasterView)];         
         }
     }
 
-    [[self navigationItem] setLeftBarButtonItems:[NSArray arrayWithObjects:bbiData, bbiSep, nil]];
+    [[self navigationItem] setLeftBarButtonItems:[NSArray arrayWithObjects:bbiData, bbiSep, Nil]];
 }
 
 - (void)clickDataButton
 {
     QCDataManViewController *dataManVC = [[QCDataManViewController alloc]initWithStyle:UITableViewStylePlain];
+    
    // [dataManVC setModalPresentationStyle:UIModalPresentationFormSheet];
    // [self presentModalViewController:dataManVC animated:YES];
-    
     UIBarButtonItem *bbi = [[self navigationItem] leftBarButtonItem];
     [self showPopoverController:dataManVC atBarButtonItem:bbi];
+    dataManVC.popoverContorller = popoverController;
 }
 
-- (void)popoverMainView
+- (void)popoverMasterView
 {
     UISplitViewController *splitViewController = (UISplitViewController *)[self selectedViewController];
-    UIViewController *mainVC = [[splitViewController viewControllers] objectAtIndex:0];
+    UIViewController *masterVC = [[splitViewController viewControllers] objectAtIndex:0];
     
     UIBarButtonItem *bbi = [[[self navigationItem] leftBarButtonItems] objectAtIndex:1];
-    [self showPopoverController:mainVC atBarButtonItem:bbi];
+    [self showPopoverController:masterVC atBarButtonItem:bbi];
 }
 
 - (void)showPopoverController:(UIViewController *)viewController atBarButtonItem:(UIBarButtonItem *)bbi
@@ -118,7 +119,12 @@
     [popoverController presentPopoverFromBarButtonItem:bbi permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
-#pragma mark -- tabBarControllerDelegate相关函数
+#pragma mark -- UIPopoverControllerDelegate相关函数
+- (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
+{
+
+}
+#pragma mark -- UITabBarControllerDelegate相关函数
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
     [self resetLeftBarButtonItems];

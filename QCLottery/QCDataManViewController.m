@@ -15,16 +15,14 @@
 enum DATAMAN_CMDID {DMCMDID_INPUT = 0, DMCMDID_DOWNLOAD, DMCMDID_DATA_RANGE, DMCMDID_DATA_DIV, DMCMDID_DATA_ORDER, DMCMDID_DATA_RWL, DMCMDID_END};
 
 @implementation QCDataManViewController
+@synthesize popoverContorller;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        cmdArray = [NSArray arrayWithObjects:@"录入开奖号码", @"下载开奖号码", @"号码范围设置", @"号码间隔设置", @"号码排列方式", @"热温冷设置", nil];
-    
-        self.view.frame = CGRectMake(0, 0, 300, 44 * [cmdArray count]);
-        self.tableView.bounces = NO;
+        cmdArray = [NSArray arrayWithObjects:@"录入开奖号码", @"下载开奖号码", @"号码范围设置", @"号码间隔设置", @"号码排列方式", @"热温冷设置", Nil];
     }
     
     return self;
@@ -34,6 +32,8 @@ enum DATAMAN_CMDID {DMCMDID_INPUT = 0, DMCMDID_DOWNLOAD, DMCMDID_DATA_RANGE, DMC
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    self.view.frame = CGRectMake(0, 0, 300, 44 * [cmdArray count]);
+    self.tableView.bounces = NO;
 }
 
 - (void)viewDidUnload
@@ -78,6 +78,11 @@ enum DATAMAN_CMDID {DMCMDID_INPUT = 0, DMCMDID_DOWNLOAD, DMCMDID_DATA_RANGE, DMC
         case DMCMDID_DATA_ORDER: break;
         case DMCMDID_DATA_RWL: break;
     }
+    
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"test" message:@"message" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil];
+    [alert show];
+    
+    [self.popoverContorller dismissPopoverAnimated:YES];
 }
 
 #pragma mark -- 以下是私有函数

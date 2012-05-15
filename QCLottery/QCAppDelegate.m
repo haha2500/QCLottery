@@ -8,7 +8,10 @@
 
 #import "QCAppDelegate.h"
 #import "QCMainTabBarController.h"
+#import "Data.h"
 
+// 全局变量
+IData *g_pIData = NULL;
 
 @implementation QCAppDelegate
 
@@ -18,6 +21,8 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
+    g_pIData = (IData *)new CData;
+    
     // 创建主TAB页界面
     mainTabBarController = [[QCMainTabBarController alloc] init];
     
