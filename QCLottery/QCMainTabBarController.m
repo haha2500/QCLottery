@@ -33,7 +33,7 @@
         [self setDelegate:self];
         
         // 创建导航栏上的“开奖号码”按钮
-        bbiData = [[UIBarButtonItem alloc]initWithTitle:@"开奖号码" style:UIBarButtonItemStylePlain target:self action:@selector(clickDataButton)];
+        bbiData = [[UIBarButtonItem alloc]initWithTitle:@"数据管理" style:UIBarButtonItemStylePlain target:self action:@selector(clickDataButton)];
         [self resetLeftBarButtonItems];
     }
     
@@ -84,18 +84,37 @@
 
 - (void)clickDataButton
 {
-    QCDataManViewController *dataManVC = [[QCDataManViewController alloc]init];
-    [dataManVC setModalPresentationStyle:UIModalPresentationFormSheet];
-    [self presentModalViewController:dataManVC animated:YES];
+    QCDataManViewController *dataManVC = [[QCDataManViewController alloc]initWithStyle:UITableViewStylePlain];
+   // [dataManVC setModalPresentationStyle:UIModalPresentationFormSheet];
+   // [self presentModalViewController:dataManVC animated:YES];
+    
+    UIBarButtonItem *bbi = [[self navigationItem] leftBarButtonItem];
+    [self showPopoverController:dataManVC atBarButtonItem:bbi];
 }
 
 - (void)popoverMainView
 {
     UISplitViewController *splitViewController = (UISplitViewController *)[self selectedViewController];
     UIViewController *mainVC = [[splitViewController viewControllers] objectAtIndex:0];
-    popoverController = [[UIPopoverController alloc] initWithContentViewController:mainVC];
     
     UIBarButtonItem *bbi = [[[self navigationItem] leftBarButtonItems] objectAtIndex:1];
+    [self showPopoverController:mainVC atBarButtonItem:bbi];
+}
+
+- (void)showPopoverController:(UIViewController *)viewController atBarButtonItem:(UIBarButtonItem *)bbi
+{
+    if (popoverController == nil)
+    {
+        popoverController = [[UIPopoverController alloc] initWithContentViewController:viewController];
+    }
+    else 
+    {
+        [popoverController dismissPopoverAnimated:NO];
+        [popoverController setContentViewController:viewController];
+    }
+
+    [popoverController setDelegate:self];
+    [popoverController setPopoverContentSize:viewController.view.frame.size];
     [popoverController presentPopoverFromBarButtonItem:bbi permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 

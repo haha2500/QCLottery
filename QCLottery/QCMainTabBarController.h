@@ -12,7 +12,7 @@
 @class QCRandomMainViewController;
 @class QCHistoryMainViewController;
 
-@interface QCMainTabBarController : UITabBarController <UISplitViewControllerDelegate, UITabBarControllerDelegate>
+@interface QCMainTabBarController : UITabBarController <UISplitViewControllerDelegate, UITabBarControllerDelegate, UIPopoverControllerDelegate>
 {
     QCGraphMainViewController *graphMainVC;         // 看图选号主界面
     QCRandomMainViewController *randomMainVC;       // 随机选号主界面

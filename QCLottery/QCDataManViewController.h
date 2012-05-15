@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
-@interface QCDataManViewController : UIViewController
-
+@interface QCDataManViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
+{
+    NSArray *cmdArray;
+}
 @end
