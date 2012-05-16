@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE5B635815627D1E006434E6 /* QCInputDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5B635715627D1E006434E6 /* QCInputDataViewController.m */; };
 		EE99FC001559E2D90068E101 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE99FBFF1559E2D90068E101 /* UIKit.framework */; };
 		EE99FC021559E2D90068E101 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE99FC011559E2D90068E101 /* Foundation.framework */; };
 		EE99FC041559E2D90068E101 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE99FC031559E2D90068E101 /* CoreGraphics.framework */; };
@@ -42,6 +43,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE5B635615627D1E006434E6 /* QCInputDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCInputDataViewController.h; sourceTree = "<group>"; };
+		EE5B635715627D1E006434E6 /* QCInputDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCInputDataViewController.m; sourceTree = "<group>"; };
+		EE5B63601562853B006434E6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/sunwu/work/QCLottery/QCLottery/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
 		EE99FBFB1559E2D90068E101 /* QCLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QCLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE99FBFF1559E2D90068E101 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EE99FC011559E2D90068E101 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -174,6 +178,8 @@
 				EE99FC251559EB640068E101 /* QCGraphView.m */,
 				EED4DA1615607C9400873D16 /* QCDataManViewController.h */,
 				EED4DA1715607C9400873D16 /* QCDataManViewController.m */,
+				EE5B635615627D1E006434E6 /* QCInputDataViewController.h */,
+				EE5B635715627D1E006434E6 /* QCInputDataViewController.m */,
 				EE99FC061559E2D90068E101 /* Supporting Files */,
 			);
 			path = QCLottery;
@@ -324,6 +330,7 @@
 				EEA6118A1562639500482FFE /* NumsTable.cpp in Sources */,
 				EEA6118B1562639500482FFE /* QuickAddString.cpp in Sources */,
 				EEA6118C1562639500482FFE /* TrendGrid.cpp in Sources */,
+				EE5B635815627D1E006434E6 /* QCInputDataViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -334,6 +341,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				EE99FC091559E2D90068E101 /* en */,
+				EE5B63601562853B006434E6 /* zh-Hans */,
 			);
 			name = InfoPlist.strings;
 			sourceTree = "<group>";

@@ -12,10 +12,8 @@
 
 @end
 
-enum DATAMAN_CMDID {DMCMDID_INPUT = 0, DMCMDID_DOWNLOAD, DMCMDID_DATA_RANGE, DMCMDID_DATA_DIV, DMCMDID_DATA_ORDER, DMCMDID_DATA_RWL, DMCMDID_END};
-
 @implementation QCDataManViewController
-@synthesize popoverContorller;
+@synthesize delegate;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -69,20 +67,11 @@ enum DATAMAN_CMDID {DMCMDID_INPUT = 0, DMCMDID_DOWNLOAD, DMCMDID_DATA_RANGE, DMC
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    switch ([indexPath row])
+    if ([delegate respondsToSelector:@selector(dataManVCExecuteCmd:)])
     {
-        case DMCMDID_INPUT: break;
-        case DMCMDID_DOWNLOAD: break;
-        case DMCMDID_DATA_RANGE: break;
-        case DMCMDID_DATA_DIV: break;
-        case DMCMDID_DATA_ORDER: break;
-        case DMCMDID_DATA_RWL: break;
+        DATAMAN_CMDID cmdID = (DATAMAN_CMDID)[indexPath row];
+        [delegate dataManVCExecuteCmd:cmdID];
     }
-    
-    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"test" message:@"message" delegate:nil cancelButtonTitle:@"cancel" otherButtonTitles:nil];
-    [alert show];
-    
-    [self.popoverContorller dismissPopoverAnimated:YES];
 }
 
 #pragma mark -- 以下是私有函数

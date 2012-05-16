@@ -7,12 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QCDataManViewController.h"
 
 @class QCGraphMainViewController;
 @class QCRandomMainViewController;
 @class QCHistoryMainViewController;
 
-@interface QCMainTabBarController : UITabBarController <UISplitViewControllerDelegate, UITabBarControllerDelegate, UIPopoverControllerDelegate>
+
+@interface QCMainTabBarController : UITabBarController <UISplitViewControllerDelegate, UITabBarControllerDelegate, UIPopoverControllerDelegate, QCDataManViewControllerDelegate>
 {
     QCGraphMainViewController *graphMainVC;         // 看图选号主界面
     QCRandomMainViewController *randomMainVC;       // 随机选号主界面

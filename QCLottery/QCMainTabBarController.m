@@ -11,6 +11,7 @@
 #import "QCRandomMainViewController.h"
 #import "QCHistoryMainViewController.h"
 #import "QCDataManViewController.h"
+#include "QCInputDataViewController.h"
 
 @interface QCMainTabBarController ()
 
@@ -85,12 +86,12 @@
 - (void)clickDataButton
 {
     QCDataManViewController *dataManVC = [[QCDataManViewController alloc]initWithStyle:UITableViewStylePlain];
+    [dataManVC setDelegate:self];
     
    // [dataManVC setModalPresentationStyle:UIModalPresentationFormSheet];
    // [self presentModalViewController:dataManVC animated:YES];
     UIBarButtonItem *bbi = [[self navigationItem] leftBarButtonItem];
     [self showPopoverController:dataManVC atBarButtonItem:bbi];
-    dataManVC.popoverContorller = popoverController;
 }
 
 - (void)popoverMasterView
@@ -124,6 +125,51 @@
 {
 
 }
+
+#pragma mark -- QCDataManViewControllerDelegate相关函数
+- (void)dataManVCExecuteCmd:(DATAMAN_CMDID)cmdID
+{ 
+    [popoverController dismissPopoverAnimated:YES];
+
+    switch (cmdID)
+    {
+        case DMCMDID_INPUT: [self dataManFunc_InputData]; break;
+        case DMCMDID_DOWNLOAD: [self dataManFunc_DownloadData]; break;
+        case DMCMDID_DATA_RANGE: break;
+        case DMCMDID_DATA_DIV: break;
+        case DMCMDID_DATA_ORDER: break;
+        case DMCMDID_DATA_RWL: break;
+    }
+}
+
+#pragma mark -- 数据管理相关函数
+- (void)dataManFunc_InputData
+{
+    QCInputDataViewController *inputDataVC = [[QCInputDataViewController alloc] initWithStyle:UITableViewStylePlain];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:inputDataVC];
+    [nav setModalPresentationStyle:UIModalPresentationFormSheet];
+    [self presentModalViewController:nav animated:YES];
+}
+- (void)dataManFunc_DownloadData
+{
+    // 显示等待窗口
+    UIAlertView *waitingDialog = [[UIAlertView alloc] initWithTitle:nil
+												 message:@"正在下载最新开奖号码，请等待 ..."
+												delegate:self
+									   cancelButtonTitle:nil
+									   otherButtonTitles:nil];
+		[waitingDialog show];
+	UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+     activityIndicator.center = CGPointMake(waitingDialog.bounds.size.width / 2.0f, waitingDialog.bounds.size.height - 46.0f);   
+    [activityIndicator startAnimating];
+	
+	[waitingDialog addSubview:activityIndicator];
+
+
+    // 关闭等待窗口
+  // [waitingDialog dismissWithClickedButtonIndex:0 animated:NO];
+}
+    
 #pragma mark -- UITabBarControllerDelegate相关函数
 - (void)tabBarController:(UITabBarController *)tabBarController didSelectViewController:(UIViewController *)viewController
 {
