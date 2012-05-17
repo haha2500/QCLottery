@@ -20,7 +20,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
-        cmdArray = [NSArray arrayWithObjects:@"录入开奖号码", @"下载开奖号码", @"号码范围设置", @"号码间隔设置", @"号码排列方式", @"热温冷设置", Nil];
+        cmdArray = [NSArray arrayWithObjects:@"下载开奖号码", @"录入开奖号码", @"号码范围设置", @"号码间隔设置", @"号码排列方式", @"热温冷设置", Nil];
     }
     
     return self;
@@ -74,7 +74,7 @@
     }
 }
 
-#pragma mark -- 以下是私有函数
+#pragma mark - 以下是私有函数
 - (NSString *)cmdDetailText:(NSInteger)nIndex
 {
     NSString *detailText = nil;

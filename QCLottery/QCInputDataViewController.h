@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QCInputDataEditViewController.h"
 
-@interface QCInputDataViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
-
+@interface QCInputDataViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate, UIPopoverControllerDelegate, QCInputDataEditViewControllerDelegate>
+{
+    UIPopoverController *popoverController;
+}
 @end

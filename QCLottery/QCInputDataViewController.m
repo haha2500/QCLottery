@@ -30,10 +30,10 @@
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
-    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(clickDone)];
+    self.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(clickDone:)];
     
     UIBarButtonItem *bbiDelete = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemTrash target:self action:@selector(clickDelete)];
-    UIBarButtonItem *bbiAdd = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(clickAdd)];
+    UIBarButtonItem *bbiAdd = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(clickAdd:)];
     self.navigationItem.rightBarButtonItems = [NSArray arrayWithObjects:bbiDelete, bbiAdd, Nil];
   //  self.view.frame = CGRectMake(0, 0, 300, 44 * 20);
     self.tableView.bounces = NO;
@@ -69,7 +69,8 @@
         UIButton *editBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [editBtn setFrame:CGRectMake(0, 0, 60, 30)];
         [editBtn setTitle:@"修改" forState:UIControlStateNormal];
-        [editBtn addTarget:self action:@selector(clickModify) forControlEvents:UIControlEventTouchUpInside];
+        [editBtn addTarget:self action:@selector(clickModify:) forControlEvents:UIControlEventTouchUpInside];
+        [editBtn setTag:[indexPath row]];
         cell.accessoryView = editBtn;
     }
     
@@ -107,14 +108,45 @@
     
 }
 
-- (void)clickAdd
+- (void)clickAdd:(id)sender;
 {
-    
+    [self setupPopoverDataEditVC:-1];
+    UIBarButtonItem *bbi = [[[self navigationItem] rightBarButtonItems]objectAtIndex:1];
+    [popoverController presentPopoverFromBarButtonItem:bbi permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
 }
 
-- (void)clickModify
+- (void)clickModify:(id)sender;
 {
-    
+    [self setupPopoverDataEditVC:[sender tag]];
+    CGRect rect = [sender bounds];
+    [popoverController presentPopoverFromRect:rect inView:sender permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
+- (void)setupPopoverDataEditVC:(NSInteger)dataItemIndex
+{
+    QCInputDataEditViewController *dataEditVC = [[QCInputDataEditViewController alloc]initWithNibName:@"QCInputDataEditViewController" bundle:nil];
+    UINavigationController *navController = [[UINavigationController alloc]initWithRootViewController:dataEditVC];
+    dataEditVC.delegate = self;
+    dataEditVC.dataItemIndex = dataItemIndex;
+
+   CGSize popoverContentSize = dataEditVC.view.frame.size;
+    popoverContentSize.height += 30;
+    if (popoverController == nil)
+    {
+        popoverController = [[UIPopoverController alloc]initWithContentViewController:navController];
+        
+        [popoverController setPopoverContentSize:popoverContentSize];
+    }
+}
+
+#pragma mark - QCInputDataEditViewControllerDelegate Method
+- (void)inputDataEditVCClose:(BOOL)dataModified
+{
+    if (dataModified)   // 需要更新数据
+    {
+        
+    }
+    
+    [popoverController dismissPopoverAnimated:YES];
+}
 @end

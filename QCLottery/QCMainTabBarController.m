@@ -11,7 +11,8 @@
 #import "QCRandomMainViewController.h"
 #import "QCHistoryMainViewController.h"
 #import "QCDataManViewController.h"
-#include "QCInputDataViewController.h"
+#import "QCInputDataViewController.h"
+#import "QCSetDataRangeViewController.h"
 
 @interface QCMainTabBarController ()
 
@@ -117,7 +118,16 @@
 
     [popoverController setDelegate:self];
     [popoverController setPopoverContentSize:viewController.view.frame.size];
-    [popoverController presentPopoverFromBarButtonItem:bbi permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    
+    if (bbi == nil)
+    {
+        CGRect rect = self.view.bounds;
+        [popoverController presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
+    else
+    {
+        [popoverController presentPopoverFromBarButtonItem:bbi permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
+    }
 }
 
 #pragma mark -- UIPopoverControllerDelegate相关函数
@@ -135,7 +145,7 @@
     {
         case DMCMDID_INPUT: [self dataManFunc_InputData]; break;
         case DMCMDID_DOWNLOAD: [self dataManFunc_DownloadData]; break;
-        case DMCMDID_DATA_RANGE: break;
+        case DMCMDID_DATA_RANGE: [self dataManFunc_SetDataRange]; break;
         case DMCMDID_DATA_DIV: break;
         case DMCMDID_DATA_ORDER: break;
         case DMCMDID_DATA_RWL: break;
@@ -150,6 +160,7 @@
     [nav setModalPresentationStyle:UIModalPresentationFormSheet];
     [self presentModalViewController:nav animated:YES];
 }
+
 - (void)dataManFunc_DownloadData
 {
     // 显示等待窗口
@@ -168,6 +179,13 @@
 
     // 关闭等待窗口
   // [waitingDialog dismissWithClickedButtonIndex:0 animated:NO];
+}
+
+- (void)dataManFunc_SetDataRange
+{
+    QCSetDataRangeViewController *setDataRangeVC = [[QCSetDataRangeViewController alloc] initWithNibName:@"QCSetDataRangeViewController" bundle:nil];
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:setDataRangeVC];
+    [self showPopoverController:nav atBarButtonItem:nil];
 }
     
 #pragma mark -- UITabBarControllerDelegate相关函数

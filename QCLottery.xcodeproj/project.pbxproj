@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		EE27CC3E1564755A00E9F12F /* QCSetDataRangeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE27CC3C1564755A00E9F12F /* QCSetDataRangeViewController.m */; };
+		EE27CC3F1564755A00E9F12F /* QCSetDataRangeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE27CC3D1564755A00E9F12F /* QCSetDataRangeViewController.xib */; };
 		EE5B635815627D1E006434E6 /* QCInputDataViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5B635715627D1E006434E6 /* QCInputDataViewController.m */; };
+		EE5B63701563C136006434E6 /* QCInputDataEditViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE5B636E1563C136006434E6 /* QCInputDataEditViewController.m */; };
+		EE5B63711563C136006434E6 /* QCInputDataEditViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE5B636F1563C136006434E6 /* QCInputDataEditViewController.xib */; };
 		EE99FC001559E2D90068E101 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE99FBFF1559E2D90068E101 /* UIKit.framework */; };
 		EE99FC021559E2D90068E101 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE99FC011559E2D90068E101 /* Foundation.framework */; };
 		EE99FC041559E2D90068E101 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EE99FC031559E2D90068E101 /* CoreGraphics.framework */; };
@@ -43,9 +47,15 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		EE27CC3B1564755A00E9F12F /* QCSetDataRangeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCSetDataRangeViewController.h; sourceTree = "<group>"; };
+		EE27CC3C1564755A00E9F12F /* QCSetDataRangeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCSetDataRangeViewController.m; sourceTree = "<group>"; };
+		EE27CC3D1564755A00E9F12F /* QCSetDataRangeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCSetDataRangeViewController.xib; sourceTree = "<group>"; };
 		EE5B635615627D1E006434E6 /* QCInputDataViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCInputDataViewController.h; sourceTree = "<group>"; };
 		EE5B635715627D1E006434E6 /* QCInputDataViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCInputDataViewController.m; sourceTree = "<group>"; };
 		EE5B63601562853B006434E6 /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "/Users/sunwu/work/QCLottery/QCLottery/zh-Hans.lproj/InfoPlist.strings"; sourceTree = "<absolute>"; };
+		EE5B636D1563C136006434E6 /* QCInputDataEditViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCInputDataEditViewController.h; sourceTree = "<group>"; };
+		EE5B636E1563C136006434E6 /* QCInputDataEditViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCInputDataEditViewController.m; sourceTree = "<group>"; };
+		EE5B636F1563C136006434E6 /* QCInputDataEditViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCInputDataEditViewController.xib; sourceTree = "<group>"; };
 		EE99FBFB1559E2D90068E101 /* QCLottery.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = QCLottery.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		EE99FBFF1559E2D90068E101 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		EE99FC011559E2D90068E101 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -180,6 +190,12 @@
 				EED4DA1715607C9400873D16 /* QCDataManViewController.m */,
 				EE5B635615627D1E006434E6 /* QCInputDataViewController.h */,
 				EE5B635715627D1E006434E6 /* QCInputDataViewController.m */,
+				EE5B636D1563C136006434E6 /* QCInputDataEditViewController.h */,
+				EE5B636E1563C136006434E6 /* QCInputDataEditViewController.m */,
+				EE5B636F1563C136006434E6 /* QCInputDataEditViewController.xib */,
+				EE27CC3B1564755A00E9F12F /* QCSetDataRangeViewController.h */,
+				EE27CC3C1564755A00E9F12F /* QCSetDataRangeViewController.m */,
+				EE27CC3D1564755A00E9F12F /* QCSetDataRangeViewController.xib */,
 				EE99FC061559E2D90068E101 /* Supporting Files */,
 			);
 			path = QCLottery;
@@ -294,6 +310,8 @@
 				EE99FC0A1559E2D90068E101 /* InfoPlist.strings in Resources */,
 				EE99FC2F155B34600068E101 /* QCConditionViewController.xib in Resources */,
 				EEAB5816155C890C00108022 /* QCGraphViewController.xib in Resources */,
+				EE5B63711563C136006434E6 /* QCInputDataEditViewController.xib in Resources */,
+				EE27CC3F1564755A00E9F12F /* QCSetDataRangeViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -331,6 +349,8 @@
 				EEA6118B1562639500482FFE /* QuickAddString.cpp in Sources */,
 				EEA6118C1562639500482FFE /* TrendGrid.cpp in Sources */,
 				EE5B635815627D1E006434E6 /* QCInputDataViewController.m in Sources */,
+				EE5B63701563C136006434E6 /* QCInputDataEditViewController.m in Sources */,
+				EE27CC3E1564755A00E9F12F /* QCSetDataRangeViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
