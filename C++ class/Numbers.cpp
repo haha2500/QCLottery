@@ -1353,7 +1353,7 @@ void CNumbers::FillRandomData(INumbers *pDestNumbers, BOOL bNeedSeed)
 		dwNeedFlag = 1;
 	}
 	
-	DWORD i = 0, dwIndex = m_btWholeNumberCount;
+	DWORD i = 0, dwIndex = 0;
 	LPDWORD lpCustomData = NULL;
 	int nLastDivCount =  m_dwCount % RAND_MAX, nDivIndex = 0;
 	int nDivCount = m_dwCount / RAND_MAX + (nLastDivCount > 0 ? 1 : 0);
@@ -2877,7 +2877,6 @@ DWORD CNumbers::_GetItemValue_LT(LPBYTE lpData)
 	// 大于等于5个号码需要优化
 	DWORD dwValue = 0, dwIndex = 0;
 	int i = 0, nTemp = 0;
-	BYTE btMinNumber = m_btMinNumber;
 	
 	// 获取索引信息
 	dwIndex = _GetItemValue_LT_Prev4_Index(lpData);
@@ -2888,7 +2887,7 @@ DWORD CNumbers::_GetItemValue_LT(LPBYTE lpData)
 	// 获取索引值
 	dwValue = m_dwPrev4LTValueArray.GetAt(dwIndex);
 	
-	btMinNumber = (BYTE)(lpData[3] + 1);
+	BYTE btMinNumber = (BYTE)(lpData[3] + 1);
 	
 	// 获取4位以后的值
 	for(i=4; i<m_btNumberCount-1; i++)

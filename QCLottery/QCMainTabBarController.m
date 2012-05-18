@@ -106,28 +106,15 @@
 
 - (void)showPopoverController:(UIViewController *)viewController atBarButtonItem:(UIBarButtonItem *)bbi
 {
-    if (popoverController == nil)
-    {
-        popoverController = [[UIPopoverController alloc] initWithContentViewController:viewController];
-    }
-    else 
+    if (popoverController != nil)
     {
         [popoverController dismissPopoverAnimated:NO];
-        [popoverController setContentViewController:viewController];
     }
-
+    popoverController = [[UIPopoverController alloc] initWithContentViewController:viewController];
     [popoverController setDelegate:self];
     [popoverController setPopoverContentSize:viewController.view.frame.size];
     
-    if (bbi == nil)
-    {
-        CGRect rect = self.view.bounds;
-        [popoverController presentPopoverFromRect:rect inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    }
-    else
-    {
-        [popoverController presentPopoverFromBarButtonItem:bbi permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
-    }
+    [popoverController presentPopoverFromBarButtonItem:bbi permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
 #pragma mark -- UIPopoverControllerDelegate相关函数
@@ -149,6 +136,16 @@
         case DMCMDID_DATA_DIV: break;
         case DMCMDID_DATA_ORDER: break;
         case DMCMDID_DATA_RWL: break;
+    }
+}
+
+- (void)dataManSubVCDidExecuteCmd:(DATAMAN_CMDID)cmdID withDataChanged:(BOOL)dataChanged
+{
+    [popoverController dismissPopoverAnimated:YES];
+    
+    if (dataChanged)  // 数据改变，则重新装载当前数据
+    {
+        
     }
 }
 
@@ -184,8 +181,14 @@
 - (void)dataManFunc_SetDataRange
 {
     QCSetDataRangeViewController *setDataRangeVC = [[QCSetDataRangeViewController alloc] initWithNibName:@"QCSetDataRangeViewController" bundle:nil];
+    [setDataRangeVC setDelegate:self];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:setDataRangeVC];
-    [self showPopoverController:nav atBarButtonItem:nil];
+    CGRect rect = setDataRangeVC.view.frame;
+    rect.size.height += nav.navigationBar.frame.size.height;
+    nav.view.frame = rect;
+    
+     UIBarButtonItem *bbi = [[[self navigationItem] leftBarButtonItems] objectAtIndex:0];
+    [self showPopoverController:nav atBarButtonItem:bbi];
 }
     
 #pragma mark -- UITabBarControllerDelegate相关函数

@@ -48,8 +48,12 @@
     [datePicker setMaximumDate:[NSDate date]];
 
     [issueText setDelegate:self];
+    [issueText setPlaceholder:[NSString stringWithFormat:@"%d位数字", g_pIData->GetIssueLen()]];
     [testnumsText setDelegate:self];
+    NSString *strNumsInfo = [NSString stringWithFormat:@"%d位数字", g_pIData->GetNumberCount(DATA_SOURCE_INIT)];
+    [testnumsText setPlaceholder:strNumsInfo];
     [numsText setDelegate:self];
+    [numsText setPlaceholder:strNumsInfo];
 }
 
 - (void)viewDidUnload
@@ -99,6 +103,37 @@
         return NO;
     }
 
+    return YES;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    if (textField == issueText)
+    {
+        if (textField.text.length != g_pIData->GetIssueLen())
+        {
+            return NO;
+        }
+        [testnumsText becomeFirstResponder];
+    }
+    else if (textField == testnumsText)
+    {
+        if (textField.text.length != g_pIData->GetNumberCount(DATA_SOURCE_INIT))
+        {
+            return NO;
+        }
+        [numsText becomeFirstResponder];
+    }
+    else if (textField == numsText)
+    {
+        if (textField.text.length != g_pIData->GetNumberCount(DATA_SOURCE_INIT))
+        {
+            return NO;
+        }
+        [textField resignFirstResponder];
+        [self clickDone];
+    }
+    
     return YES;
 }
 @end

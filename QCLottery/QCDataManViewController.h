@@ -14,8 +14,10 @@ enum DATAMAN_CMDID {DMCMDID_DOWNLOAD = 0, DMCMDID_INPUT, DMCMDID_DATA_RANGE, DMC
 // 定义委托协议
 @protocol QCDataManViewControllerDelegate <NSObject>
 
+// 执行数据管理列表的命令
 - (void)dataManVCExecuteCmd:(DATAMAN_CMDID)cmdID;
-
+// 数据管理列表命令的子视图控制器执行完毕
+- (void)dataManSubVCDidExecuteCmd:(DATAMAN_CMDID)cmdID withDataChanged:(BOOL)dataChanged;
 @end
 
 @interface QCDataManViewController : UITableViewController <UITableViewDataSource, UITableViewDelegate>
