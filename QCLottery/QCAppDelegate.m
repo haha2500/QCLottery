@@ -61,4 +61,12 @@ IData *g_pIData = NULL;
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+// 覆盖初始化函数，以设置缺省配置
++ (void)initialize
+{
+    NSString *filePath = [[NSBundle mainBundle]bundlePath];
+    NSString *fileName = [filePath stringByAppendingPathComponent:@"Config.plist"];
+    NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:fileName];
+    [[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
+}
 @end

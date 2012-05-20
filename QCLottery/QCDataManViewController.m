@@ -7,6 +7,7 @@
 //
 
 #import "QCDataManViewController.h"
+#import "QCSetDataRangeViewController.h"
 
 @interface QCDataManViewController ()
 
@@ -78,12 +79,31 @@
 - (NSString *)cmdDetailText:(NSInteger)nIndex
 {
     NSString *detailText = nil;
+    NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     
     switch (nIndex)
     {
     case DMCMDID_INPUT: detailText = @"手工录入开奖号码，无需连接网络"; break;
     case DMCMDID_DOWNLOAD: detailText = @"从官方网站下载开奖号码，需要连接网络"; break;
-    case DMCMDID_DATA_RANGE: detailText = @"最近 100 期号码"; break;
+    case DMCMDID_DATA_RANGE:
+        {
+            NSString *strRangeType = nil;
+            switch ([userDefaults integerForKey:DataRangeTypePrefKey])
+            {
+                case 0: strRangeType = @"全部开奖号码"; break;
+                case 1: strRangeType = @"最近一年的号码"; break;
+                case 2: strRangeType = [NSString stringWithFormat:@"最近 %d 期号码", [userDefaults integerForKey:DataRangeKeepIssuePrefKey]]; break;
+            }
+            int nExcludeIssue = [userDefaults integerForKey:DataRangeExcludeIssuePrefKey];
+            if (nExcludeIssue > 0)
+            {
+                detailText = [strRangeType stringByAppendingFormat:@"，排除最近的 %d 期号码", nExcludeIssue];
+            }
+            else
+            {
+                detailText = strRangeType;
+            }
+        }break;
     case DMCMDID_DATA_DIV: detailText = @"无间隔"; break;
     case DMCMDID_DATA_ORDER: detailText = @"按开奖顺序排列"; break;
     case DMCMDID_DATA_RWL: detailText = @"分析期数：10期，温码为出现3次的号码"; break;

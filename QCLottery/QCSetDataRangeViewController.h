@@ -9,11 +9,30 @@
 #import <UIKit/UIKit.h>
 #import "QCDataManViewController.h"
 
-@interface QCSetDataRangeViewController : UIViewController
+// 定义配置KEY值
+NSString * const DataRangeTypePrefKey = @"DataRange_Type";
+NSString * const DataRangeKeepIssuePrefKey = @"DataRange_KeepIssue";
+NSString * const DataRangeExcludeIssuePrefKey = @"DataRange_ExcludeIssue";
+
+@interface QCSetDataRangeViewController : UIViewController <UITableViewDelegate, UITableViewDataSource>
+{
+    IBOutlet UITableViewCell *keepLastCell;
+    NSIndexPath *lastIndexPath;
+    int nKeepIssue;
+    int nExcludeIssue;
+}
+
 @property (assign, nonatomic) id<QCDataManViewControllerDelegate> delegate;
-@property (weak, nonatomic) IBOutlet UITextField *excludeTextField;
-@property (weak, nonatomic) IBOutlet UIStepper *stepper;
+@property (weak, nonatomic) IBOutlet UITableView *rangeTableView;
 @property (weak, nonatomic) IBOutlet UISwitch *switcher;
-- (IBAction)stepperValueChanged:(id)sender;
+@property (weak, nonatomic) IBOutlet UIButton *btnExcludeIssue;
+@property (weak, nonatomic) IBOutlet UIButton *btnKeepIssue;
+@property (weak, nonatomic) IBOutlet UILabel *lableExclude;
+@property (weak, nonatomic) IBOutlet UILabel *lableExcludeIssue;
+@property (strong, nonatomic) NSIndexPath *lastIndexPath;
+
+
 - (IBAction)switchValueChanged:(id)sender;
+- (IBAction)clickIssueBtn:(id)sender;
+
 @end

@@ -100,6 +100,10 @@
 #pragma mark - 
 - (void)clickDone
 {
+    if (popoverController != nil)
+    {
+        [popoverController dismissPopoverAnimated:NO];
+    }
     [self dismissModalViewControllerAnimated:YES];
 }
 

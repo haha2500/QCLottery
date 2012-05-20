@@ -155,7 +155,9 @@
     QCInputDataViewController *inputDataVC = [[QCInputDataViewController alloc] initWithStyle:UITableViewStylePlain];
     UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:inputDataVC];
     [nav setModalPresentationStyle:UIModalPresentationFormSheet];
-    [self presentModalViewController:nav animated:YES];
+  //  [self presentModalViewController:nav animated:YES];
+    
+    [self presentViewController:nav animated:YES completion:NULL];
 }
 
 - (void)dataManFunc_DownloadData

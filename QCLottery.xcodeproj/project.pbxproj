@@ -39,10 +39,13 @@
 		EEA6118A1562639500482FFE /* NumsTable.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA611761562639500482FFE /* NumsTable.cpp */; };
 		EEA6118B1562639500482FFE /* QuickAddString.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA611781562639500482FFE /* QuickAddString.cpp */; };
 		EEA6118C1562639500482FFE /* TrendGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA6117A1562639500482FFE /* TrendGrid.cpp */; };
+		EEA7B20F15678B5600F92E3B /* QCDataPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7B20D15678B5600F92E3B /* QCDataPickerViewController.m */; };
+		EEA7B21015678B5600F92E3B /* QCDataPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEA7B20E15678B5600F92E3B /* QCDataPickerViewController.xib */; };
 		EEAB580D155B3B1E00108022 /* QCRandomMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB580C155B3B1E00108022 /* QCRandomMainViewController.m */; };
 		EEAB5811155B3B6000108022 /* QCHistoryMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB5810155B3B6000108022 /* QCHistoryMainViewController.m */; };
 		EEAB5815155C890C00108022 /* QCGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB5813155C890C00108022 /* QCGraphViewController.m */; };
 		EEAB5816155C890C00108022 /* QCGraphViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEAB5814155C890C00108022 /* QCGraphViewController.xib */; };
+		EEB8AA671567CD410019D81A /* Config.plist in Resources */ = {isa = PBXBuildFile; fileRef = EEB8AA661567CD410019D81A /* Config.plist */; };
 		EED4DA1915607C9400873D16 /* QCDataManViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EED4DA1715607C9400873D16 /* QCDataManViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -112,6 +115,9 @@
 		EEA6117A1562639500482FFE /* TrendGrid.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TrendGrid.cpp; sourceTree = "<group>"; };
 		EEA6117B1562639500482FFE /* TrendGrid.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrendGrid.h; sourceTree = "<group>"; };
 		EEA6117C1562639500482FFE /* WinDef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WinDef.h; sourceTree = "<group>"; };
+		EEA7B20C15678B5600F92E3B /* QCDataPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCDataPickerViewController.h; sourceTree = "<group>"; };
+		EEA7B20D15678B5600F92E3B /* QCDataPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCDataPickerViewController.m; sourceTree = "<group>"; };
+		EEA7B20E15678B5600F92E3B /* QCDataPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCDataPickerViewController.xib; sourceTree = "<group>"; };
 		EEAB580B155B3B1E00108022 /* QCRandomMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCRandomMainViewController.h; sourceTree = "<group>"; };
 		EEAB580C155B3B1E00108022 /* QCRandomMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCRandomMainViewController.m; sourceTree = "<group>"; };
 		EEAB580F155B3B6000108022 /* QCHistoryMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCHistoryMainViewController.h; sourceTree = "<group>"; };
@@ -119,6 +125,7 @@
 		EEAB5812155C890C00108022 /* QCGraphViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCGraphViewController.h; sourceTree = "<group>"; };
 		EEAB5813155C890C00108022 /* QCGraphViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCGraphViewController.m; sourceTree = "<group>"; };
 		EEAB5814155C890C00108022 /* QCGraphViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCGraphViewController.xib; sourceTree = "<group>"; };
+		EEB8AA661567CD410019D81A /* Config.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Config.plist; path = ../Config.plist; sourceTree = "<group>"; };
 		EED4DA1615607C9400873D16 /* QCDataManViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCDataManViewController.h; sourceTree = "<group>"; };
 		EED4DA1715607C9400873D16 /* QCDataManViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCDataManViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -196,6 +203,9 @@
 				EE27CC3B1564755A00E9F12F /* QCSetDataRangeViewController.h */,
 				EE27CC3C1564755A00E9F12F /* QCSetDataRangeViewController.m */,
 				EE27CC3D1564755A00E9F12F /* QCSetDataRangeViewController.xib */,
+				EEA7B20C15678B5600F92E3B /* QCDataPickerViewController.h */,
+				EEA7B20D15678B5600F92E3B /* QCDataPickerViewController.m */,
+				EEA7B20E15678B5600F92E3B /* QCDataPickerViewController.xib */,
 				EE99FC061559E2D90068E101 /* Supporting Files */,
 			);
 			path = QCLottery;
@@ -204,6 +214,7 @@
 		EE99FC061559E2D90068E101 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EEB8AA661567CD410019D81A /* Config.plist */,
 				EE99FC071559E2D90068E101 /* QCLottery-Info.plist */,
 				EE99FC081559E2D90068E101 /* InfoPlist.strings */,
 				EE99FC0B1559E2D90068E101 /* main.m */,
@@ -312,6 +323,8 @@
 				EEAB5816155C890C00108022 /* QCGraphViewController.xib in Resources */,
 				EE5B63711563C136006434E6 /* QCInputDataEditViewController.xib in Resources */,
 				EE27CC3F1564755A00E9F12F /* QCSetDataRangeViewController.xib in Resources */,
+				EEA7B21015678B5600F92E3B /* QCDataPickerViewController.xib in Resources */,
+				EEB8AA671567CD410019D81A /* Config.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,6 +364,7 @@
 				EE5B635815627D1E006434E6 /* QCInputDataViewController.m in Sources */,
 				EE5B63701563C136006434E6 /* QCInputDataEditViewController.m in Sources */,
 				EE27CC3E1564755A00E9F12F /* QCSetDataRangeViewController.m in Sources */,
+				EEA7B20F15678B5600F92E3B /* QCDataPickerViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
