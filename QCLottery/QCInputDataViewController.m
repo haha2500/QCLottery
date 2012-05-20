@@ -7,6 +7,7 @@
 //
 
 #import "QCInputDataViewController.h"
+#import "IData.h"
 
 @interface QCInputDataViewController ()
 
@@ -46,6 +47,21 @@
     // e.g. self.myOutlet = nil;
 }
 
+- (void)viewWillAppear:(BOOL)animated
+{
+    g_pIData->OpenLotteryFile();
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [[self tableView] scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:g_pIData->GetItemCount(DATA_SOURCE_INIT)-1 inSection:0] atScrollPosition:UITableViewScrollPositionTop animated:NO];
+}
+
+- (void)viewWillDisappear:(BOOL)animated
+{
+    g_pIData->CloseLotteryFile(); 
+}
+
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
@@ -55,7 +71,7 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     // Return the number of rows in the section.
-    return 10;
+    return g_pIData->GetItemCount(DATA_SOURCE_INIT);
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -64,8 +80,7 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:cellIdentify];
     if (cell == nil)
     {
-        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentify];
-       // cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+        cell = [[UITableViewCell alloc]initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:cellIdentify];
         UIButton *editBtn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
         [editBtn setFrame:CGRectMake(0, 0, 60, 30)];
         [editBtn setTitle:@"修改" forState:UIControlStateNormal];
@@ -75,11 +90,19 @@
     }
     
     // 设置标题
-  //  int nIndex = [indexPath row];
-    cell.textLabel.text = @"2010-01-01 2010001 222 333"; // [cmdArray objectAtIndex:nIndex];
+    int nIndex = [indexPath row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%s期  开奖号：%s", g_pIData->GetItemIssueString(nIndex, DATA_SOURCE_INIT), g_pIData->GetItemNumsString(nIndex, DATA_SOURCE_INIT)];
     
-    // 设置详细信息
-   // cell.detailTextLabel.text = [self cmdDetailText:nIndex];
+    if (g_pIData->GetLotteryProperty()->btProperty & CSTLPP_TESTNUMS)
+    {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"开奖日期：%s  试机号：%s", g_pIData->GetItemDateString(nIndex, DATA_SOURCE_INIT), g_pIData->GetItemTestNumsString(nIndex, DATA_SOURCE_INIT)];
+    }
+    else
+    {
+        cell.detailTextLabel.text = [NSString stringWithFormat:@"开奖日期：%s", g_pIData->GetItemDateString(nIndex, DATA_SOURCE_INIT)];
+
+    }
+ 
     return cell;
 
 }

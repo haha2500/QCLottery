@@ -13,6 +13,7 @@
 #import "QCDataManViewController.h"
 #import "QCInputDataViewController.h"
 #import "QCSetDataRangeViewController.h"
+#import "IData.h"
 
 @interface QCMainTabBarController ()
 
@@ -126,7 +127,7 @@
 #pragma mark -- QCDataManViewControllerDelegate相关函数
 - (void)dataManVCExecuteCmd:(DATAMAN_CMDID)cmdID
 { 
-    [popoverController dismissPopoverAnimated:YES];
+    [popoverController dismissPopoverAnimated:NO];
 
     switch (cmdID)
     {
@@ -141,7 +142,7 @@
 
 - (void)dataManSubVCDidExecuteCmd:(DATAMAN_CMDID)cmdID withDataChanged:(BOOL)dataChanged
 {
-    [popoverController dismissPopoverAnimated:YES];
+    [popoverController dismissPopoverAnimated:NO];
     
     if (dataChanged)  // 数据改变，则重新装载当前数据
     {
@@ -174,10 +175,24 @@
     [activityIndicator startAnimating];
 	
 	[waitingDialog addSubview:activityIndicator];
-
-
+    
+    // 下载数据
+       
+    BOOL bModified = FALSE;
+    if(g_pIData->DownloadLtyNums(bModified))
+    {
+        // 下载失败
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息" message:@"下载开奖号码失败，请稍后再试。" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:nil];
+        [alert show];
+    }
+    else if (bModified)
+    {
+        // 需要更新数据显示
+        // TEST
+    }
+    
     // 关闭等待窗口
-  // [waitingDialog dismissWithClickedButtonIndex:0 animated:NO];
+   [waitingDialog dismissWithClickedButtonIndex:0 animated:NO];
 }
 
 - (void)dataManFunc_SetDataRange

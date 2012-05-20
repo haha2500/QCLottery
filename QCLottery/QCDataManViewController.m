@@ -31,7 +31,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    self.view.frame = CGRectMake(0, 0, 300, 44 * [cmdArray count]);
+    self.view.frame = CGRectMake(0, 0, 320, 44 * [cmdArray count]);
     self.tableView.bounces = NO;
 }
 

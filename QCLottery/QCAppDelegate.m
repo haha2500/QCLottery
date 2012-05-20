@@ -21,7 +21,6 @@ IData *g_pIData = NULL;
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    g_pIData = (IData *)new CData;
     
     // 创建主TAB页界面
     mainTabBarController = [[QCMainTabBarController alloc] init];
@@ -64,9 +63,16 @@ IData *g_pIData = NULL;
 // 覆盖初始化函数，以设置缺省配置
 + (void)initialize
 {
+    // 初始化缺省配置
     NSString *filePath = [[NSBundle mainBundle]bundlePath];
     NSString *fileName = [filePath stringByAppendingPathComponent:@"Config.plist"];
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:fileName];
     [[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
+    
+    // 创建数据对象指针，并载入数据
+    g_pIData = (IData *)new CData;
+    g_pIData->OpenLotteryFile();
+    g_pIData->ResetCurUsedData();
+    g_pIData->CloseLotteryFile();
 }
 @end

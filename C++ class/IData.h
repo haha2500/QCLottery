@@ -324,7 +324,7 @@ class IData
 {
 public:     // 数据文件相关操作
     // 打开彩票文件并载入数据，此时初始号码数据有效
-    virtual BOOL OpenLotteryFile(LPCSTR lpszFilename) = 0;
+    virtual BOOL OpenLotteryFile() = 0;
     // 关闭文件并释放载入的数据，初始号码变为无效
     virtual void CloseLotteryFile(BOOL bSave = FALSE) = 0;
     
@@ -336,8 +336,9 @@ public:     // 数据文件相关操作
 	virtual BOOL DeleteLastLtyNums() = 0;
 	// 删除全部开奖号
 	virtual BOOL DeleteAllLtyNums() = 0;
-	// 更新开奖号，用于下载数据
-	virtual BOOL UpdateLtyNums(LPCSTR lpBuf, int nBufLen) = 0;
+    
+	// 下载开奖号码，下载失败返回FALSE，当下载成功时bModified有效，包含TRUE则表示数据更新过
+	virtual BOOL DownloadLtyNums(BOOL &bModified) = 0;
     
 public:     // 内存中的数据相关操作
     

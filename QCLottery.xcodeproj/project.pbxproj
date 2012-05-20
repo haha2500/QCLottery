@@ -23,6 +23,7 @@
 		EE99FC261559EB640068E101 /* QCGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE99FC251559EB640068E101 /* QCGraphView.m */; };
 		EE99FC2E155B34600068E101 /* QCConditionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE99FC2C155B34600068E101 /* QCConditionViewController.m */; };
 		EE99FC2F155B34600068E101 /* QCConditionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE99FC2D155B34600068E101 /* QCConditionViewController.xib */; };
+		EEA5DD741568E89A00F36D40 /* FC3D.dat in Resources */ = {isa = PBXBuildFile; fileRef = EEA5DD731568E89A00F36D40 /* FC3D.dat */; };
 		EEA6117D1562639500482FFE /* BallBitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA611581562639500482FFE /* BallBitmap.cpp */; };
 		EEA6117E1562639500482FFE /* Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA6115A1562639500482FFE /* Data.cpp */; };
 		EEA6117F1562639500482FFE /* Data_Private.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA6115C1562639500482FFE /* Data_Private.cpp */; };
@@ -78,6 +79,7 @@
 		EE99FC2B155B34600068E101 /* QCConditionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCConditionViewController.h; sourceTree = "<group>"; };
 		EE99FC2C155B34600068E101 /* QCConditionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCConditionViewController.m; sourceTree = "<group>"; };
 		EE99FC2D155B34600068E101 /* QCConditionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCConditionViewController.xib; sourceTree = "<group>"; };
+		EEA5DD731568E89A00F36D40 /* FC3D.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = FC3D.dat; sourceTree = "<group>"; };
 		EEA611581562639500482FFE /* BallBitmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BallBitmap.cpp; sourceTree = "<group>"; };
 		EEA611591562639500482FFE /* BallBitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallBitmap.h; sourceTree = "<group>"; };
 		EEA6115A1562639500482FFE /* Data.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Data.cpp; sourceTree = "<group>"; };
@@ -214,6 +216,7 @@
 		EE99FC061559E2D90068E101 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				EEA5DD731568E89A00F36D40 /* FC3D.dat */,
 				EEB8AA661567CD410019D81A /* Config.plist */,
 				EE99FC071559E2D90068E101 /* QCLottery-Info.plist */,
 				EE99FC081559E2D90068E101 /* InfoPlist.strings */,
@@ -230,6 +233,7 @@
 				EEA611591562639500482FFE /* BallBitmap.h */,
 				EEA6115A1562639500482FFE /* Data.cpp */,
 				EEA6115B1562639500482FFE /* Data.h */,
+				EEA6116E1562639500482FFE /* IData.h */,
 				EEA6115C1562639500482FFE /* Data_Private.cpp */,
 				EEA6115D1562639500482FFE /* DataFactory.cpp */,
 				EEA6115E1562639500482FFE /* DataFactory.h */,
@@ -248,7 +252,6 @@
 				EEA6116B1562639500482FFE /* GraphGridPublic.h */,
 				EEA6116C1562639500482FFE /* HistoryValueStat.cpp */,
 				EEA6116D1562639500482FFE /* HistoryValueStat.h */,
-				EEA6116E1562639500482FFE /* IData.h */,
 				EEA6116F1562639500482FFE /* INumbers.h */,
 				EEA611701562639500482FFE /* MFCClass.cpp */,
 				EEA611711562639500482FFE /* MFCClass.h */,
@@ -325,6 +328,7 @@
 				EE27CC3F1564755A00E9F12F /* QCSetDataRangeViewController.xib in Resources */,
 				EEA7B21015678B5600F92E3B /* QCDataPickerViewController.xib in Resources */,
 				EEB8AA671567CD410019D81A /* Config.plist in Resources */,
+				EEA5DD741568E89A00F36D40 /* FC3D.dat in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

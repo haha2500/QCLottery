@@ -29,7 +29,7 @@ public:
     
 public:     // 数据文件相关操作
     // 打开彩票文件并载入数据，此时初始号码数据有效
-    virtual BOOL OpenLotteryFile(LPCSTR lpszFilename);
+    virtual BOOL OpenLotteryFile();
     // 关闭文件并释放载入的数据，初始号码变为无效
     virtual void CloseLotteryFile(BOOL bSave);
     
@@ -41,8 +41,9 @@ public:     // 数据文件相关操作
 	virtual BOOL DeleteLastLtyNums();
 	// 删除全部开奖号
 	virtual BOOL DeleteAllLtyNums();
-	// 更新开奖号，用于下载数据
-	virtual BOOL UpdateLtyNums(LPCSTR lpBuf, int nBufLen);
+	
+    // 下载开奖号码，下载失败返回FALSE，当下载成功时bModified有效，包含TRUE则表示数据更新过
+	virtual BOOL DownloadLtyNums(BOOL &bModified);
     
 public:
 	// 获取彩票ID
@@ -316,6 +317,8 @@ private:
 	BYTE				m_btOrgMaxNumber;			// 开奖号码原始数据最大值
 	BYTE				m_btInitMaxNumber;			// 开奖号码初始数据最大值
 	
+    DATAFILEITEM        m_stLastDataFileItem;       // 最后一期开奖数据
+    
 private:
 	DATARANGESET		m_stDataRange;				// 奖号范围
 	DATADIVSET			m_stDataDiv;				// 奖号间隔

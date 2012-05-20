@@ -372,8 +372,8 @@ void CNumbers::SetSeparator(LPNUMBERSSEPARATOR lpNumbersSep)
 {
 	if(lpNumbersSep == NULL)	// 使用系统分隔符设置
 	{
-        _GetNumbersSeparator(&m_stNumsSep, m_btDataSource);
-        _GetNumbersSeparator(&m_stNumsFilterSep, DATA_SOURCE_CUR);
+        _GetNumbersSeparator(&m_stNumsSep, g_pIData->GetDataType(m_btDataSource));
+        _GetNumbersSeparator(&m_stNumsFilterSep, g_pIData->GetDataType(DATA_SOURCE_CUR));
 	}
 	else
 	{

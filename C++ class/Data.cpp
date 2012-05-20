@@ -30,6 +30,7 @@ CData::CData()
 	ZeroMemory(&m_btDataOrderType, sizeof(m_btDataOrderType));
 	ZeroMemory(&m_stDataDiv, sizeof(m_stDataDiv));
 	ZeroMemory(&m_stDataTrans, sizeof(m_stDataTrans));
+    ZeroMemory(&m_stLastDataFileItem, sizeof(m_stLastDataFileItem));
 	
 	m_lpCTXData = m_lpLGCData = m_lpFGZData = m_lpRWLData = NULL;
 	m_lpGroupSkipValueData = m_lpSingleSkipValueData = NULL;
@@ -49,25 +50,36 @@ CData::~CData()
 }
 
 ////////////////////////////////////////////////////////////////////////////
-BOOL CData::OpenLotteryFile(LPCSTR lpszFilename)
+BOOL CData::OpenLotteryFile()
 {
     ASSERT(m_pInitDataFactory == NULL);
     
     m_pInitDataFactory = new CDataFactory;
     
-     // 获取数据文件路径
+    NSString *strFileNameNoPath = @"FC3D.dat";
+    
+    // 获取数据文件路径
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    m_strDataFileName = [documentsDirectory stringByAppendingPathComponent:[NSString stringWithUTF8String:lpszFilename]];
+    m_strDataFileName = [documentsDirectory stringByAppendingPathComponent:strFileNameNoPath];
     
     NSData *data = [NSData dataWithContentsOfFile:m_strDataFileName];
-    if (data == nil)  // 文件不存在，则认为没有数据
+    if (data == nil)  // 文件不存在，则认复制程序包中的数据文件
     {
-        m_stFileHead.btVersion = DATAFILE_VERSION_CUR;
-        m_stFileHead.dwDataItemCount = 0;
+        NSString *filePathInBundle = [[NSBundle mainBundle]bundlePath];
+        NSString *fileNameInBundle = [filePathInBundle stringByAppendingPathComponent:strFileNameNoPath];
+        [[NSFileManager defaultManager] copyItemAtPath:fileNameInBundle toPath:m_strDataFileName error:nil];
+        
+        // 重新打开数据文件
+        data = [NSData dataWithContentsOfFile:m_strDataFileName];
+        if (data == nil)  // 文件不存在，则认为没有数据
+        {
+            m_stFileHead.btVersion = DATAFILE_VERSION_CUR;
+            m_stFileHead.dwDataItemCount = 0;
 
-        m_pInitDataFactory->Create(0);
-        return TRUE;
+            m_pInitDataFactory->Create(0);
+            return TRUE;
+        }
     }
     
     LPBYTE lpDataBuf = (LPBYTE)[data bytes];
@@ -107,6 +119,12 @@ void CData::CloseLotteryFile(BOOL bSave)
         [data writeToFile:m_strDataFileName atomically:YES];
     }
     
+    // 设置最后一期数据
+    if (m_stFileHead.dwDataItemCount > 0)
+    {
+        m_pInitDataFactory->GetDataFileItem(m_stFileHead.dwDataItemCount-1, &m_stLastDataFileItem);
+    }
+    
     // 释放初始数据
     m_pInitDataFactory->Destroy();
     delete m_pInitDataFactory;
@@ -136,8 +154,24 @@ BOOL CData::DeleteAllLtyNums()
     return TRUE;
 }
 
-BOOL CData::UpdateLtyNums(LPCSTR lpBuf, int nBufLen)
+BOOL CData::DownloadLtyNums(BOOL &bModified)
 {
+    // 建立指定的URL后下载数据
+    NSString *strURL = [NSString stringWithFormat:@"http://software.pinble.com/cstdata2010/debug/cstdata_sz.asp?ver=2&lastdate=0&lasttime=0&lotteryid=11000130&lastissue=%d&rn=432381-284322-417377-210241&hdsn=3365103343205087&st=5&it=7&pv=7.2.0&tf=0&globalid=iwd-wxd1a41y3870", m_stLastDataFileItem.dwIssue];
+    NSURL *url = [NSURL URLWithString:strURL];
+    
+    NSData *data = [NSData dataWithContentsOfURL:url];
+    if (data == nil)
+    {
+        return FALSE;       // 下载失败，网络不通？
+    }
+    int nBufLen = [data length];
+    if(nBufLen < 2)
+	{
+        return FALSE;       // 下载失败，数据长度不够
+	}
+
+    LPCSTR lpBuf = (LPCSTR)[data bytes];
     const int nItemLen = 18;	// 每个数据单元长度
     
 	if(((nBufLen - 2) % nItemLen) != 0)	// 每个号码信息的长度为nItemLen
@@ -145,6 +179,9 @@ BOOL CData::UpdateLtyNums(LPCSTR lpBuf, int nBufLen)
         return FALSE;
 	}
 	int nCount = (nBufLen - 2) / nItemLen - 1;		// 减去第一个特殊数据
+    
+    // 打开数据文件以便更新
+    OpenLotteryFile();
     
 	// 添加开奖信息
 	int nBufIndex = 2 + 18;		// 跳过结果和第一个特殊数据
@@ -163,9 +200,11 @@ BOOL CData::UpdateLtyNums(LPCSTR lpBuf, int nBufLen)
         {
             return FALSE;
         }
+        bModified = TRUE;
 		nBufIndex += 8;
     }
 
+    CloseLotteryFile(bModified);
     return TRUE;
 }
 
