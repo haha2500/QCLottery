@@ -20,6 +20,7 @@
     self = [super initWithStyle:style];
     if (self) {
         // Custom initialization
+        dataChanged = NO;
     }
     return self;
 }
@@ -59,7 +60,10 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    g_pIData->CloseLotteryFile(); 
+    if (dataChanged)
+    {
+        g_pIData->CloseLotteryFile(); 
+    }
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
@@ -100,24 +104,10 @@
     else
     {
         cell.detailTextLabel.text = [NSString stringWithFormat:@"开奖日期：%s", g_pIData->GetItemDateString(nIndex, DATA_SOURCE_INIT)];
-
     }
- 
+    cell.selectionStyle = UITableViewCellSelectionStyleNone;
     return cell;
 
-}
-
-#pragma mark - Table view delegate
-
-- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    // Navigation logic may go here. Create and push another view controller.
-    /*
-     <#DetailViewController#> *detailViewController = [[<#DetailViewController#> alloc] initWithNibName:@"<#Nib name#>" bundle:nil];
-     // ...
-     // Pass the selected object to the new view controller.
-     [self.navigationController pushViewController:detailViewController animated:YES];
-     */
 }
 
 #pragma mark - 
@@ -132,7 +122,18 @@
 
 - (void)clickDelete
 {
+    if (g_pIData->GetItemCount(DATA_SOURCE_INIT) < 2)
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息" message:@"不能删除最后一期号码。" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
     
+    if( g_pIData->DeleteLastLtyNums())
+    {
+        dataChanged = YES;
+        [[self tableView] reloadData];
+    }
 }
 
 - (void)clickAdd:(id)sender;
@@ -169,9 +170,10 @@
 #pragma mark - QCInputDataEditViewControllerDelegate Method
 - (void)inputDataEditVCClose:(BOOL)dataModified
 {
-    if (dataModified)   // 需要更新数据
+    if (dataModified)   // 需要更新数据显示
     {
-        
+        dataChanged = YES;
+        [[self tableView] reloadData];
     }
     
     [popoverController dismissPopoverAnimated:YES];
