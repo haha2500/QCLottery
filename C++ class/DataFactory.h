@@ -93,7 +93,7 @@ public:
 	LPCSTR GetItemTimeString(DWORD dwDataIndex);
 	int GetItemDayOfWeek(DWORD dwDataIndex);
 	LPCSTR GetItemDayOfWeekString(DWORD dwDataIndex);
-//	void GetItemDateTime(DWORD dwDataIndex, CTime &tmDateTime);
+	void GetItemDateTime(DWORD dwDataIndex, CTime &tmDateTime);
 	LPCSTR GetItemDateTimeString(DWORD dwDataIndex);
     
 	// 获取对应的初始数据单元的索引，用于当前数据

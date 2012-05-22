@@ -391,8 +391,7 @@ LPCSTR CData::GetItemDayOfWeekString(DWORD dwDataIndex, BYTE btDataSource)
 	return m_pInitDataFactory->GetItemDayOfWeekString(dwDataIndex);
 }
 
-// TEST
-/*void CData::GetItemDateTime(DWORD dwDataIndex, CTime &tmDateTime, BYTE btDataSource)
+void CData::GetItemDateTime(DWORD dwDataIndex, CTime &tmDateTime, BYTE btDataSource)
 {
 	if(btDataSource == DATA_SOURCE_CUR)	// 当前数据源
 	{
@@ -401,7 +400,7 @@ LPCSTR CData::GetItemDayOfWeekString(DWORD dwDataIndex, BYTE btDataSource)
 	}
 	
 	m_pInitDataFactory->GetItemDateTime(dwDataIndex, tmDateTime);
-}*/
+}
 
 LPCSTR CData::GetItemDateTimeString(DWORD dwDataIndex, BYTE btDataSource)
 {
@@ -884,23 +883,23 @@ LPCSTR CData::GetCurrentDataName(BYTE btFlag)
 
 #define		BEGIN_ADDDATADIFFVALUE()  int nIndex = 0;
 #define		ADDDATADIFFVALUE_BYTE(dwDataDiffMaskIn, btValueIn) \
-if(dwDataDiffMask & (dwDataDiffMaskIn)) { \
-lpValueOut->btData[nIndex] = (btValueIn); \
-nIndex += sizeof(BYTE); \
-ASSERT(nIndex < sizeof(lpValueOut->btData)); \
-}
+                if(dwDataDiffMask & (dwDataDiffMaskIn)) { \
+                    lpValueOut->btData[nIndex] = (btValueIn); \
+                    nIndex += sizeof(BYTE); \
+                    ASSERT(nIndex < sizeof(lpValueOut->btData)); \
+                }
 #define		ADDDATADIFFVALUE_DWORD(dwDataDiffMaskIn, dwValueIn) \
-if(dwDataDiffMask & (dwDataDiffMaskIn)) { \
-memcpy(&lpValueOut->btData[nIndex], &(dwValueIn), sizeof(DWORD)); \
-nIndex += sizeof(DWORD); \
-ASSERT(nIndex < sizeof(lpValueOut->btData)); \
-}
+                if(dwDataDiffMask & (dwDataDiffMaskIn)) { \
+                    memcpy(&lpValueOut->btData[nIndex], &(dwValueIn), sizeof(DWORD)); \
+                    nIndex += sizeof(DWORD); \
+                    ASSERT(nIndex < sizeof(lpValueOut->btData)); \
+                }
 #define		ADDDATADIFFVALUE_WORD(dwDataDiffMaskIn, wValueIn) \
-if(wValueIn != 0 && (dwDataDiffMask & (dwDataDiffMaskIn))) { \
-memcpy(&lpValueOut->btData[nIndex], &(wValueIn), sizeof(WORD)); \
-nIndex += sizeof(WORD); \
-ASSERT(nIndex <= sizeof(lpValueOut->btData)); \
-}
+                if(wValueIn != 0 && (dwDataDiffMask & (dwDataDiffMaskIn))) { \
+                    memcpy(&lpValueOut->btData[nIndex], &(wValueIn), sizeof(WORD)); \
+                    nIndex += sizeof(WORD); \
+                    ASSERT(nIndex <= sizeof(lpValueOut->btData)); \
+                }
 #define		END_ADDDATADIFFVALUE()
 
 void CData::GetCurrentDataDiffValue(LPDATADIFFVALUE lpValueOut, DWORD dwDataDiffMask)
@@ -1318,8 +1317,7 @@ BYTE CData::GetNumberValue(LPCSTR lpszNumText, BYTE btDataSource)
 DWORD CData::GetNextIssue(BYTE btDataSource)
 {
 	DWORD dwNextIssue = 0;
-    // TEST
-    /*
+    
 	CTime tmCurDateTime;
 	GetItemDateTime(DATA_INDEX_LAST, tmCurDateTime, btDataSource);
     
@@ -1334,12 +1332,10 @@ DWORD CData::GetNextIssue(BYTE btDataSource)
 	m_dwSpecifiedIssue = GetItemIssue(DATA_INDEX_LAST, btDataSource);
 	dwNextIssue = GetNextSpecifiedIssue(tmCurDateTime);
 	m_dwSpecifiedIssue = 0;
-    */
+    
 	return dwNextIssue;
 }
 
-// TEST
-/*
 DWORD CData::GetFirstSpecifiedIssue(CTime &tmDateTime, DWORD dwIssue)
 {
 	int nCount = GetItemCount(DATA_SOURCE_INIT);
@@ -1363,7 +1359,8 @@ DWORD CData::GetFirstSpecifiedIssue(CTime &tmDateTime, DWORD dwIssue)
 		}
 		if(dwDateTime <= dwLastDateTime)	// 历史时间，则查询是否存在
 		{
-			for(int i=nCount-1; i>=0; i--)
+            int i = 0;
+			for(i=nCount-1; i>=0; i--)
 			{
 				GetItemDateTime(i, tmLastDateTime, DATA_SOURCE_INIT);
 				dwLastDateTime = tmLastDateTime.GetYear() * 10000 + tmLastDateTime.GetMonth() * 100 + tmLastDateTime.GetDay();
@@ -1424,7 +1421,8 @@ DWORD CData::GetFirstSpecifiedIssue(CTime &tmDateTime, DWORD dwIssue)
 		DWORD dwLastIssue = GetItemIssue(nCount - 1, DATA_SOURCE_INIT);
 		if(dwIssue <= dwLastIssue)	// 历史期号，则查询是否存在
 		{
-			for(int i=nCount-1; i>=0; i--)
+            int i = 0;
+			for(i=nCount-1; i>=0; i--)
 			{
 				if(GetItemIssue(i, DATA_SOURCE_INIT) == dwIssue)
 				{
@@ -1471,7 +1469,7 @@ DWORD CData::GetNextSpecifiedIssue(CTime &tmDateTime)
 		BYTE btFlags[] = {CSTLPOF_DAY0, CSTLPOF_DAY1, CSTLPOF_DAY2, CSTLPOF_DAY3, CSTLPOF_DAY4, CSTLPOF_DAY5, CSTLPOF_DAY6};
 		for(int i=1; i<=7; i++)
 		{
-			tmDateTime += CTimeSpan(1, 0, 0, 0);
+			tmDateTime.TimeSpan(1);
 			if(m_stLotteryProperty.btOpenFlag & btFlags[tmDateTime.GetDayOfWeek() - 1])
 				break;		// 该日开奖
 		}
@@ -1529,7 +1527,7 @@ DWORD CData::GetNextSpecifiedIssue(CTime &tmDateTime)
     
 	return m_dwSpecifiedIssue;		// 返回下一期期号
 }
-*/
+
 
 LPCSTR CData::GetIssueString(DWORD dwIssue)
 {
@@ -1539,8 +1537,6 @@ LPCSTR CData::GetIssueString(DWORD dwIssue)
 	return m_szIssueString;
 }
 
-// TEST
-/*
 LPCSTR CData::GetDateTimeString(CTime &tmDateTime, BYTE btFlag)
 {
 	switch(btFlag)
@@ -1566,7 +1562,6 @@ LPCSTR CData::GetDateTimeString(CTime &tmDateTime, BYTE btFlag)
 	CHECK_STRING_STACK(m_szDateTimeString);
 	return m_szDateTimeString;
 }
-*/
 
 DWORD CData::GetPrevDataIndex(DWORD dwDataIndex, BYTE btDataSource)
 {

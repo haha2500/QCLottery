@@ -528,13 +528,11 @@ int CDataFactory::GetItemDayOfWeek(DWORD dwDataIndex)
 		return 0;
 	}
 	
-    // TEST
-/*	DWORD dwDateTime = lpDataItem->dwDataTime;
+	DWORD dwDateTime = lpDataItem->dwDataTime;
 	
 	CTime tmDateTime = CTime(2000 + dwDateTime / 100000000, (dwDateTime / 1000000) % 100, (dwDateTime / 10000) % 100, 0, 0, 0);
     
-	return tmDateTime.GetDayOfWeek() - 1;*/
-    return 0;
+	return tmDateTime.GetDayOfWeek() - 1;
 }
 
 LPCSTR CDataFactory::GetItemDayOfWeekString(DWORD dwDataIndex)
@@ -544,8 +542,6 @@ LPCSTR CDataFactory::GetItemDayOfWeekString(DWORD dwDataIndex)
 	return DAYOFWEEKSTRING[GetItemDayOfWeek(dwDataIndex)];
 }
 
-// TEST
-/*
 void CDataFactory::GetItemDateTime(DWORD dwDataIndex, CTime &tmDateTime)
 {
 	ASSERT(!m_bIsCurData);	// 必须是初始数据
@@ -561,7 +557,7 @@ void CDataFactory::GetItemDateTime(DWORD dwDataIndex, CTime &tmDateTime)
 	tmDateTime = CTime(2000 + dwDateTime / 100000000, (dwDateTime / 1000000) % 100, (dwDateTime / 10000) % 100, 
                        (dwDateTime / 100) % 100, dwDateTime % 100, 0);
 }
-*/
+
 LPCSTR CDataFactory::GetItemDateTimeString(DWORD dwDataIndex)
 {
 	ASSERT(!m_bIsCurData);	// 必须是初始数据

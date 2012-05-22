@@ -78,7 +78,7 @@ public:
 	virtual LPCSTR GetItemDayOfWeekString(DWORD dwDataIndex, BYTE btDataSource = DATA_SOURCE_CUR);
 	
 	// 获取指定索引的开奖日期和时间
-//	virtual void GetItemDateTime(DWORD dwDataIndex, CTime &tmDateTime, BYTE btDataSource = DATA_SOURCE_CUR);
+	virtual void GetItemDateTime(DWORD dwDataIndex, CTime &tmDateTime, BYTE btDataSource = DATA_SOURCE_CUR);
 	// 获取指定索引的开奖日期和时间文本串（如高频彩为：2011-04-07 11:25，其他为：2011-04-07 11:25）
 	virtual LPCSTR GetItemDateTimeString(DWORD dwDataIndex, BYTE btDataSource = DATA_SOURCE_CUR);
 	
@@ -193,16 +193,16 @@ public:
 	
 	// 获取第一个指定的期号，dwIssue为指定的期号，如果为0使用tmDateTime指定的期号。
 	// tmDateTime保存返回的开奖时间，返回0则表示输入的tmDateTime或dwIssue错误，否则为返回的期号
-//	virtual DWORD GetFirstSpecifiedIssue(CTime &tmDateTime, DWORD dwIssue = 0);
+	virtual DWORD GetFirstSpecifiedIssue(CTime &tmDateTime, DWORD dwIssue = 0);
 	
 	// 获取下一个指定的期号，tmDateTime保存对应的开奖时间，之前必须调用GetFirstSpecifiedIssue。
-//	virtual DWORD GetNextSpecifiedIssue(CTime &tmDateTime);
+	virtual DWORD GetNextSpecifiedIssue(CTime &tmDateTime);
 	
 	// 获取指定期号的文本串（注意：返回值临时有效，每次调用时覆盖），期号必须为实际期号，否则返回空串
 	virtual LPCSTR GetIssueString(DWORD dwIssue);
 	
 	// 获取指定日期时间的文本串（注意：返回值临时有效，每次调用时覆盖），如果获取中包含时间并且不是高频彩，则自动不包含时间
-//	virtual LPCSTR GetDateTimeString(CTime &tmDateTime, BYTE btFlag = DTSF_DATETIME);
+	virtual LPCSTR GetDateTimeString(CTime &tmDateTime, BYTE btFlag = DTSF_DATETIME);
     
 	// 获取dwDataIndex指定索引的前一个数据的索引，如果返回DATA_INDEX_INVALID则无效，btDataSource：数据源，见宏定义
 	virtual DWORD GetPrevDataIndex(DWORD dwDataIndex, BYTE btDataSource = DATA_SOURCE_CUR);
@@ -282,7 +282,7 @@ private:
 	void _TreatPosItem(LPLOTTERYPOSITEM lpPosItem, BYTE &btDataType, BYTE &btMinNumber, BYTE &btMaxNumber);
 	void _TreatPosItemFlag(BYTE btFlag, BYTE &btDataType, BYTE &btMinNumber, BYTE &btMaxNumber);
     
-//	BOOL _GetGPLotteryNextTime(const CTime &tmDateTime, CTime &tmNextDateTime);	// 获取高频彩票的下一个时间，如果当天第一期，则返回TRUE
+	BOOL _GetGPLotteryNextTime(CTime &tmDateTime, CTime &tmNextDateTime);	// 获取高频彩票的下一个时间，如果当天第一期，则返回TRUE
     
 private:
     NSString            *m_strDataFileName;         // 数据文件名

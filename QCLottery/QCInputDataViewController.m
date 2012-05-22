@@ -89,9 +89,9 @@
         [editBtn setFrame:CGRectMake(0, 0, 60, 30)];
         [editBtn setTitle:@"修改" forState:UIControlStateNormal];
         [editBtn addTarget:self action:@selector(clickModify:) forControlEvents:UIControlEventTouchUpInside];
-        [editBtn setTag:[indexPath row]];
         cell.accessoryView = editBtn;
     }
+    [cell.accessoryView setTag:[indexPath row]];
     
     // 设置标题
     int nIndex = [indexPath row];
@@ -116,6 +116,7 @@
     if (popoverController != nil)
     {
         [popoverController dismissPopoverAnimated:NO];
+        popoverController = nil;
     }
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -138,6 +139,15 @@
 
 - (void)clickAdd:(id)sender;
 {
+    CTime tmLastDateTime, tmNow([NSDate date]);
+    g_pIData->GetItemDateTime(DATA_INDEX_LAST, tmLastDateTime, DATA_SOURCE_INIT);
+    if (tmLastDateTime.GetYearMonthDay() >= tmNow.GetYearMonthDay())
+    {
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息" message:@"当前数据已经是最新数据了。" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:nil];
+        [alert show];
+        return;
+    }
+    
     [self setupPopoverDataEditVC:-1];
     UIBarButtonItem *bbi = [[[self navigationItem] rightBarButtonItems]objectAtIndex:1];
     [popoverController presentPopoverFromBarButtonItem:bbi permittedArrowDirections:UIPopoverArrowDirectionUp animated:YES];
@@ -157,19 +167,16 @@
     dataEditVC.delegate = self;
     dataEditVC.dataItemIndex = dataItemIndex;
 
-   CGSize popoverContentSize = dataEditVC.view.frame.size;
+    CGSize popoverContentSize = dataEditVC.view.frame.size;
     popoverContentSize.height += 30;
-    if (popoverController == nil)
-    {
-        popoverController = [[UIPopoverController alloc]initWithContentViewController:navController];
-        
-        [popoverController setPopoverContentSize:popoverContentSize];
-    }
+    popoverController = [[UIPopoverController alloc]initWithContentViewController:navController];  
+    [popoverController setPopoverContentSize:popoverContentSize];
 }
 
 #pragma mark - QCInputDataEditViewControllerDelegate Method
 - (void)inputDataEditVCClose:(BOOL)dataModified
 {
+    [[self tableView] becomeFirstResponder];
     if (dataModified)   // 需要更新数据显示
     {
         dataChanged = YES;
@@ -177,5 +184,6 @@
     }
     
     [popoverController dismissPopoverAnimated:YES];
+    popoverController = nil;
 }
 @end

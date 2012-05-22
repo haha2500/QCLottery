@@ -110,6 +110,7 @@
     if (popoverController != nil)
     {
         [popoverController dismissPopoverAnimated:NO];
+        popoverController = nil;
     }
     popoverController = [[UIPopoverController alloc] initWithContentViewController:viewController];
     [popoverController setDelegate:self];
@@ -127,7 +128,11 @@
 #pragma mark -- QCDataManViewControllerDelegate相关函数
 - (void)dataManVCExecuteCmd:(DATAMAN_CMDID)cmdID
 { 
-    [popoverController dismissPopoverAnimated:NO];
+    if (popoverController != nil)
+    {
+        [popoverController dismissPopoverAnimated:NO];
+        popoverController = nil;
+    }
 
     switch (cmdID)
     {
@@ -142,7 +147,11 @@
 
 - (void)dataManSubVCDidExecuteCmd:(DATAMAN_CMDID)cmdID withDataChanged:(BOOL)dataChanged
 {
-    [popoverController dismissPopoverAnimated:NO];
+    if (popoverController != nil)
+    {
+        [popoverController dismissPopoverAnimated:NO];
+        popoverController = nil;
+    }
     
     if (dataChanged)  // 数据改变，则重新装载当前数据
     {

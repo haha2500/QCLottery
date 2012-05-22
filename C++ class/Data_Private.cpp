@@ -1537,8 +1537,7 @@ void CData::_TreatPosItemFlag(BYTE btFlag, BYTE &btDataType, BYTE &btMinNumber, 
 	}
 }
 
-/*
-BOOL CData::_GetGPLotteryNextTime(const CTime &tmDateTime, CTime &tmNextDateTime)
+BOOL CData::_GetGPLotteryNextTime(CTime &tmDateTime, CTime &tmNextDateTime)
 {
 	int nCurTime = tmDateTime.GetHour() * 100 + tmDateTime.GetMinute();
     
@@ -1563,9 +1562,9 @@ BOOL CData::_GetGPLotteryNextTime(const CTime &tmDateTime, CTime &tmNextDateTime
     
 	if(nNextTime < nCurTime)	// 跨天
 	{
-		tmNextDateTime += CTimeSpan(1, 0, 0, 0);
+		tmNextDateTime.TimeSpan(1);
 	}
     
 	// 返回是否是当天第一期
 	return (nIndex == m_stLotteryProperty.btOpenTimesPerDay - 1) ? TRUE : FALSE;
-}*/
+}
