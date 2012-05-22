@@ -188,7 +188,7 @@
     // 下载数据
        
     BOOL bModified = FALSE;
-    if(g_pIData->DownloadLtyNums(bModified))
+    if(!g_pIData->DownloadLtyNums(bModified))
     {
         // 下载失败
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"提示信息" message:@"下载开奖号码失败，请稍后再试。" delegate:self cancelButtonTitle:@"关闭" otherButtonTitles:nil];

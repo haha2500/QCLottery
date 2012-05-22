@@ -16,7 +16,7 @@ typedef char *LPSTR;
 typedef const char *LPCSTR;
 typedef void *LPVOID;
 typedef int *LPINT;
-typedef signed char BOOL;
+typedef signed char BOOL, *LPBOOL;
 
 typedef void *HANDLE;
 

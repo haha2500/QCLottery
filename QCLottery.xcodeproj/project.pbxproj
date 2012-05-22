@@ -42,6 +42,17 @@
 		EEA6118C1562639500482FFE /* TrendGrid.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA6117A1562639500482FFE /* TrendGrid.cpp */; };
 		EEA7B20F15678B5600F92E3B /* QCDataPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEA7B20D15678B5600F92E3B /* QCDataPickerViewController.m */; };
 		EEA7B21015678B5600F92E3B /* QCDataPickerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EEA7B20E15678B5600F92E3B /* QCDataPickerViewController.xib */; };
+		EEA90FB1156B6AE10044E8F9 /* Indicator.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA90FB0156B6AE10044E8F9 /* Indicator.cpp */; };
+		EEA90FB4156B6B000044E8F9 /* IndicatorParam.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA90FB3156B6B000044E8F9 /* IndicatorParam.cpp */; };
+		EEA90FB6156B6BA50044E8F9 /* Indicator_GetExplain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA90FB5156B6BA50044E8F9 /* Indicator_GetExplain.cpp */; };
+		EEA90FB8156B6BAE0044E8F9 /* Indicator_GetName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA90FB7156B6BAD0044E8F9 /* Indicator_GetName.cpp */; };
+		EEA90FBA156B6BC40044E8F9 /* Indicator_GetValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA90FB9156B6BC40044E8F9 /* Indicator_GetValue.cpp */; };
+		EEA90FBC156B6BD30044E8F9 /* Indicator_GetValueRange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA90FBB156B6BD20044E8F9 /* Indicator_GetValueRange.cpp */; };
+		EEA90FBE156B6BE90044E8F9 /* IndicatorParam_GetName.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA90FBD156B6BE80044E8F9 /* IndicatorParam_GetName.cpp */; };
+		EEA90FC0156B6BF80044E8F9 /* IndicatorParam_GetValue.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA90FBF156B6BF80044E8F9 /* IndicatorParam_GetValue.cpp */; };
+		EEA90FC2156B6C0A0044E8F9 /* IndicatorParam_GetValueRange.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA90FC1156B6C0A0044E8F9 /* IndicatorParam_GetValueRange.cpp */; };
+		EEA90FC5156B6C750044E8F9 /* ConditionInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA90FC4156B6C740044E8F9 /* ConditionInfo.cpp */; };
+		EEA90FD4156B8B7A0044E8F9 /* CstPubFunc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA90FD2156B8B7A0044E8F9 /* CstPubFunc.cpp */; };
 		EEAB580D155B3B1E00108022 /* QCRandomMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB580C155B3B1E00108022 /* QCRandomMainViewController.m */; };
 		EEAB5811155B3B6000108022 /* QCHistoryMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB5810155B3B6000108022 /* QCHistoryMainViewController.m */; };
 		EEAB5815155C890C00108022 /* QCGraphViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EEAB5813155C890C00108022 /* QCGraphViewController.m */; };
@@ -120,6 +131,27 @@
 		EEA7B20C15678B5600F92E3B /* QCDataPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCDataPickerViewController.h; sourceTree = "<group>"; };
 		EEA7B20D15678B5600F92E3B /* QCDataPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCDataPickerViewController.m; sourceTree = "<group>"; };
 		EEA7B20E15678B5600F92E3B /* QCDataPickerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCDataPickerViewController.xib; sourceTree = "<group>"; };
+		EEA90FAC156B69000044E8F9 /* Def_ConditionID.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Def_ConditionID.h; sourceTree = "<group>"; };
+		EEA90FAD156B69500044E8F9 /* ICondition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICondition.h; sourceTree = "<group>"; };
+		EEA90FAE156B6AA00044E8F9 /* Def_ConditionCustom.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Def_ConditionCustom.h; sourceTree = "<group>"; };
+		EEA90FAF156B6AD60044E8F9 /* Indicator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Indicator.h; sourceTree = "<group>"; };
+		EEA90FB0156B6AE10044E8F9 /* Indicator.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Indicator.cpp; sourceTree = "<group>"; };
+		EEA90FB2156B6AF50044E8F9 /* IndicatorParam.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IndicatorParam.h; sourceTree = "<group>"; };
+		EEA90FB3156B6B000044E8F9 /* IndicatorParam.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IndicatorParam.cpp; sourceTree = "<group>"; };
+		EEA90FB5156B6BA50044E8F9 /* Indicator_GetExplain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Indicator_GetExplain.cpp; sourceTree = "<group>"; };
+		EEA90FB7156B6BAD0044E8F9 /* Indicator_GetName.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Indicator_GetName.cpp; sourceTree = "<group>"; };
+		EEA90FB9156B6BC40044E8F9 /* Indicator_GetValue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Indicator_GetValue.cpp; sourceTree = "<group>"; };
+		EEA90FBB156B6BD20044E8F9 /* Indicator_GetValueRange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Indicator_GetValueRange.cpp; sourceTree = "<group>"; };
+		EEA90FBD156B6BE80044E8F9 /* IndicatorParam_GetName.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IndicatorParam_GetName.cpp; sourceTree = "<group>"; };
+		EEA90FBF156B6BF80044E8F9 /* IndicatorParam_GetValue.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IndicatorParam_GetValue.cpp; sourceTree = "<group>"; };
+		EEA90FC1156B6C0A0044E8F9 /* IndicatorParam_GetValueRange.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IndicatorParam_GetValueRange.cpp; sourceTree = "<group>"; };
+		EEA90FC3156B6C6E0044E8F9 /* ConditionInfo.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConditionInfo.h; sourceTree = "<group>"; };
+		EEA90FC4156B6C740044E8F9 /* ConditionInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConditionInfo.cpp; sourceTree = "<group>"; };
+		EEA90FC6156B6D8B0044E8F9 /* Def_CfgItem_Condition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Def_CfgItem_Condition.h; sourceTree = "<group>"; };
+		EEA90FC7156B87810044E8F9 /* ICstPubFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ICstPubFunc.h; sourceTree = "<group>"; };
+		EEA90FD2156B8B7A0044E8F9 /* CstPubFunc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CstPubFunc.cpp; sourceTree = "<group>"; };
+		EEA90FD3156B8B7A0044E8F9 /* CstPubFunc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CstPubFunc.h; sourceTree = "<group>"; };
+		EEA90FD5156B9EB40044E8F9 /* ConstData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConstData.h; sourceTree = "<group>"; };
 		EEAB580B155B3B1E00108022 /* QCRandomMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCRandomMainViewController.h; sourceTree = "<group>"; };
 		EEAB580C155B3B1E00108022 /* QCRandomMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCRandomMainViewController.m; sourceTree = "<group>"; };
 		EEAB580F155B3B6000108022 /* QCHistoryMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCHistoryMainViewController.h; sourceTree = "<group>"; };
@@ -231,41 +263,62 @@
 			children = (
 				EEA611581562639500482FFE /* BallBitmap.cpp */,
 				EEA611591562639500482FFE /* BallBitmap.h */,
-				EEA6115A1562639500482FFE /* Data.cpp */,
-				EEA6115B1562639500482FFE /* Data.h */,
 				EEA6116E1562639500482FFE /* IData.h */,
+				EEA6115B1562639500482FFE /* Data.h */,
+				EEA6115A1562639500482FFE /* Data.cpp */,
 				EEA6115C1562639500482FFE /* Data_Private.cpp */,
 				EEA6115E1562639500482FFE /* DataFactory.h */,
 				EEA6115D1562639500482FFE /* DataFactory.cpp */,
 				EEA6115F1562639500482FFE /* Def_CfgItem_Data.h */,
+				EEA90FC6156B6D8B0044E8F9 /* Def_CfgItem_Condition.h */,
 				EEA611601562639500482FFE /* Def_ConditionValue.h */,
+				EEA90FAC156B69000044E8F9 /* Def_ConditionID.h */,
+				EEA90FAD156B69500044E8F9 /* ICondition.h */,
+				EEA90FAE156B6AA00044E8F9 /* Def_ConditionCustom.h */,
 				EEA611611562639500482FFE /* Def_GraphGrid_ID.h */,
-				EEA611621562639500482FFE /* DistributeGrid.cpp */,
 				EEA611631562639500482FFE /* DistributeGrid.h */,
-				EEA611641562639500482FFE /* GraphGrid.cpp */,
+				EEA611621562639500482FFE /* DistributeGrid.cpp */,
 				EEA611651562639500482FFE /* GraphGrid.h */,
-				EEA611661562639500482FFE /* GraphGridBody.cpp */,
+				EEA611641562639500482FFE /* GraphGrid.cpp */,
 				EEA611671562639500482FFE /* GraphGridBody.h */,
-				EEA611681562639500482FFE /* GraphGridHead.cpp */,
+				EEA611661562639500482FFE /* GraphGridBody.cpp */,
 				EEA611691562639500482FFE /* GraphGridHead.h */,
-				EEA6116A1562639500482FFE /* GraphGridPublic.cpp */,
+				EEA611681562639500482FFE /* GraphGridHead.cpp */,
 				EEA6116B1562639500482FFE /* GraphGridPublic.h */,
-				EEA6116C1562639500482FFE /* HistoryValueStat.cpp */,
+				EEA6116A1562639500482FFE /* GraphGridPublic.cpp */,
 				EEA6116D1562639500482FFE /* HistoryValueStat.h */,
-				EEA6116F1562639500482FFE /* INumbers.h */,
+				EEA6116C1562639500482FFE /* HistoryValueStat.cpp */,
 				EEA611711562639500482FFE /* MFCClass.h */,
 				EEA611701562639500482FFE /* MFCClass.cpp */,
-				EEA611721562639500482FFE /* Numbers.cpp */,
+				EEA6116F1562639500482FFE /* INumbers.h */,
 				EEA611731562639500482FFE /* Numbers.h */,
-				EEA611741562639500482FFE /* NumbersUndo.cpp */,
+				EEA611721562639500482FFE /* Numbers.cpp */,
 				EEA611751562639500482FFE /* NumbersUndo.h */,
-				EEA611761562639500482FFE /* NumsTable.cpp */,
+				EEA611741562639500482FFE /* NumbersUndo.cpp */,
 				EEA611771562639500482FFE /* NumsTable.h */,
-				EEA611781562639500482FFE /* QuickAddString.cpp */,
+				EEA611761562639500482FFE /* NumsTable.cpp */,
 				EEA611791562639500482FFE /* QuickAddString.h */,
-				EEA6117A1562639500482FFE /* TrendGrid.cpp */,
+				EEA611781562639500482FFE /* QuickAddString.cpp */,
 				EEA6117B1562639500482FFE /* TrendGrid.h */,
+				EEA6117A1562639500482FFE /* TrendGrid.cpp */,
 				EEA6117C1562639500482FFE /* WinDef.h */,
+				EEA90FC7156B87810044E8F9 /* ICstPubFunc.h */,
+				EEA90FD3156B8B7A0044E8F9 /* CstPubFunc.h */,
+				EEA90FD2156B8B7A0044E8F9 /* CstPubFunc.cpp */,
+				EEA90FC3156B6C6E0044E8F9 /* ConditionInfo.h */,
+				EEA90FC4156B6C740044E8F9 /* ConditionInfo.cpp */,
+				EEA90FD5156B9EB40044E8F9 /* ConstData.h */,
+				EEA90FAF156B6AD60044E8F9 /* Indicator.h */,
+				EEA90FB0156B6AE10044E8F9 /* Indicator.cpp */,
+				EEA90FB5156B6BA50044E8F9 /* Indicator_GetExplain.cpp */,
+				EEA90FB7156B6BAD0044E8F9 /* Indicator_GetName.cpp */,
+				EEA90FB9156B6BC40044E8F9 /* Indicator_GetValue.cpp */,
+				EEA90FBB156B6BD20044E8F9 /* Indicator_GetValueRange.cpp */,
+				EEA90FB2156B6AF50044E8F9 /* IndicatorParam.h */,
+				EEA90FB3156B6B000044E8F9 /* IndicatorParam.cpp */,
+				EEA90FBD156B6BE80044E8F9 /* IndicatorParam_GetName.cpp */,
+				EEA90FBF156B6BF80044E8F9 /* IndicatorParam_GetValue.cpp */,
+				EEA90FC1156B6C0A0044E8F9 /* IndicatorParam_GetValueRange.cpp */,
 			);
 			path = "C++ class";
 			sourceTree = "<group>";
@@ -369,6 +422,17 @@
 				EE5B63701563C136006434E6 /* QCInputDataEditViewController.m in Sources */,
 				EE27CC3E1564755A00E9F12F /* QCSetDataRangeViewController.m in Sources */,
 				EEA7B20F15678B5600F92E3B /* QCDataPickerViewController.m in Sources */,
+				EEA90FB1156B6AE10044E8F9 /* Indicator.cpp in Sources */,
+				EEA90FB4156B6B000044E8F9 /* IndicatorParam.cpp in Sources */,
+				EEA90FB6156B6BA50044E8F9 /* Indicator_GetExplain.cpp in Sources */,
+				EEA90FB8156B6BAE0044E8F9 /* Indicator_GetName.cpp in Sources */,
+				EEA90FBA156B6BC40044E8F9 /* Indicator_GetValue.cpp in Sources */,
+				EEA90FBC156B6BD30044E8F9 /* Indicator_GetValueRange.cpp in Sources */,
+				EEA90FBE156B6BE90044E8F9 /* IndicatorParam_GetName.cpp in Sources */,
+				EEA90FC0156B6BF80044E8F9 /* IndicatorParam_GetValue.cpp in Sources */,
+				EEA90FC2156B6C0A0044E8F9 /* IndicatorParam_GetValueRange.cpp in Sources */,
+				EEA90FC5156B6C750044E8F9 /* ConditionInfo.cpp in Sources */,
+				EEA90FD4156B8B7A0044E8F9 /* CstPubFunc.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

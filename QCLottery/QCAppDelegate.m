@@ -9,9 +9,11 @@
 #import "QCAppDelegate.h"
 #import "QCMainTabBarController.h"
 #import "Data.h"
+#import "CstPubFunc.h"
 
 // 全局变量
 IData *g_pIData = NULL;
+ICstPubFunc *g_pICstPubFunc = NULL;
 
 @implementation QCAppDelegate
 
@@ -68,6 +70,9 @@ IData *g_pIData = NULL;
     NSString *fileName = [filePath stringByAppendingPathComponent:@"Config.plist"];
     NSDictionary *dictionary = [NSDictionary dictionaryWithContentsOfFile:fileName];
     [[NSUserDefaults standardUserDefaults] registerDefaults:dictionary];
+    
+    // 创建全局公共对象指针
+    g_pICstPubFunc = (ICstPubFunc *)new CCstPubFunc;
     
     // 创建数据对象指针，并载入数据
     g_pIData = (IData *)new CData;
