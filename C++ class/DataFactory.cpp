@@ -13,6 +13,7 @@
 #include "DataFactory.h"
 #include "IData.h"
 #include "Numbers.h"
+#include "ICstPubFunc.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -301,8 +302,7 @@ void CDataFactory::ModifyItemData(DWORD dwDataIndex, int nTestNumsFlag)
 
 void CDataFactory::OrderItemData(DWORD dwDataIndex, BYTE btOrderType, BOOL bHasTestNums)
 {
-    // TEST
-/*	LPBYTE lpItemData = _GetAt(dwDataIndex)->btData;
+	LPBYTE lpItemData = _GetAt(dwDataIndex)->btData;
     
 	if(bHasTestNums && (lpItemData[5] != MAXBYTE))
 	{
@@ -322,7 +322,7 @@ void CDataFactory::OrderItemData(DWORD dwDataIndex, BYTE btOrderType, BOOL bHasT
 	g_pICstPubFunc->QuickSort(lpItemData, m_pNumbers->GetNumberCount());
 	
 	// 分析组三排列方式
-	_OrderNumsByZ3Type(lpItemData, btOrderType, 0);*/
+	_OrderNumsByZ3Type(lpItemData, btOrderType, 0);
 }
 
 BOOL CDataFactory::DeleteLast()
@@ -1004,8 +1004,7 @@ CDataFactory::LPDATAITEM CDataFactory::_AddNew()
 
 void CDataFactory::_FormatDataByFlag(BYTE btFlag, LPBYTE lpNums, BYTE btNumCount)
 {
-    // TEST
-/*	BYTE i = 0;
+	BYTE i = 0;
     
 	switch(btFlag)
 	{
@@ -1030,7 +1029,6 @@ void CDataFactory::_FormatDataByFlag(BYTE btFlag, LPBYTE lpNums, BYTE btNumCount
             }
             g_pICstPubFunc->QuickSort(lpNums, btNumCount, QSVT_BYTE);
 	}
- */
 }
 
 void CDataFactory::_OrderNumsByZ3Type(LPBYTE lpNumsData, BYTE btOrderType, int nBeginIndex)

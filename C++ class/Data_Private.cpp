@@ -8,6 +8,7 @@
 
 #include "Data.h"
 #include "Def_ConditionValue.h"
+#include "ICstPubFunc.h"
 
 #define		BEGIN_SET_LOTTERYPRIZEINFO() \
             { \
@@ -1172,7 +1173,7 @@ int CData::_GetSPJData(DWORD dwFlag, DWORD dwIssueIndex, LPBYTE lpFilterNums)
 				else
 					btTemp[i] = 2;
 			}
-// TEST			g_pICstPubFunc->QuickSort(btTemp, m_btNumberCount);
+			g_pICstPubFunc->QuickSort(btTemp, m_btNumberCount);
 			for(i=m_btNumberCount-1; i>=0; i--)
 			{
 				nRtn += btTemp[i] * nRatio;

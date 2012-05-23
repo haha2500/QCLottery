@@ -10,10 +10,12 @@
 #import "QCMainTabBarController.h"
 #import "Data.h"
 #import "CstPubFunc.h"
+#import "ConditionMan.h"
 
 // 全局变量
 IData *g_pIData = NULL;
 ICstPubFunc *g_pICstPubFunc = NULL;
+IConditionMan *g_pIConditionMan = NULL;
 
 @implementation QCAppDelegate
 
@@ -73,6 +75,7 @@ ICstPubFunc *g_pICstPubFunc = NULL;
     
     // 创建全局公共对象指针
     g_pICstPubFunc = (ICstPubFunc *)new CCstPubFunc;
+    g_pIConditionMan = (IConditionMan *)new CConditionMan;
     
     // 创建数据对象指针，并载入数据
     g_pIData = (IData *)new CData;

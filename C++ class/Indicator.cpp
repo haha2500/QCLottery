@@ -96,14 +96,14 @@ BOOL CIndicator::IsValid(const CDTIID &cdtIID, DWORD dwCustomData)
 			else
 				return m_btNumberCount == 2 ? TRUE : FALSE;
 		} break;
-#ifdef _PROFESSIONAL	// 专业版
+
         case IID_STC_GENRE_TRANS:
-#endif
+
         case IID_STC_GENRE_TWOLINK: 
         case IID_STC_SHAPE_NORMAL:
-#ifdef _PROFESSIONAL	// 专业版
+
         case IID_STC_SHAPE_EX:
-#endif
+
         case IID_STC_SHAPE_EQUALDIFF:
         case IID_STC_SHAPE_AAB:
         case IID_STC_SHAPE_ABC:
@@ -240,13 +240,13 @@ BOOL CIndicator::IsValid(const CDTIID &cdtIID, DWORD dwCustomData)
         case IID_STC_ORDER_MIDADDMAX_TAIL:
         case IID_STC_ORDER_MIDSUBMIN: 
         case IID_STC_ORDER_MAXSUBMID: 
-#ifdef _PROFESSIONAL	// 专业版
+
         case IID_STC_ORDER_RELATIVEDZX_POS_1: 
         case IID_STC_ORDER_RELATIVEDZX_POS_2: 
         case IID_STC_ORDER_RELATIVEDZX_POS_3: 
         case IID_STC_ORDER_RELATIVEDZX_ARR: 
         case IID_STC_ORDER_RELATIVEDZX_ARR_VALUE: 
-#endif
+
             //	case IID_STC_ORDER_POSSUM_ARR_SIN:
             //	case IID_STC_ORDER_POSSUM_ARR_GRO:
         case IID_STC_ORDER_POSSUMTAIL_ARR_SIN:
@@ -259,7 +259,6 @@ BOOL CIndicator::IsValid(const CDTIID &cdtIID, DWORD dwCustomData)
         case IID_STC_ORDER_MIDSUBMIN_TAIL: 
         case IID_STC_ORDER_MAXSUBMID_TAIL: return (!(m_btDataType & DATA_TYPE_ORDERED) && (m_btNumberCount == 3) && (m_btMaxNumber - m_btMinNumber > 9)) ? TRUE : FALSE;
             
-#ifdef _PROFESSIONAL	// 专业版
         case IID_STC_SPACE_SIN:
         case IID_STC_SPACETAIL_SIN:
         case IID_STC_SPACE_SIN_HEAD:
@@ -285,7 +284,6 @@ BOOL CIndicator::IsValid(const CDTIID &cdtIID, DWORD dwCustomData)
         case IID_STC_SPACE_GRO_7:
         case IID_STC_SPACE_GRO_8:
             return ((m_btNumberCount > 1) && (m_btDataType & DATA_TYPE_NUM_SZ) && (cdtIID.dwSystemIID - IID_STC_SPACE_GRO_1 < m_btNumberCount)) ? TRUE : FALSE;
-#endif
             
         case IID_STC_NEARSPACE_12:
         case IID_STC_NEARSPACE_23:
@@ -305,7 +303,6 @@ BOOL CIndicator::IsValid(const CDTIID &cdtIID, DWORD dwCustomData)
         case IID_STC_NEARSPACE_ANY:
             return ((m_btNumberCount > 2) && (m_btDataType & DATA_TYPE_ORDERED)) ? TRUE : FALSE;
             
-#ifdef _PROFESSIONAL	// 专业版
         case IID_STC_1D_POSITIVE_SIN:
         case IID_STC_1D_POSITIVE_GRO:
         case IID_STC_1D_NEGATIVE_SIN:
@@ -327,9 +324,7 @@ BOOL CIndicator::IsValid(const CDTIID &cdtIID, DWORD dwCustomData)
         case IID_STC_RESPOSMULSUM:
         case IID_STC_RESPOSMULSUMTAIL:
             return (m_btNumberCount > 1 && m_btNumberCount < 8 && (m_btDataType & DATA_TYPE_NUM_SZ)) ? TRUE : FALSE;
-#endif
-            
-            ///////////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////////
         case IID_DNC_DIS_POS_1:
         case IID_DNC_DIS_POS_2:
         case IID_DNC_DIS_POS_3:
@@ -433,13 +428,6 @@ BOOL CIndicator::IsValid(const CDTIID &cdtIID, DWORD dwCustomData)
         case IID_HIS_NUMS_1_ARR_GRO: return ((m_btDataType & DATA_TYPE_ORDERED) || (m_btNumberCount <= 1) || !(m_btDataType & DATA_TYPE_NUM_SZ)) ? FALSE : TRUE;
         case IID_HIS_NUMS_2_ARR_SIN: return (m_btDataType & DATA_TYPE_NUM_SZ && m_btNumberCount > 2) ? TRUE : FALSE;
         case IID_HIS_NUMS_2_ARR_GRO: return ((m_btDataType & DATA_TYPE_ORDERED) || (m_btNumberCount <= 2) || !(m_btDataType & DATA_TYPE_NUM_SZ)) ? FALSE : TRUE;
-            
-            // TEST
-            /*	case IID_HSS_NUMS_SIN: return TRUE;
-             case IID_HSS_NUMS_GRO: return (m_btDataType & DATA_TYPE_ORDERED) ? FALSE : TRUE;
-             case IID_HSS_NUM2_SIN: return (m_btNumberCount > 1) ? TRUE : FALSE;
-             case IID_HSS_NUM2_GRO: return (m_btDataType & DATA_TYPE_ORDERED) ? FALSE : ((m_btNumberCount > 1) ? TRUE : FALSE);
-             */
         default:
 		{
 			if(cdtIID.dwSystemIID >= IID_STC_NUMBER_0NUM && cdtIID.dwSystemIID <= IID_STC_NUMBER_SAMEGROUP_8)		// 数字
@@ -471,10 +459,6 @@ BOOL CIndicator::IsValid(const CDTIID &cdtIID, DWORD dwCustomData)
 					return FALSE;		// 必须大于等于3个数字
 				}
 				int nType = (cdtIID.dwSystemIID - IID_STC_TWOPOS_BEGIN) / 100;
-#ifndef _PROFESSIONAL	// 非专业版
-				if(nType >= TPT_CIRSUB)
-					return FALSE;
-#endif
 				DWORD dwTempID = WORD(cdtIID.dwSystemIID - nType * 100);
 				BOOL b0To9 = FALSE;
 				switch(nType)
@@ -594,14 +578,12 @@ BOOL CIndicator::IsValid(const CDTIID &cdtIID, DWORD dwCustomData)
                     case IID_STC_REMM_ARR_SIN_VALUE: 
                     case IID_STC_REMM_ARR_GRO_VALUE: 
                     case IID_STC_REMM_ARR_COUNT_VALUE: return ((m_btNumberCount > 1) && (nDivisor <= 9) && ((int)pow(nDivisor, m_btNumberCount) <= 1000)) ? TRUE : FALSE;
-#ifdef _PROFESSIONAL	// 专业版
+
                     case IID_STC_REMM_MAXLINK: 
                     case IID_STC_REMM_MAXNONE: 
                     case IID_STC_REMM_COUNT_NONE:
                     case IID_STC_REMM_COUNT_MATCH: return (m_btNumberCount > 2 && nDivisor > 2) ? TRUE : FALSE;
-#else
-                    case IID_STC_REMM_COUNT_NONE: return (m_btNumberCount > 2 && nDivisor > 2) ? TRUE : FALSE;
-#endif
+                        
                     case IID_STC_REMM_SHAPE: return (nDivisor == 3 && m_btNumberCount == 3) ? TRUE : FALSE;
                     default: return FALSE;
 				}
@@ -633,10 +615,6 @@ BOOL CIndicator::IsValid(const CDTIID &cdtIID, DWORD dwCustomData)
 			else if(cdtIID.dwSystemIID >= IID_DNC_PREVDATA_BEGIN && cdtIID.dwSystemIID <= IID_DNC_PREVDATA_END)			// 邻期关系指标
 			{
 				int nType = (cdtIID.dwSystemIID - IID_DNC_PREVDATA_BEGIN) / 100;
-#ifndef _PROFESSIONAL	// 非专业版
-				if(nType >= PDT_SUB)
-					return FALSE;
-#endif
 				DWORD dwTempID = DWORD(cdtIID.dwSystemIID - nType * 100);
 				BOOL b0To9 = FALSE;
 				switch(nType)
@@ -1383,12 +1361,12 @@ BOOL CIndicator::_IsValid_DataArea(const CDTIID &cdtIID, LPDATAAREA lpDataArea)
         case CIDAUT_ARR_GRO_VALUE:
         case CIDAUT_ARR_COUNT_VALUE: return (m_btNumberCount > 1 && lpDataArea->btAreaCount < 10 && (((int)pow(lpDataArea->btAreaCount, m_btNumberCount) <= 1000))) ? TRUE : FALSE; break;
         case CIDAUT_SHAPE: return (lpDataArea->btAreaCount == 3 && m_btNumberCount == 3) ? TRUE : FALSE; break;
-#ifdef _PROFESSIONAL	// 专业版
+
         case CIDAUT_MAXLINK:
         case CIDAUT_MAXNONE:
         case CIDAUT_COUNT_NONE:
         case CIDAUT_COUNT_MATCH: return (m_btNumberCount > 1 && lpDataArea->btAreaCount > 2) ? TRUE : FALSE; break;
-#endif
+            
         default:	// CIDAUT_COUNT_N
 		{
 			return (m_btNumberCount > 1 && (cdtIID.stCustomIID.wUseType - CIDAUT_COUNT_N < lpDataArea->btAreaCount)) ? TRUE : FALSE;

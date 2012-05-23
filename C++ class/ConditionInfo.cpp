@@ -629,17 +629,13 @@ void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray
     
     BEGIN_ADD_GROUP("类型", CDTID_FIXGROUP_GENRE)
     ADD_CONDITION(IID_STC_GENRE_NORMAL)						// 类型
-#ifdef _PROFESSIONAL	// 专业版
     ADD_CONDITION(IID_STC_GENRE_TRANS)						// 变换类型
-#endif
     ADD_CONDITION(IID_STC_GENRE_TWOLINK)					// 二连码
     END_ADD_GROUP()
     
     BEGIN_ADD_GROUP("形态", CDTID_FIXGROUP_SHAPE)
     ADD_CONDITION(IID_STC_SHAPE_NORMAL)						// 形态
-#ifdef _PROFESSIONAL	// 专业版
     ADD_CONDITION(IID_STC_SHAPE_EX)							// 细分形态
-#endif
     ADD_CONDITION(IID_STC_SHAPE_EQUALDIFF)					// 等差形
     ADD_CONDITION(IID_STC_SHAPE_AAB)						// 组三形态
     ADD_CONDITION(IID_STC_SHAPE_ABC)						// 顺子形态
@@ -819,8 +815,7 @@ void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray
     ADD_CONDITION(IID_STC_ESPECIALSUM_Z)					// Z码和
     ADD_CONDITION(IID_STC_ESPECIALSUM_X)					// X码和
     END_ADD_GROUP()
-    
-#ifdef _PROFESSIONAL	// 专业版		
+    	
     BEGIN_ADD_GROUP("间距", CDTID_FIXGROUP_SPACE)
     BEGIN_ADD_GROUP("单选间距", CDTID_FIXGROUP_SPACE_SIN)
     ADD_CONDITION(IID_STC_SPACE_SIN)						// 单选间距
@@ -861,14 +856,10 @@ void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray
     ADD_CONDITION(IID_STC_1D_RNEGATIVE_SIN)					// 单选反负1D
     ADD_CONDITION(IID_STC_1D_RNEGATIVE_GRO)					// 组选反负1D
     END_ADD_GROUP()
-#endif
+
     // 加入邻期关系指标
     for(i=0; i<PDT_COUNT; i++)
     {
-#ifndef _PROFESSIONAL	// 非专业版
-        if(i >= PDT_SUB)
-            break;
-#endif
         nTemp = i * 100;
         BEGIN_ADD_GROUP(NAMES_PREVDATA[i], CDTID_FIXGROUP_PREVDATA_ITEM + i)
         for(j=0; j<8; j++)
@@ -892,10 +883,10 @@ void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray
     ADD_CONDITION(IID_STC_TWOPOS_HEADTAIL + TPT_SUM_TAIL * 100)		// 首尾合
     ADD_CONDITION(IID_STC_TWOPOS_HEADTAIL + TPT_SUB * 100)			// 首尾边距
     ADD_CONDITION(IID_STC_TWOPOS_HEADTAIL + TPT_SUB_TAIL * 100)		// 首尾边距尾数
-#ifdef _PROFESSIONAL	// 专业版		
+	
     ADD_CONDITION(IID_STC_TWOPOS_HEADTAIL + TPT_CIRSUB * 100)		// 首尾环差
     ADD_CONDITION(IID_STC_TWOPOS_HEADTAIL + TPT_CIRSUB_TAIL * 100)	// 首尾环差尾数
-#endif
+
     END_ADD_GROUP()
     
     BEGIN_ADD_GROUP("邻位间距", CDTID_FIXGROUP_NEARSPACE)
@@ -918,10 +909,6 @@ void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray
     // 加入两位关系指标
     for(i=0; i<TPT_COUNT; i++)
     {
-#ifndef _PROFESSIONAL	// 非专业版
-        if(i >= TPT_CIRSUB)
-            break;
-#endif
         nTemp = i * 100;
         BEGIN_ADD_GROUP(NAMES_TWOPOS[i], CDTID_FIXGROUP_TWOPOS_ITEM + i)
         for(j=0; j<7; j++)
@@ -1022,12 +1009,10 @@ void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray
         {
             ADD_CONDITION(IID_STC_REMM_SHAPE + nTemp)			// 除M余数形态（只用于除3余数）
         }
-#ifdef _PROFESSIONAL	// 专业版
         ADD_CONDITION(IID_STC_REMM_MAXLINK + nTemp)				// 除M余数最大邻出
         ADD_CONDITION(IID_STC_REMM_MAXNONE + nTemp)				// 除M余数最大邻断
         ADD_CONDITION(IID_STC_REMM_COUNT_NONE + nTemp)			// 除M余数未出个数
         ADD_CONDITION(IID_STC_REMM_COUNT_MATCH + nTemp)			// 除M余数出现个数
-#endif
         END_ADD_GROUP()
     }
     END_ADD_GROUP()
@@ -1039,7 +1024,6 @@ void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray
         END_ADD_GROUP()
     }
     
-#ifdef _PROFESSIONAL	// 专业版
     BEGIN_ADD_GROUP("积数", CDTID_FIXGROUP_MUL)
     ADD_CONDITION(IID_STC_MUL)								// 积数
     ADD_CONDITION(IID_STC_MUL_ODDEVEN)						// 积数奇偶零
@@ -1057,7 +1041,6 @@ void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray
     ADD_CONDITION(IID_STC_RESPOSMULSUM)						// 反位置积和
     ADD_CONDITION(IID_STC_RESPOSMULSUMTAIL)					// 反位置积合
     END_ADD_GROUP()
-#endif
     
     BEGIN_ADD_GROUP("顺序排列", CDTID_FIXGROUP_ORDER)
     BEGIN_ADD_GROUP("顺序排列按位", CDTID_FIXGROUP_ORDER_POS)
@@ -1093,7 +1076,7 @@ void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray
     ADD_CONDITION(IID_STC_ORDER_POSSUBTAIL_ARR_SIN)		// 顺序位差尾数单选排列
     ADD_CONDITION(IID_STC_ORDER_POSSUBTAIL_ARR_GRO)		// 顺序位差尾数组选排列
     END_ADD_GROUP()
-#ifdef _PROFESSIONAL	// 专业版
+    
     BEGIN_ADD_GROUP("相对大中小", CDTID_FIXGROUP_ORDER_RELATIVEDZX)
     ADD_CONDITION(IID_STC_ORDER_RELATIVEDZX_POS_1)		// 百位相对大中小
     ADD_CONDITION(IID_STC_ORDER_RELATIVEDZX_POS_2)		// 十位相对大中小
@@ -1101,7 +1084,7 @@ void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray
     ADD_CONDITION(IID_STC_ORDER_RELATIVEDZX_ARR)		// 相对大中小排列
     ADD_CONDITION(IID_STC_ORDER_RELATIVEDZX_ARR_VALUE)	// 相对大中小排列值
     END_ADD_GROUP()
-#endif
+
     BEGIN_ADD_GROUP("顺序排列", CDTID_FIXGROUP_ORDER_THAN3)	// 数字个数大于3时使用
     ADD_CONDITION(IID_STC_ORDER_MIN)						// 最小数
     ADD_CONDITION(IID_STC_ORDER_MID)						// 中间数
@@ -1138,36 +1121,33 @@ void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray
     END_ADD_GROUP()
     BEGIN_ADD_GROUP("开奖号与试机号距离", CDTID_FIXGROUP_TESTNUMS_ITEM_BEGIN + 3)
     END_ADD_GROUP()
-    BEGIN_ADD_GROUP("开奖号与试机号距离尾数", CDTID_FIXGROUP_TESTNUMS_ITEM_BEGIN + 4)
-    END_ADD_GROUP()
-#ifdef _PROFESSIONAL	// 专业版
+//    BEGIN_ADD_GROUP("开奖号与试机号距离尾数", CDTID_FIXGROUP_TESTNUMS_ITEM_BEGIN + 4)
+ //   END_ADD_GROUP()
     BEGIN_ADD_GROUP("开奖号与试机号之差", CDTID_FIXGROUP_TESTNUMS_ITEM_BEGIN + 5)
     END_ADD_GROUP()
     BEGIN_ADD_GROUP("开奖号与试机号环差", CDTID_FIXGROUP_TESTNUMS_ITEM_BEGIN + 6)
     END_ADD_GROUP()
-    BEGIN_ADD_GROUP("开奖号与试机号环差尾数", CDTID_FIXGROUP_TESTNUMS_ITEM_BEGIN + 7)
-    END_ADD_GROUP()
-#endif
+ //   BEGIN_ADD_GROUP("开奖号与试机号环差尾数", CDTID_FIXGROUP_TESTNUMS_ITEM_BEGIN + 7)
     END_ADD_GROUP()
     
 	END_LOAD()
 }
 
 #define		ADD_AREA_CONDITION(wUseTypeIn) { \
-cdtIID.btType = CDTIID_TYPE_DATAAREA | CDTIID_TYPE_CUSTOM | CDTIID_TYPE_VALID; \
-cdtIID.stCustomIID.dwDiffValues[0] = lpDataArea->dwAreaDiffValues[0]; \
-cdtIID.stCustomIID.dwDiffValues[1] = lpDataArea->dwAreaDiffValues[1]; \
-cdtIID.stCustomIID.wUseType = WORD(wUseTypeIn); \
-cdtTempID.InitID(cdtIID); \
-if(theApp.m_cIndicator.IsValid(cdtIID, (DWORD)lpDataArea)) { \
-lpItem = new FIXCONDITIONGROUP; \
-lpItem->lpParent = lpGroup; \
-lpItem->dwGroupID = 0; \
-lpItem->SetCdtID(cdtTempID); \
-lpGroup->stSubItemPointArray.SetAt(nIndex, lpItem); \
-nIndex ++; \
-} \
-}
+                cdtIID.btType = CDTIID_TYPE_DATAAREA | CDTIID_TYPE_CUSTOM | CDTIID_TYPE_VALID; \
+                cdtIID.stCustomIID.dwDiffValues[0] = lpDataArea->dwAreaDiffValues[0]; \
+                cdtIID.stCustomIID.dwDiffValues[1] = lpDataArea->dwAreaDiffValues[1]; \
+                cdtIID.stCustomIID.wUseType = WORD(wUseTypeIn); \
+                dtTempID.InitID(cdtIID); \
+                if(theApp.m_cIndicator.IsValid(cdtIID, (DWORD)lpDataArea)) { \
+                    lpItem = new FIXCONDITIONGROUP; \
+                    lpItem->lpParent = lpGroup; \
+                    lpItem->dwGroupID = 0; \
+                    lpItem->SetCdtID(cdtTempID); \
+                    lpGroup->stSubItemPointArray.SetAt(nIndex, lpItem); \
+                    nIndex ++; \
+                } \
+            }
 
 void CConditionInfo::_LoadAreaConditions(LPFIXCONDITIONGROUP lpParent, BYTE btAreaCount)
 {

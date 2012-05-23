@@ -8,6 +8,7 @@
 
 #include "Data.h"
 #include "Def_ConditionValue.h"
+#include "ICstPubFunc.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -1676,7 +1677,7 @@ int CData::GetSkipValue(DWORD dwFlag, DWORD dwIssueIndex, LPBYTE lpFilterNums, B
 					btSkipTails[i] = BYTE(lpSkipValueData[nIndex+i] % 10);
 				}
                 
-// TEST				g_pICstPubFunc->QuickSort(btSkipTails, m_btNumberCount, QSVT_BYTE);
+				g_pICstPubFunc->QuickSort(btSkipTails, m_btNumberCount, QSVT_BYTE);
                 
 				nRtn = 0;
 				for(int i=m_btNumberCount-1; i>=0; i--)
@@ -1775,7 +1776,7 @@ int CData::GetSkipValue(DWORD dwFlag, DWORD dwIssueIndex, LPBYTE lpFilterNums, B
 					nIndex += nOffset;
 				}
                 
-// TEST				g_pICstPubFunc->QuickSort(btSkipTails, m_btNumberCount);
+				g_pICstPubFunc->QuickSort(btSkipTails, m_btNumberCount);
 				
 				int nRatio = 1;
 				for(i=m_btNumberCount-1; i>=0; i--)
@@ -1954,7 +1955,7 @@ int CData::GetThreeStateData(BYTE btTypeIndex, DWORD dwFlag, DWORD dwIssueIndex,
 			{
 				btTemp[i] = (BYTE)lpTSData[dwIssueIndex * nBallCount + lpCurLotteryData[i] - m_btMinNumber];
 			}
-// TEST			g_pICstPubFunc->QuickSort(btTemp, m_btNumberCount);
+			g_pICstPubFunc->QuickSort(btTemp, m_btNumberCount);
 			for(i=m_btNumberCount-1; i>=0; i--)
 			{
 				nRtn += btTemp[i] * nRatio;

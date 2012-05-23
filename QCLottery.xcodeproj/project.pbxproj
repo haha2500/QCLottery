@@ -23,6 +23,8 @@
 		EE99FC261559EB640068E101 /* QCGraphView.m in Sources */ = {isa = PBXBuildFile; fileRef = EE99FC251559EB640068E101 /* QCGraphView.m */; };
 		EE99FC2E155B34600068E101 /* QCConditionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = EE99FC2C155B34600068E101 /* QCConditionViewController.m */; };
 		EE99FC2F155B34600068E101 /* QCConditionViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = EE99FC2D155B34600068E101 /* QCConditionViewController.xib */; };
+		EEA37AEA156CBCC400EBE468 /* Condition.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA37AE9156CBCC400EBE468 /* Condition.cpp */; };
+		EEA37AEC156CBF9B00EBE468 /* ConditionMan.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA37AEB156CBF9B00EBE468 /* ConditionMan.cpp */; };
 		EEA5DD741568E89A00F36D40 /* FC3D.dat in Resources */ = {isa = PBXBuildFile; fileRef = EEA5DD731568E89A00F36D40 /* FC3D.dat */; };
 		EEA6117D1562639500482FFE /* BallBitmap.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA611581562639500482FFE /* BallBitmap.cpp */; };
 		EEA6117E1562639500482FFE /* Data.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EEA6115A1562639500482FFE /* Data.cpp */; };
@@ -90,6 +92,10 @@
 		EE99FC2B155B34600068E101 /* QCConditionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QCConditionViewController.h; sourceTree = "<group>"; };
 		EE99FC2C155B34600068E101 /* QCConditionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QCConditionViewController.m; sourceTree = "<group>"; };
 		EE99FC2D155B34600068E101 /* QCConditionViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = QCConditionViewController.xib; sourceTree = "<group>"; };
+		EEA37AE8156CBCBB00EBE468 /* Condition.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Condition.h; sourceTree = "<group>"; };
+		EEA37AE9156CBCC400EBE468 /* Condition.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Condition.cpp; sourceTree = "<group>"; };
+		EEA37AEB156CBF9B00EBE468 /* ConditionMan.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ConditionMan.cpp; sourceTree = "<group>"; };
+		EEA37AED156CBFA300EBE468 /* ConditionMan.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ConditionMan.h; sourceTree = "<group>"; };
 		EEA5DD731568E89A00F36D40 /* FC3D.dat */ = {isa = PBXFileReference; lastKnownFileType = file; path = FC3D.dat; sourceTree = "<group>"; };
 		EEA611581562639500482FFE /* BallBitmap.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BallBitmap.cpp; sourceTree = "<group>"; };
 		EEA611591562639500482FFE /* BallBitmap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BallBitmap.h; sourceTree = "<group>"; };
@@ -273,7 +279,6 @@
 				EEA90FC6156B6D8B0044E8F9 /* Def_CfgItem_Condition.h */,
 				EEA611601562639500482FFE /* Def_ConditionValue.h */,
 				EEA90FAC156B69000044E8F9 /* Def_ConditionID.h */,
-				EEA90FAD156B69500044E8F9 /* ICondition.h */,
 				EEA90FAE156B6AA00044E8F9 /* Def_ConditionCustom.h */,
 				EEA611611562639500482FFE /* Def_GraphGrid_ID.h */,
 				EEA611631562639500482FFE /* DistributeGrid.h */,
@@ -305,6 +310,11 @@
 				EEA90FC7156B87810044E8F9 /* ICstPubFunc.h */,
 				EEA90FD3156B8B7A0044E8F9 /* CstPubFunc.h */,
 				EEA90FD2156B8B7A0044E8F9 /* CstPubFunc.cpp */,
+				EEA90FAD156B69500044E8F9 /* ICondition.h */,
+				EEA37AED156CBFA300EBE468 /* ConditionMan.h */,
+				EEA37AEB156CBF9B00EBE468 /* ConditionMan.cpp */,
+				EEA37AE8156CBCBB00EBE468 /* Condition.h */,
+				EEA37AE9156CBCC400EBE468 /* Condition.cpp */,
 				EEA90FC3156B6C6E0044E8F9 /* ConditionInfo.h */,
 				EEA90FC4156B6C740044E8F9 /* ConditionInfo.cpp */,
 				EEA90FD5156B9EB40044E8F9 /* ConstData.h */,
@@ -433,6 +443,8 @@
 				EEA90FC2156B6C0A0044E8F9 /* IndicatorParam_GetValueRange.cpp in Sources */,
 				EEA90FC5156B6C750044E8F9 /* ConditionInfo.cpp in Sources */,
 				EEA90FD4156B8B7A0044E8F9 /* CstPubFunc.cpp in Sources */,
+				EEA37AEA156CBCC400EBE468 /* Condition.cpp in Sources */,
+				EEA37AEC156CBF9B00EBE468 /* ConditionMan.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -69,6 +69,16 @@ public:
 	
 	// 获取位置名称，nPos为-1则表示整个开奖号码，bShortName是否获取简称
 	virtual LPCSTR GetPosName(int nPos = -1, BOOL bShortName = FALSE, BYTE btDataSource = DATA_SOURCE_CUR) = 0;
+    
+    
+    // 获取指定分区数据，返回的低字中保存该分区的最小值，高字中保存该分区的最大值，返回MAXDWORD的则是错误
+	// dwAreaIndex：为分区索引，0为第一分区，nMinValue为本分区的最小值，nMaxValue为最大值，以下同
+	virtual DWORD GetSubAreaData(DWORD dwAreaCount, DWORD dwAreaIndex, int nMinValue, int nMaxValue) = 0;
+	// 获取值所在分区索引，0为第一分区，依次类推，小于则是错误
+	virtual int GetSubAreaIndex(DWORD dwAreaCount, int nValue, int nMinValue, int nMaxValue) = 0;
+    
+    // 查询数值是否是质数
+    virtual BOOL IsPrime(int nValue) = 0;
 };
 
 extern ICstPubFunc *g_pICstPubFunc;

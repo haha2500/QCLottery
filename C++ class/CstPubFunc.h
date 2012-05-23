@@ -66,6 +66,15 @@ public:
 	// 获取位置名称，nPos为-1则表示整个开奖号码，bShortName是否获取简称
 	virtual LPCSTR GetPosName(int nPos = -1, BOOL bShortName = FALSE, BYTE btDataSource = DATA_SOURCE_CUR);
         
+    // 获取指定分区数据，返回的低字中保存该分区的最小值，高字中保存该分区的最大值，返回MAXDWORD的则是错误
+	// dwAreaIndex：为分区索引，0为第一分区，nMinValue为本分区的最小值，nMaxValue为最大值，以下同
+	DWORD GetSubAreaData(DWORD dwAreaCount, DWORD dwAreaIndex, int nMinValue, int nMaxValue);
+	// 获取值所在分区索引，0为第一分区，依次类推，小于则是错误
+	int GetSubAreaIndex(DWORD dwAreaCount, int nValue, int nMinValue, int nMaxValue);
+	
+    // 查询数值是否是质数
+    virtual BOOL IsPrime(int nValue);
+    
 private:
 	static int _Sort_BYTE_Asc(const void *arg1, const void *arg2);
 	static int _Sort_BYTE_Desc(const void *arg1, const void *arg2);
@@ -89,6 +98,21 @@ private:
 //	CString _ReplaceColonInCustomAreaText(CString &strCustomAreaText);
     
 	int _RemoveSameValue(LPBYTE lpValueBuf, int nValueCount, int nValueSize);
+    
+private:
+    typedef struct tagSUBAREAINFO				// 分区信息
+	{
+		DWORD	dwAreaCount;					// 分区个数
+		int		nMinValue;						// 最小值
+		int		nMaxValue;						// 最大值
+		DWORD	dwAreaInfoArray[1];				// 分区信息集合，一共dwAreaCount个元素(依次为第1分区、第2分区...)，每个元素的高字中保存该分区的最小值，低字中保存该分区的最大值
+	} SUBAREAINFO, *LPSUBAREAINFO;
+    
+	CDWordArray m_cSubAreaInfoPointArray;	// 分区信息指针集合
+    BYTE	m_btPrimeFlag[1000];			// 0-999的质数标志，为1，则是质数
+    
+    LPSUBAREAINFO _GetSubAreaInfo(DWORD dwAreaCount, int nMinValue, int nMaxValue);
+	BOOL _IsPrime(int nValue);
 	
 private:
 	char	m_szPublicSaveFilenameInfo[128];	// 公共保存文件名

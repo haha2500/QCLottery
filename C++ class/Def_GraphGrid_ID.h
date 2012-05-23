@@ -8,6 +8,8 @@
 
 #pragma once
 
+#include "ICondition.h"
+
 // =========================================================================================
 // 图表的ID号为四个字节，最高字如果不为0，则为对应条件的ID号此时为条件图表，
 // 当高字为0时，则为特定的图表，此时低字有效，定义如下：
@@ -19,9 +21,8 @@ typedef struct tagGRAPHGRIDID							// 图表ID
 	union
 	{
 		DWORD		dwGraphGridID;						// 图表ID，当不为条件图表和分区表时有效
-        DWORD       dwCdtID;                            // TEST
-//		CDTID		cdtID;								// 条件ID，当为条件图表时有效
-//		DWORD		dwAreaDiffValues[3];				// 分区区分数据（前2个DWORD）和标志值（后1个DWORD），当btType为GGTYPE_DATATABLE_AREA（即分区表）或GGTYPE_DISTRIBUTE_AREA（即分区分布图）时有效
+		CDTID		cdtID;								// 条件ID，当为条件图表时有效
+		DWORD		dwAreaDiffValues[3];				// 分区区分数据（前2个DWORD）和标志值（后1个DWORD），当btType为GGTYPE_DATATABLE_AREA（即分区表）或GGTYPE_DISTRIBUTE_AREA（即分区分布图）时有效
         // 目前标志值可为1：分区个数（用于分区表）或者基本分区分布图
 	};
     

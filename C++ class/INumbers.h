@@ -109,7 +109,6 @@ public:
 	// 重置所有自定义数据
 	virtual void ResetAllCustomData(DWORD dwCustomData = 0) = 0;
     
-#ifdef _PROFESSIONAL	// 专业版
 	// 获取指定数据，btGetFlag为获取数据标志，见宏定义
 	virtual LPBYTE GetItemData(DWORD dwIndex, BYTE btGetFlag = GF_ORG) = 0;
 	// 获取指定数据的自定义数据
@@ -118,17 +117,6 @@ public:
 	virtual LPCSTR GetItemString(DWORD dwIndex, BYTE btGetFlag = GF_ORG) = 0;
 	// 获取指定数据的值，btGetFlag为获取数据标志，见宏定义
 	virtual DWORD GetItemValue(DWORD dwIndex, BYTE btGetFlag = GF_ORG) = 0;
-#else
-	// 获取指定数据的自定义数据
-	virtual DWORD GetItemCustomData(DWORD dwIndex) = 0;
-	// 获取指定数据的值，btGetFlag为获取数据标志，见宏定义
-	virtual DWORD GetItemValue(DWORD dwIndex, BYTE btGetFlag = GF_ORG) = 0;
-	// 获取指定数据，btGetFlag为获取数据标志，见宏定义
-	virtual LPBYTE GetItemData(DWORD dwIndex, BYTE btGetFlag = GF_ORG) = 0;
-	// 获取指定数据的文本串，btGetFlag为获取数据标志，见宏定义
-	virtual LPCSTR GetItemString(DWORD dwIndex, BYTE btGetFlag = GF_ORG) = 0;
-    
-#endif
 	
 	// 删除数据，只设置删除标志，需要调用RemoveData才会真正的删除
 	virtual void DeleteItemData(DWORD dwIndex) = 0;	

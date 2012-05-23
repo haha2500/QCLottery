@@ -715,9 +715,6 @@ public:		// 接口函数
 	// 是否是试机号相关条件
 	virtual BOOL IsIncludeTestNums() = 0;
     
-	// 是否是免费版可使用的条件
-	virtual BOOL IsFree() = 0;
-    
 	// 获取指定号码数据的条件值，如果是多值条件，则返回计算后的值（比如多值为2、0、3，则返回203）
 	// 如果dwIssueIndex == DATA_INDEX_INVALID，则lpFltNumsData不能为NULL，此时获取当期缩水号码数据的条件值
 	// 否则，如果lpFltNumsData为NULL，则获取dwIssueIndex指定期号的历史数据的条件值，
@@ -1000,10 +997,7 @@ public:	// 单个条件接口函数
 	
 	// 查询条件是否是动态条件
 	virtual BOOL IsDynamicCondition(const CDTID &cdtID, DWORD dwCustomData = MAXDWORD) = 0;
-    
-	// 查询条件是否是免费版可用的条件
-	virtual BOOL IsFreeCondition(const CDTID &cdtID) = 0;
-    
+       
 	// 获取指定条件值域范围类型，返回值见宏定义，如：CDTRT_DEFAULT
 	virtual BYTE GetConditionValueRangeType(const CDTID &cdtID) = 0;
 	// 获取指定条件值类型，返回值见宏定义，如：CDTVT_DIGITAL
@@ -1068,7 +1062,7 @@ public:	// 分区相关接口函数
 	// bToSystem为TURE时则添加到系统中，否则临时保存
 	// 返回TRUE则表示添加或者修改（当bModifyIfExist为TRUE时有效）成功
 	virtual BOOL AddDataArea(LPDATAAREA lpDataArea, BOOL bModifyIfExist = FALSE, BOOL bToSystem = TRUE) = 0;
-    
+
 public:		// 自定义条件相关接口
 	
 	// 查询指定条件是否是自定义条件

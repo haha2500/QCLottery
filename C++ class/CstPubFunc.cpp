@@ -21,6 +21,15 @@ BYTE CCstPubFunc::m_btQuickSortBufLen = 0;
 CCstPubFunc::CCstPubFunc()
 {
 	m_szPublicSaveFilenameInfo[0] = m_szLastErrorString[0] = 0;
+    ZeroMemory(m_btPrimeFlag, sizeof(m_btPrimeFlag));
+    
+	for(int i=1; i<1000; i++)
+	{
+		if(_IsPrime(i))
+		{
+			m_btPrimeFlag[i] = 1;
+		}
+	}
 }
 
 CCstPubFunc::~CCstPubFunc()
@@ -757,6 +766,44 @@ LPCSTR CCstPubFunc::GetPosName(int nPos, BOOL bShortName, BYTE btDataSource)
 	return NULL;
 }
 
+DWORD CCstPubFunc::GetSubAreaData(DWORD dwAreaCount, DWORD dwAreaIndex, int nMinValue, int nMaxValue)
+{
+	ASSERT(dwAreaIndex < dwAreaCount);
+    
+	// 获取指定分区信息
+	LPSUBAREAINFO lpInfo = _GetSubAreaInfo(dwAreaCount, nMinValue, nMaxValue);
+	ASSERT(lpInfo != NULL);
+    
+	return lpInfo->dwAreaInfoArray[dwAreaIndex];
+}
+
+int CCstPubFunc::GetSubAreaIndex(DWORD dwAreaCount, int nValue, int nMinValue, int nMaxValue)
+{
+	// 获取指定分区信息
+	LPSUBAREAINFO lpInfo = _GetSubAreaInfo(dwAreaCount, nMinValue, nMaxValue);
+	ASSERT(lpInfo != NULL);
+    
+	for(int i=dwAreaCount-1; i>=0; i--)
+	{
+		if((short)LOWORD(lpInfo->dwAreaInfoArray[i]) <= nValue)
+		{
+			return i + 1;
+		}
+	}
+    
+	return -1;
+}
+
+BOOL CCstPubFunc::IsPrime(int nValue)
+{
+    if (nValue < 0 || nValue > sizeof(m_btPrimeFlag)/sizeof(m_btPrimeFlag[0]))
+    {
+        return 0;
+    }
+    
+    return m_btPrimeFlag[nValue];
+}
+
 /////////////////////////////////////////////////////////////////////////////////////////
 #pragma mark -
 int CCstPubFunc::_Sort_BYTE_Asc(const void *arg1, const void *arg2)
@@ -1233,3 +1280,91 @@ int CCstPubFunc::_RemoveSameValue(LPBYTE lpValueBuf, int nValueCount, int nValue
 	return nValidCount;
 }
 
+CCstPubFunc::LPSUBAREAINFO CCstPubFunc::_GetSubAreaInfo(DWORD dwAreaCount, int nMinValue, int nMaxValue)
+{
+	ASSERT(dwAreaCount >= 2 && dwAreaCount < MAXBYTE);
+    
+	// 查询指定的分区信息是否存在
+	LPSUBAREAINFO lpInfo = NULL;
+	for(int i=m_cSubAreaInfoPointArray.GetSize()-1; i>=0; i--)
+	{
+		lpInfo = (LPSUBAREAINFO)m_cSubAreaInfoPointArray.GetAt(i);
+		if(lpInfo->dwAreaCount == dwAreaCount && lpInfo->nMinValue == nMinValue && lpInfo->nMaxValue == nMaxValue)
+		{
+			return lpInfo;	// find
+		}
+	}
+    
+	// 不存在，则创建新的
+	int nWholeNumCount = (nMaxValue - nMinValue + 1);
+	ASSERT(nWholeNumCount >= (int)dwAreaCount);
+    
+	lpInfo = (LPSUBAREAINFO)new BYTE[sizeof(SUBAREAINFO) + sizeof(DWORD) * (dwAreaCount - 1)];
+	lpInfo->dwAreaCount = dwAreaCount;
+	lpInfo->nMaxValue = nMaxValue;
+	lpInfo->nMinValue = nMinValue;
+	ZeroMemory(lpInfo->dwAreaInfoArray, sizeof(DWORD) * dwAreaCount);
+    
+	// 按一定规则进行计算
+	int nAvg = 0, nRemain = 0, nTemp = 0;
+	// 平均分配个数
+	nAvg = nWholeNumCount / dwAreaCount;
+	for(int i=0; i<(int)dwAreaCount; i++)
+	{
+		lpInfo->dwAreaInfoArray[i] = nAvg;
+	}
+	// 处理剩下的，
+	nRemain = nWholeNumCount % dwAreaCount;
+	
+	nTemp = 0;
+	
+	while(nRemain > 1)
+	{
+		// 如果剩下大于2个则从两边开始（先后后前）放
+		lpInfo->dwAreaInfoArray[nTemp] ++;
+		lpInfo->dwAreaInfoArray[dwAreaCount - 1 - nTemp] ++;
+		nTemp ++;
+		nRemain -= 2;
+	}
+	
+	if(nRemain == 1)
+	{
+		// 只剩1个，如果是奇数个分区，则放中间，否则放到最后一个分区
+		if(dwAreaCount % 2 == 0)
+			lpInfo->dwAreaInfoArray[dwAreaCount - 1 - nTemp] ++;
+		else
+			lpInfo->dwAreaInfoArray[dwAreaCount / 2] ++;
+	}
+	
+	// 根据各个分区个数确定分区信息
+	WORD wBegin = WORD(nMinValue), wCount = 0;
+	for(int i=0; i<(int)dwAreaCount; i++)
+	{
+		wCount = (WORD)lpInfo->dwAreaInfoArray[i];
+		lpInfo->dwAreaInfoArray[i] = MAKELONG(wBegin, (WORD)(wBegin + wCount - 1));
+		wBegin = (WORD)(wBegin + wCount);
+	}
+    
+	m_cSubAreaInfoPointArray.Add((DWORD)lpInfo);
+	return lpInfo;
+}
+
+BOOL CCstPubFunc::_IsPrime(int nValue)
+{
+	ASSERT(nValue > 0 && nValue < 1000);
+	
+	if(nValue <= 3)
+	{
+		return TRUE;
+	}
+	
+	for(int i=2; i<=nValue/2; i++)
+	{
+		if(nValue % i == 0)
+		{
+			return FALSE;
+		}
+	}
+	
+	return TRUE;
+}
