@@ -7,6 +7,8 @@
 //
 
 #include "IndicatorParam.h"
+#include "Def_ConditionValue.h"
+#include "ICstPubFunc.h"
 
 ///////////////////////////////////////////////////////////////////////////////////////////////
 LPCDTVALUE CIndicatorParam::GetValue(const CDTIPID &cdtIPID, ICondition *pICdtParent, DWORD dwCustomData, LPBYTE lpFltNumsData, DWORD dwIssueIndex, BYTE /*btType*/)
@@ -47,7 +49,7 @@ LPCDTVALUE CIndicatorParam::GetValue(const CDTIPID &cdtIPID, ICondition *pICdtPa
 				_GetValueRangeForPosArea(nMinValue, nMaxValue, pICdtParent);
 				for(int i=0; i<lpParentValue->btItemCount; i++)
 				{
-					int nValue = theApp.GetSubAreaIndex(2, lpParentValue->stValueItems[i].nValue, nMinValue, nMaxValue) - 1;
+					int nValue = 0; // TEST theApp.GetSubAreaIndex(2, lpParentValue->stValueItems[i].nValue, nMinValue, nMaxValue) - 1;
 					_AddValue(nValue, lpParentValue->stValueItems[i].btCount);
 				}
 			} break;
@@ -58,7 +60,7 @@ LPCDTVALUE CIndicatorParam::GetValue(const CDTIPID &cdtIPID, ICondition *pICdtPa
 				_GetValueRangeForPosArea(nMinValue, nMaxValue, pICdtParent);
 				for(int i=0; i<lpParentValue->btItemCount; i++)
 				{
-					int nValue = theApp.GetSubAreaIndex(3, lpParentValue->stValueItems[i].nValue, nMinValue, nMaxValue) - 1;
+					int nValue = 0; // TEST theApp.GetSubAreaIndex(3, lpParentValue->stValueItems[i].nValue, nMinValue, nMaxValue) - 1;
 					_AddValue(nValue, lpParentValue->stValueItems[i].btCount);
 				}
                 
@@ -78,7 +80,7 @@ LPCDTVALUE CIndicatorParam::GetValue(const CDTIPID &cdtIPID, ICondition *pICdtPa
 				for(int i=0; i<lpParentValue->btItemCount; i++)
 				{
 					ASSERT(lpParentValue->stValueItems[i].nValue >= -999 && lpParentValue->stValueItems[i].nValue <= 999);
-					_AddValue(theApp.m_btPrimeFlag[abs(lpParentValue->stValueItems[i].nValue)], lpParentValue->stValueItems[i].btCount);
+				// TEST	_AddValue(theApp.m_btPrimeFlag[abs(lpParentValue->stValueItems[i].nValue)], lpParentValue->stValueItems[i].btCount);
 				}
 			}break;
                 
@@ -195,7 +197,7 @@ LPCDTVALUE CIndicatorParam::GetValue(const CDTIPID &cdtIPID, ICondition *pICdtPa
 					_GetValueRangeForPosArea(nMinValue, nMaxValue, pICdtParent);
 					for(int i=0; i<lpParentValue->btItemCount; i++)
 					{
-						int nValue = theApp.GetSubAreaIndex(nAreaCount, lpParentValue->stValueItems[i].nValue, nMinValue, nMaxValue);
+						int nValue = nAreaCount; // TEST theApp.GetSubAreaIndex(nAreaCount, lpParentValue->stValueItems[i].nValue, nMinValue, nMaxValue);
 						_AddValue(nValue, lpParentValue->stValueItems[i].btCount);
 					}
 				}

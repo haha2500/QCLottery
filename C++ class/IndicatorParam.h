@@ -65,7 +65,7 @@ public:
 	BOOL IsDigitalValueName(const CDTIPID &cdtIPID, DWORD dwCustomData);
     
 	// 获取值说明，返回strExplainArray的个数，为0则表示无相关说明
-	int GetValueExplain(CStringArray &strExplainArray, const CDTIPID &cdtIPID, DWORD dwCustomData, ICondition *pIConditionParent, LPCDTVALUERANGE lpValueRangeSelf);
+//	int GetValueExplain(CStringArray &strExplainArray, const CDTIPID &cdtIPID, DWORD dwCustomData, ICondition *pIConditionParent, LPCDTVALUERANGE lpValueRangeSelf);
     
 private:
 	BOOL			m_bFirstParam;										// 是否是第一个指标参数
@@ -124,8 +124,9 @@ private:
 	void _GetExplain_Custom(const CDTIPID &cdtIPID);
     
 	int _GetCustomIPValue(const CDTIPID &cdtIPID, DWORD dwCustomData, int nParentValue);
-	CString _GetSubDataAreaText(int nAreaIndex, LPDATAAREA lpDataArea);
+/*	CString _GetSubDataAreaText(int nAreaIndex, LPDATAAREA lpDataArea);
 	CString _GetSubCustomAreaText(int nAreaIndex, LPCIP_CUSTOMAREA lpCustomArea, ICondition * pIConditionParent);
 	int _GetValueExplain_Custom(CStringArray &strExplainArray, const CDTIPID &cdtIPID, DWORD dwCustomData, ICondition *pIConditionParent, LPCDTVALUERANGE lpValueRangeSelf);
+ */
 };
 

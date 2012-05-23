@@ -8,6 +8,7 @@
 
 #include "Indicator.h"
 #include "ConditionInfo.h"
+#include "ICstPubFunc.h"
 
 #define		BUILDINDICATORNAME(szName, szShortName) { \
 if(bGetShortName) { \
@@ -514,27 +515,28 @@ LPCSTR CIndicator::GetName(const CDTIID &cdtIID, BOOL bGetShortName, DWORD dwCus
                     default: // 指定两位关系
 					{
 						int nPos1 = ((cdtIID.dwSystemIID - IID_STC_TWOPOS_BEGIN) / 10) % 10, nPos2 = (cdtIID.dwSystemIID - IID_STC_TWOPOS_BEGIN) % 10;
-						CString *pPosNames = bGetShortName ? m_strPosShortNames : m_strPosNames;
-						switch(nTypeIndex)
+                        LPSTR lpPos1Name = bGetShortName ? m_strPosShortNames[nPos1] : m_strPosNames[nPos1];
+                        LPSTR lpPos2Name = bGetShortName ? m_strPosShortNames[nPos2] : m_strPosNames[nPos2];
+                        switch(nTypeIndex)
 						{
-                            case TPT_SUM: sprintf(lpName, "%s＋%s", pPosNames[nPos1], pPosNames[nPos2]); break;
-                            case TPT_SUM_TAIL: sprintf(lpName, "%s＋%s尾", pPosNames[nPos1], pPosNames[nPos2]); break;
-                            case TPT_SUB_ASC: sprintf(lpName, "%s－%s", pPosNames[nPos1], pPosNames[nPos2]); break;
+                            case TPT_SUM: sprintf(lpName, "%s＋%s", lpPos1Name, lpPos2Name); break;
+                            case TPT_SUM_TAIL: sprintf(lpName, "%s＋%s尾", lpPos1Name, lpPos2Name); break;
+                            case TPT_SUB_ASC: sprintf(lpName, "%s－%s", lpPos1Name, lpPos2Name); break;
                             case TPT_SUB_DESC: 
-                            case TPT_SUB: sprintf(lpName, "%s－%s", pPosNames[nPos2], pPosNames[nPos1]); break;
-                            case TPT_SUB_TAIL: sprintf(lpName, "%s－%s尾", pPosNames[nPos2], pPosNames[nPos1]); break;
-                            case TPT_SUBABS: sprintf(lpName, "|%s－%s|", pPosNames[nPos1], pPosNames[nPos2]); break;
-                            case TPT_SUBABS_TAIL: sprintf(lpName, "|%s－%s|尾", pPosNames[nPos1], pPosNames[nPos2]); break;
+                            case TPT_SUB: sprintf(lpName, "%s－%s", lpPos2Name, lpPos1Name); break;
+                            case TPT_SUB_TAIL: sprintf(lpName, "%s－%s尾", lpPos2Name, lpPos1Name); break;
+                            case TPT_SUBABS: sprintf(lpName, "|%s－%s|", lpPos1Name, lpPos2Name); break;
+                            case TPT_SUBABS_TAIL: sprintf(lpName, "|%s－%s|尾", lpPos1Name, lpPos2Name); break;
                             case TPT_CIRSUB: 
-                            case TPT_CIRSUB_ASC: sprintf(lpName, "%s%s环差", pPosNames[nPos1], pPosNames[nPos2]); break;
-                            case TPT_CIRSUB_DESC: sprintf(lpName, "%s%s环差", pPosNames[nPos2], pPosNames[nPos1]); break;
+                            case TPT_CIRSUB_ASC: sprintf(lpName, "%s%s环差", lpPos1Name, lpPos2Name); break;
+                            case TPT_CIRSUB_DESC: sprintf(lpName, "%s%s环差", lpPos2Name, lpPos1Name); break;
                             case TPT_CIRSUB_TAIL:
-                            case TPT_CIRSUB_ASC_TAIL: sprintf(lpName, "%s%s环差尾", pPosNames[nPos1], pPosNames[nPos2]); break;
-                            case TPT_CIRSUB_DESC_TAIL: sprintf(lpName, "%s%s环差尾", pPosNames[nPos2], pPosNames[nPos1]); break;
-                            case TPT_MUL: sprintf(lpName, "%sＸ%s", pPosNames[nPos1], pPosNames[nPos2]); break;
-                            case TPT_MUL_TAIL: sprintf(lpName, "%sＸ%s尾", pPosNames[nPos1], pPosNames[nPos2]); break;
-                            case TPT_SUMSUB: sprintf(lpName, "%s%s合差", pPosNames[nPos1], pPosNames[nPos2]); break;
-                            case TPT_SUMCIRSUB: sprintf(lpName, "%s%s合环差", pPosNames[nPos1], pPosNames[nPos2]); break;
+                            case TPT_CIRSUB_ASC_TAIL: sprintf(lpName, "%s%s环差尾", lpPos1Name, lpPos2Name); break;
+                            case TPT_CIRSUB_DESC_TAIL: sprintf(lpName, "%s%s环差尾", lpPos2Name, lpPos1Name); break;
+                            case TPT_MUL: sprintf(lpName, "%sＸ%s", lpPos1Name, lpPos2Name); break;
+                            case TPT_MUL_TAIL: sprintf(lpName, "%sＸ%s尾", lpPos1Name, lpPos2Name); break;
+                            case TPT_SUMSUB: sprintf(lpName, "%s%s合差", lpPos1Name, lpPos2Name); break;
+                            case TPT_SUMCIRSUB: sprintf(lpName, "%s%s合环差", lpPos1Name, lpPos2Name); break;
                             default: return "未命名2位关系";
 						}
 					}
@@ -579,7 +581,7 @@ LPCSTR CIndicator::GetName(const CDTIID &cdtIID, BOOL bGetShortName, DWORD dwCus
 						if(wTempID >= IID_STC_REMM_COUNT_N && wTempID < IID_STC_REMM_COUNT_N + nDivisor)
 						{
 							LPSTR lpName = bGetShortName ? m_szShortName : m_szName;
-							sprintf(lpName, "除%d余%d个数", nDivisor, wTempID - IID_STC_REMM_COUNT_N);
+							sprintf(lpName, "除%d余%lu个数", nDivisor, wTempID - IID_STC_REMM_COUNT_N);
 						}
 						else
 						{

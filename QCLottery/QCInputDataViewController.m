@@ -176,7 +176,7 @@
 #pragma mark - QCInputDataEditViewControllerDelegate Method
 - (void)inputDataEditVCClose:(BOOL)dataModified
 {
-    [[self tableView] becomeFirstResponder];
+ 
     if (dataModified)   // 需要更新数据显示
     {
         dataChanged = YES;

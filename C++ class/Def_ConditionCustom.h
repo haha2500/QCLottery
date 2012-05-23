@@ -43,8 +43,8 @@ typedef struct tagCIP_HEAD						// 自定义指标参数头
 	{
 		Destroy();
         
-		this->dwDiffValues[0] = CTime::GetCurrentTime().GetTime();
-		this->dwDiffValues[1] = ::GetTickCount();
+		this->dwDiffValues[0] = time(NULL);
+		this->dwDiffValues[1] = rand();
 		this->wFlag = wFlag;
 		this->dwDataLen = dwDataLen;
 		if(dwDataLen > 0)

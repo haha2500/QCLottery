@@ -7,6 +7,7 @@
 //
 
 #include "IndicatorParam.h"
+#include "Def_ConditionValue.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -51,36 +52,6 @@ BOOL CIndicatorParam::Initialize(BOOL bFirstParam)
 BOOL CIndicatorParam::IsValid(const CDTIPID &cdtIPID)
 {
 	UNUSED_ALWAYS(cdtIPID);
-    
-    
-#ifndef _PROFESSIONAL	// 标准版
-	if(!m_bFirstParam)
-	{
-		ASSERT(FALSE);
-		return FALSE;	// 不支持二级扩展 
-	}
-    
-	if(cdtIPID.btType & CDTIPID_TYPE_CUSTOM)	// 自定义指标参数
-	{
-		return FALSE;
-	}
-    
-	if(cdtIPID.dwSystemIPID >= IPID_S_SUBAREA_0 && cdtIPID.dwSystemIPID <= IPID_S_SUBAREA_MAX)
-	{
-		return FALSE;	// 不支持自定义分区
-	}
-    
-	if(cdtIPID.dwSystemIPID >= IPID_D_CIRCLE_DISTANCE && cdtIPID.dwSystemIPID <= IPID_D_AXIS_DISTANCE_TAIL)	
-	{
-		return FALSE;	// 不支持环距等
-	}
-    
-	if(cdtIPID.dwSystemIPID >= IPID_D_TESTNUMS_SUB && cdtIPID.dwSystemIPID <= IPID_D_TESTNUMS_CIRSUB_TAIL)	
-	{
-		return FALSE;	// 不支持试机号差等
-	}
-#else
-#endif
     
 	return TRUE;
 }
@@ -157,7 +128,7 @@ BYTE CIndicatorParam::GetValueRangeType(const CDTIPID &cdtIPID, DWORD /*dwCustom
 				}
 				else
 				{
-					DEBUGOUT("Error: In CIndicatorParam::GetValueRangeType, dwSystemIPID=0X%08X not found!!!", cdtIPID.dwSystemIPID);
+					ASSERT(FALSE);
 				}
 			} break;
 		}
@@ -233,7 +204,7 @@ BYTE CIndicatorParam::GetValueType(const CDTIPID &cdtIPID, DWORD /*dwCustomData*
 				}
 				else
 				{
-					DEBUGOUT("Error: In CIndicatorParam::GetValueType, dwSystemIPID=0X%08X not found!!!", cdtIPID.dwSystemIPID);
+					ASSERT(FALSE);
 				}
 			} break;
 		}
@@ -311,7 +282,7 @@ BYTE CIndicatorParam::GetInputType(const CDTIPID &cdtIPID, DWORD /*dwCustomData*
 				}
 				else
 				{
-					DEBUGOUT("Error: In CIndicatorParam::GetInputType, dwSystemIPID=0X%08X not found!!!", cdtIPID.dwSystemIPID);
+					ASSERT(FALSE);
 				}
 			} break;
 		}
@@ -407,39 +378,40 @@ BOOL CIndicatorParam::IsDigitalValueName(const CDTIPID &cdtIPID, DWORD /*dwCusto
 }
 
 #define		GETVALUEEXPLAINITEM(nCalcValueIndex) \
-ASSERT(lpValueRangeSelf->nItemCount <= 128); \
-if(bIsParentDigitalValueName) { \
-for(i=0; i<lpValueRangeSelf->nItemCount; i++) { \
-cValueDataArrays[i].SetSize(lpValueRangeParent->nItemCount); \
-} \
-cVDAIndexArray.SetSize(lpValueRangeSelf->nItemCount); \
-} else { \
-strValueArray.SetSize(lpValueRangeSelf->nItemCount); \
-for(i=0; i<lpValueRangeSelf->nItemCount; i++) { \
-strValueArray[i].Empty(); \
-} \
-} \
-for(i=0; i<lpValueRangeParent->nItemCount; i++)	{ \
-nIndex = (nCalcValueIndex) - lpValueRangeSelf->nMinValue; \
-if(bIsParentDigitalValueName) { \
-cValueDataArrays[nIndex].SetAt(cVDAIndexArray[nIndex]++, lpValueRangeParent->stValueItem[i].nValue); \
-} else { \
-strValueArray[nIndex] += lpValueRangeParent->stValueItem[i].szValueName; \
-strValueArray[nIndex] += ", "; \
-} \
-} \
-/* 去除最后面的逗号和空格 */ \
-strExplainArray.SetSize(lpValueRangeSelf->nItemCount); \
-for(i=0; i<lpValueRangeSelf->nItemCount; i++) { \
-if(bIsParentDigitalValueName) { \
-cValueDataArrays[i].SetSize(cVDAIndexArray[i]); \
-strExplainArray[i].Format("%s：%s（%s）", lpValueRangeSelf->stValueItem[i].szBallName, lpValueRangeSelf->stValueItem[i].szValueName, g_pICstPubFunc->IntArrayToText(cValueDataArrays[i])); \
-} else { \
-strValueArray[i].TrimRight(", "); \
-strExplainArray[i].Format("%s：%s（%s）", lpValueRangeSelf->stValueItem[i].szBallName, lpValueRangeSelf->stValueItem[i].szValueName, strValueArray[i]); \
-} \
-}
+                ASSERT(lpValueRangeSelf->nItemCount <= 128); \
+                if(bIsParentDigitalValueName) { \
+                    for(i=0; i<lpValueRangeSelf->nItemCount; i++) { \
+                        cValueDataArrays[i].SetSize(lpValueRangeParent->nItemCount); \
+                    } \
+                    cVDAIndexArray.SetSize(lpValueRangeSelf->nItemCount); \
+                } else { \
+                    strValueArray.SetSize(lpValueRangeSelf->nItemCount); \
+                    for(i=0; i<lpValueRangeSelf->nItemCount; i++) { \
+                        strValueArray[i].Empty(); \
+                    } \
+                } \
+                for(i=0; i<lpValueRangeParent->nItemCount; i++)	{ \
+                    nIndex = (nCalcValueIndex) - lpValueRangeSelf->nMinValue; \
+                    if(bIsParentDigitalValueName) { \
+                    cValueDataArrays[nIndex].SetAt(cVDAIndexArray[nIndex]++, lpValueRangeParent->stValueItem[i].nValue); \
+                    } else { \
+                        strValueArray[nIndex] += lpValueRangeParent->stValueItem[i].szValueName; \
+                        strValueArray[nIndex] += ", "; \
+                    } \
+                } \
+                /* 去除最后面的逗号和空格 */ \
+                strExplainArray.SetSize(lpValueRangeSelf->nItemCount); \
+                for(i=0; i<lpValueRangeSelf->nItemCount; i++) { \
+                    if(bIsParentDigitalValueName) { \
+                        cValueDataArrays[i].SetSize(cVDAIndexArray[i]); \
+                        strExplainArray[i].Format("%s：%s（%s）", lpValueRangeSelf->stValueItem[i].szBallName, lpValueRangeSelf->stValueItem[i].szValueName, g_pICstPubFunc->IntArrayToText(cValueDataArrays[i])); \
+                    } else { \
+                        strValueArray[i].TrimRight(", "); \
+                        strExplainArray[i].Format("%s：%s（%s）", lpValueRangeSelf->stValueItem[i].szBallName, lpValueRangeSelf->stValueItem[i].szValueName, strValueArray[i]); \
+                    } \
+                }
 
+/*
 int CIndicatorParam::GetValueExplain(CStringArray &strExplainArray, const CDTIPID &cdtIPID, DWORD dwCustomData, ICondition *pIConditionParent, LPCDTVALUERANGE lpValueRangeSelf)
 {
 	ASSERT(pIConditionParent != NULL && lpValueRangeSelf != NULL);
@@ -586,7 +558,7 @@ int CIndicatorParam::GetValueExplain(CStringArray &strExplainArray, const CDTIPI
     
 	return strExplainArray.GetSize();
 }
-
+*/
 /////////////////////////////////////////////////////////////////////////////////////////////////
 
 void CIndicatorParam::_RemoveAllValue()
@@ -688,7 +660,7 @@ int CIndicatorParam::_GetCustomIPValue(const CDTIPID &cdtIPID, DWORD dwCustomDat
 	return nValue;
 }
 
-CString CIndicatorParam::_GetSubDataAreaText(int nAreaIndex, LPDATAAREA lpDataArea)
+/*CString CIndicatorParam::_GetSubDataAreaText(int nAreaIndex, LPDATAAREA lpDataArea)
 {
 	ASSERT(lpDataArea != NULL);
 	
@@ -778,7 +750,7 @@ int CIndicatorParam::_GetValueExplain_Custom(CStringArray &strExplainArray, cons
 			} break;
             case CIPHF_REMAINDER:
 			{
-                /*				LPCIP_CUSTOMREMAINDER lpCustomRem = (LPCIP_CUSTOMREMAINDER)lpCustomIP->lpDataBuf;
+                //				LPCIP_CUSTOMREMAINDER lpCustomRem = (LPCIP_CUSTOMREMAINDER)lpCustomIP->lpDataBuf;
                  int nDivisor = lpCustomRem->nDivisor;
                  if(pIConditionParent->GetValueRangeType() & CDTRT_NOLIMIT)
                  {
@@ -796,7 +768,7 @@ int CIndicatorParam::_GetValueExplain_Custom(CStringArray &strExplainArray, cons
                  CDWordArray cValueDataArrays[128], cVDAIndexArray;
                  int i = 0, nIndex = 0;
                  GETVALUEEXPLAINITEM(lpValueRangeParent->stValueItem[i].nValue % nDivisor);
-                 }*/
+                 }//
 			} break;
             default: ASSERT(FALSE); break;
 		}
@@ -804,3 +776,4 @@ int CIndicatorParam::_GetValueExplain_Custom(CStringArray &strExplainArray, cons
     
 	return strExplainArray.GetSize();
 }
+*/

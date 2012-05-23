@@ -95,12 +95,12 @@ LPCSTR CIndicatorParam::GetName(const CDTIPID &cdtIPID, DWORD dwCustomData)
 			if(cdtIPID.dwSystemIPID >= IPID_S_REMAINDER_0 && cdtIPID.dwSystemIPID <= IPID_S_REMAINDER_MAX)
 			{
 				// 指标参数为余数
-				sprintf(m_szNameTemp, "除%d余数", cdtIPID.dwSystemIPID - IPID_S_REMAINDER_0);
+				sprintf(m_szNameTemp, "除%lu余数", cdtIPID.dwSystemIPID - IPID_S_REMAINDER_0);
 			}
 			else if(cdtIPID.dwSystemIPID >= IPID_S_SUBAREA_0 && cdtIPID.dwSystemIPID <= IPID_S_SUBAREA_MAX)
 			{
 				// 指标参数为分区
-				sprintf(m_szNameTemp, "系统%d分区", cdtIPID.dwSystemIPID - IPID_S_SUBAREA_0);
+				sprintf(m_szNameTemp, "系统%lu分区", cdtIPID.dwSystemIPID - IPID_S_SUBAREA_0);
 			}
 			else
 			{
@@ -149,7 +149,7 @@ LPCSTR CIndicatorParam::GetExplain(const CDTIPID &cdtIPID)
 				if(cdtIPID.dwSystemIPID >= IPID_S_SUBAREA_0 && cdtIPID.dwSystemIPID <= IPID_S_SUBAREA_MAX)
 				{
 					// 指标参数为分区
-					sprintf(m_szExplain, "系统根据条件值自动划分的%d分区", cdtIPID.dwSystemIPID - IPID_S_SUBAREA_0);
+					sprintf(m_szExplain, "系统根据条件值自动划分的%lu分区", cdtIPID.dwSystemIPID - IPID_S_SUBAREA_0);
 				}
 				/*else if(cdtIPID.dwSystemIPID >= IPID_S_REMAINDER_0 && cdtIPID.dwSystemIPID <= IPID_S_REMAINDER_MAX)
                  {

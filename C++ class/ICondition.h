@@ -741,7 +741,7 @@ public:		// 接口函数
 	virtual BOOL IsDigitalValueName() = 0;
 	
 	// 获取值说明信息，nLeftSpaceCount：为前置空格个数，nSepSpaceCount为值说明间的空格个数
-	virtual BOOL GetValueExplain(CQuickAddString &strExplain, int nLeftSpaceCount = 0, int nSepSpaceCount = 2, int nMaxCol = 120) = 0;
+//	virtual BOOL GetValueExplain(CQuickAddString &strExplain, int nLeftSpaceCount = 0, int nSepSpaceCount = 2, int nMaxCol = 120) = 0;
     
 	// 是否支持图表
 	virtual BOOL IsSupportGraph() = 0;

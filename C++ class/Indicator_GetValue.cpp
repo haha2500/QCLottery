@@ -8,6 +8,7 @@
 
 #include "Indicator.h"
 #include "ConstData.h"
+#include "ICstPubFunc.h"
 #include <math.h>
 
 #define _GETSPECIALSUMVALUE(fnGetXXXValue, nCompValue) { for(int i=0; i<m_btNumberCount; i++){ if(fnGetXXXValue(m_lpNumsData[i]) == nCompValue){ nValue += m_lpNumsData[i]; } } }
@@ -322,8 +323,8 @@ LPCDTVALUE CIndicator::GetValue(const CDTIID &cdtIID, DWORD dwCustomData, LPBYTE
 		} break;
         case IID_STC_NEARSPACE_ANY:
 		{
-			int nValues[8] = {0};
-			for(int i=1; i<m_btNumberCount; i++)
+			int i = 0, nValues[8] = {0};
+			for(i=1; i<m_btNumberCount; i++)
 			{
 				nValues[i-1] = m_lpNumsData[i] - m_lpNumsData[i-1];
 			}
@@ -591,11 +592,11 @@ LPCDTVALUE CIndicator::_FillMulValues(int *pValues, BYTE btValueCount)
 	g_pICstPubFunc->QuickSort(pValues, btValueCount, QSVT_INT);
     
 	LPCDTVALUEITEM lpItem = NULL;
-	int nIndex = 0;
+	int i = 0, j = 0, nIndex = 0;
     
-	for(int i=0; i<btValueCount; i++)
+	for(i=0; i<btValueCount; i++)
 	{
-		for(int j=0; j<nIndex; j++)
+		for(j=0; j<nIndex; j++)
 		{
 			lpItem = &m_lpValueTemp->stValueItems[j];
 			if(lpItem->nValue == pValues[i])
@@ -904,11 +905,11 @@ int CIndicator::_GetEqualDiffValue()
 
 int CIndicator::_GetSameOrDiffNumCountValue(DWORD dwIID)
 {
-	int nValue = 0;
+	int nValue = 0, i = 0;
 	
 	// 置标志
 	BYTE btTemp[100] = {0};
-	for(int i=0; i<m_btNumberCount; i++)
+	for(i=0; i<m_btNumberCount; i++)
 	{
 		btTemp[m_lpNumsData[i]] ++;
 	}
@@ -1560,7 +1561,8 @@ int CIndicator::_GetOddEvenLinkValue()
 
 int CIndicator::_GetBigSmall(int nValue)
 {
-	return theApp.GetSubAreaIndex(2, nValue, m_btMinNumber, m_btMaxNumber) - 1;
+// TEST	return theApp.GetSubAreaIndex(2, nValue, m_btMinNumber, m_btMaxNumber) - 1;
+    return 0;
 }
 
 int CIndicator::_GetBigSmallCount(int nFlag)
@@ -1600,7 +1602,8 @@ int CIndicator::_GetBigSmallArrange(BOOL bGetValue)
 
 int CIndicator::_GetPrimeComposite(int nValue)
 {
-	return theApp.m_btPrimeFlag[nValue];
+// TEST	return theApp.m_btPrimeFlag[nValue];
+    return 0;
 }
 
 int CIndicator::_GetPrimeCompositeCount(int nFlag)
@@ -1623,7 +1626,7 @@ int CIndicator::_GetPrimeCompositeArrange(BOOL bGetValue)
 	
 	for(int i=m_btNumberCount-1; i>=0; i--)
 	{
-		nRtn += theApp.m_btPrimeFlag[m_lpNumsData[i]] * j;
+// TEST		nRtn += theApp.m_btPrimeFlag[m_lpNumsData[i]] * j;
 		j *= (bGetValue ? 2 : 10);
 	}
 	
@@ -1724,7 +1727,7 @@ int CIndicator::_Get012Arrange(BYTE btType, BOOL bGetValue)
 
 int CIndicator::_GetDZX(int nValue)
 {
-	return theApp.GetSubAreaIndex(3, nValue, m_btMinNumber, m_btMaxNumber) - 1;
+	return 0; // TEST theApp.GetSubAreaIndex(3, nValue, m_btMinNumber, m_btMaxNumber) - 1;
 }
 
 int CIndicator::_GetDZXCount(int nFlag)
@@ -2029,8 +2032,10 @@ int CIndicator::_Get1DValue(DWORD dwIID)
 
 int CIndicator::_GetProductValue(DWORD dwIID)
 {
-	int i, nValue = 1;
-    
+	int nValue = 1;
+  
+    // TEST
+    /*
 	switch(dwIID)
 	{
         case IID_STC_MUL: 
@@ -2075,7 +2080,7 @@ int CIndicator::_GetProductValue(DWORD dwIID)
             
         default: ASSERT(FALSE); break;
 	}
-    
+    */
 	return nValue;
 }
 
@@ -2147,6 +2152,7 @@ int CIndicator::_GetTwoNums_Z3(DWORD dwIID)
 int CIndicator::_GetTwoNums_Z6(DWORD dwIID)
 {
 	ASSERT(m_btNumberCount == 3);	
+    int i = 0;
     
 	if(dwIID == IID_STC_TWONUM_Z6)
 	{
@@ -2169,7 +2175,7 @@ int CIndicator::_GetTwoNums_Z6(DWORD dwIID)
 		}
 		BYTE btCompares[][2] = {{0, 3}, {0, 6}, {0, 9}, {1, 4}, {1, 7}, {2, 5}, {2, 8}, {MAXBYTE, MAXBYTE}, {3, 6}, {3, 9}, {4, 7}, {5, 8}, {6, 9}};
 		BYTE btDataFlag[64] = {0};
-		for(int i=0; i<m_btNumberCount; i++)
+		for(i=0; i<m_btNumberCount; i++)
 		{
 			btDataFlag[m_lpNumsData[i]] = 1;
 		}
@@ -2195,7 +2201,7 @@ int CIndicator::_GetTwoNums_Z6(DWORD dwIID)
 			return DTNZ62_Z3;
 		}
 		BYTE btCount[8] = {0};
-		for(int i=m_btNumberCount-1; i>=0; i--)
+		for(i=m_btNumberCount-1; i>=0; i--)
 		{
 			btCount[m_lpNumsData[i] % 3] ++;
 		}
@@ -2607,7 +2613,7 @@ LPCDTVALUE CIndicator::_GetRemainderValue(DWORD dwIID)
 				btTemp[i] = (BYTE)(m_lpNumsData[i] % nDivisor);
 			}
 			g_pICstPubFunc->QuickSort(btTemp, m_btNumberCount);
-			for(i=m_btNumberCount-1; i>=0; i--)
+			for(int i=m_btNumberCount-1; i>=0; i--)
 			{
 				nValue += btTemp[i] * nRatio;
 				nRatio *= 10;
@@ -2623,7 +2629,7 @@ LPCDTVALUE CIndicator::_GetRemainderValue(DWORD dwIID)
 			{
 				nValues[m_lpNumsData[i] % nDivisor] ++;
 			}
-			for(i=nDivisor-1; i>=0; i--)
+			for(int i=nDivisor-1; i>=0; i--)
 			{
 				nValue += nValues[i] * nRatio;
 				nRatio *= 10;
@@ -2658,7 +2664,7 @@ LPCDTVALUE CIndicator::_GetRemainderValue(DWORD dwIID)
 			{
 				btTemp[m_lpNumsData[i] % nDivisor] = 1;
 			}
-			for(i=0; i<nDivisor; i++)
+			for(int i=0; i<nDivisor; i++)
 			{
 				if(btTemp[i] == 0)
 					nValue ++;
@@ -2671,7 +2677,7 @@ LPCDTVALUE CIndicator::_GetRemainderValue(DWORD dwIID)
 			{
 				btTemp[m_lpNumsData[i] % nDivisor] = 1;
 			}
-			for(i=0; i<nDivisor; i++)
+			for(int i=0; i<nDivisor; i++)
 			{
 				if(btTemp[i] == 1)
 					nValue ++;
@@ -2760,7 +2766,7 @@ LPCDTVALUE CIndicator::_GetAreaValue(WORD wUseType, DWORD dwCustomData)
 					btTemp[i] = (BYTE)(btTemp[i]);
 			}
 			g_pICstPubFunc->QuickSort(btTemp, m_btNumberCount);
-			for(i=m_btNumberCount-1; i>=0; i--)
+			for(int i=m_btNumberCount-1; i>=0; i--)
 			{
 				nValue += btTemp[i] * nRatio;
 				nRatio *= 10;
@@ -2776,7 +2782,7 @@ LPCDTVALUE CIndicator::_GetAreaValue(WORD wUseType, DWORD dwCustomData)
 			{
 				nValues[lpDataArea->btSubAreaValues[m_lpNumsData[i]] - lpDataArea->btSubAreaMinValue] ++;
 			}
-			for(i=lpDataArea->btAreaCount-1; i>=0; i--)
+			for(int i=lpDataArea->btAreaCount-1; i>=0; i--)
 			{
 				nValue += nValues[i] * nRatio;
 				nRatio *= 10;
@@ -2809,7 +2815,7 @@ LPCDTVALUE CIndicator::_GetAreaValue(WORD wUseType, DWORD dwCustomData)
 			{
 				btTemp[lpDataArea->btSubAreaValues[m_lpNumsData[i]] - lpDataArea->btSubAreaMinValue] = 1;
 			}
-			for(i=0; i<lpDataArea->btAreaCount; i++)
+			for(int i=0; i<lpDataArea->btAreaCount; i++)
 			{
 				if(btTemp[i] == 0)
 					nValue ++;
@@ -2822,7 +2828,7 @@ LPCDTVALUE CIndicator::_GetAreaValue(WORD wUseType, DWORD dwCustomData)
 			{
 				btTemp[lpDataArea->btSubAreaValues[m_lpNumsData[i]] - lpDataArea->btSubAreaMinValue] = 1;
 			}
-			for(i=0; i<lpDataArea->btAreaCount; i++)
+			for(int i=0; i<lpDataArea->btAreaCount; i++)
 			{
 				if(btTemp[i] == 1)
 					nValue ++;
@@ -2913,8 +2919,8 @@ int CIndicator::_CalcTwoPos(int nPos1, int nPos2, int nType)
 			nValue %= 10;
 			return nValue;
 		} break;
-        case TPT_MUL: return theApp.m_btProductNums[m_lpNumsData[nPos1]] * theApp.m_btProductNums[m_lpNumsData[nPos2]]; break;
-        case TPT_MUL_TAIL: return (theApp.m_btProductNums[m_lpNumsData[nPos1]] * theApp.m_btProductNums[m_lpNumsData[nPos2]]) % 10; break;
+// TEST        case TPT_MUL: return theApp.m_btProductNums[m_lpNumsData[nPos1]] * theApp.m_btProductNums[m_lpNumsData[nPos2]]; break;
+// TEST        case TPT_MUL_TAIL: return (theApp.m_btProductNums[m_lpNumsData[nPos1]] * theApp.m_btProductNums[m_lpNumsData[nPos2]]) % 10; break;
         default: ASSERT(FALSE); break;
 	}
     
@@ -3022,22 +3028,22 @@ int CIndicator::_GetMaxSameNumberCount()
 
 //////////////////////////////////////////////////////////////////////////////////////////////
 #define INIT_INDEXOF_COUNTARRANGE(btNumCountIn) \
-if(btItemCount == btNumCountIn) { \
-n[btNumCountIn-1] = m_btNumberCount; \
-for(i=0; i<btNumCountIn-1; i++) n[btNumCountIn-1] -= n[i]; \
-nIndex ++; \
-if(nIndex >= 255) { \
-pIndexValues[0] = MAXDWORD; \
-return; \
-} \
-pIndexValues[nIndex] = 0; \
-nRatio = 1; \
-for(i=btNumCountIn-1; i>=0; i--) { \
-pIndexValues[nIndex] += n[i] * nRatio; \
-nRatio *= 10; \
-} \
-continue; \
-}
+            if(btItemCount == btNumCountIn) { \
+                n[btNumCountIn-1] = m_btNumberCount; \
+                for(i=0; i<btNumCountIn-1; i++) n[btNumCountIn-1] -= n[i]; \
+                    nIndex ++; \
+                if(nIndex >= 255) { \
+                    pIndexValues[0] = MAXDWORD; \
+                    return; \
+                } \
+                pIndexValues[nIndex] = 0; \
+                nRatio = 1; \
+                for(i=btNumCountIn-1; i>=0; i--) { \
+                    pIndexValues[nIndex] += n[i] * nRatio; \
+                    nRatio *= 10; \
+                } \
+                continue; \
+            }
 
 void CIndicator::_InitIndexOfCountArrange(BYTE btItemCount)
 {
@@ -3086,74 +3092,6 @@ void CIndicator::_InitIndexOfCountArrange(BYTE btItemCount)
 	pIndexValues[0] = nIndex;
 }
 
-/*
- #define INIT_INDEXOF_GROUPARRANGE(btNumCountIn) \
- if(btItemCount == btNumCountIn) { \
- nIndex ++; \
- pIndexValues[nIndex] = 0; \
- nRatio = 1; \
- for(i=btNumCountIn-1; i>=0; i--) { \
- pIndexValues[nIndex] += n[i] * nRatio; \
- nRatio *= 10; \
- } \
- continue; \
- }
- 
- void CIndicator::_InitIndexOfGroupArrange(BYTE btItemCount, BYTE btMaxValue)
- {
- if(m_btNumberCount < 2)
- {
- return ;
- }
- 
- ASSERT(btItemCount > 1 && btItemCount <= 9);
- if((btMaxValue > 9) || ((int)pow(btMaxValue, btItemCount) >= MAXCOUNT_VALUEITEM))
- {
- return ;
- }
- 
- int i, nIndex = 0, nRatio = 1, n[9] = {0};
- LPDWORD pIndexValues = &m_dwGroupArrangeValueIndexs[btItemCount - 2][btMaxValue - 1][0];
- 
- for(n[0]=0; n[0]<=btMaxValue; n[0]++)
- {
- INIT_INDEXOF_GROUPARRANGE(1);
- for(n[1]=n[0]; n[1]<=btMaxValue; n[1]++)
- {
- INIT_INDEXOF_GROUPARRANGE(2);
- for(n[2]=n[1]; n[2]<=btMaxValue; n[2]++)
- {
- INIT_INDEXOF_GROUPARRANGE(3);
- for(n[3]=n[2]; n[3]<=btMaxValue; n[3]++)
- {
- INIT_INDEXOF_GROUPARRANGE(4);
- for(n[4]=n[3]; n[4]<=btMaxValue; n[4]++)
- {
- INIT_INDEXOF_GROUPARRANGE(5);
- for(n[5]=n[4]; n[5]<=btMaxValue; n[5]++)
- {
- INIT_INDEXOF_GROUPARRANGE(6);
- for(n[6]=n[5]; n[6]<=btMaxValue; n[6]++)
- {
- INIT_INDEXOF_GROUPARRANGE(7);
- for(n[7]=n[6]; n[7]<=btMaxValue; n[7]++)
- {
- INIT_INDEXOF_GROUPARRANGE(8);
- }
- }
- }
- }
- }
- }
- }
- }
- 
- ASSERT(nIndex < 1024);
- 
- pIndexValues[0] = nIndex;
- }
- */
-
 int CIndicator::_GetIndexOfCountArrange(int nValue, BYTE btItemCount, BOOL bAscOrder)
 {
 	ASSERT(btItemCount > 1 && btItemCount <= 9);
@@ -3172,19 +3110,6 @@ int CIndicator::_GetIndexOfCountArrange(int nValue, BYTE btItemCount, BOOL bAscO
 	}
 }
 
-/*
- int CIndicator::_GetIndexOfGroupArrange(int nValue, BYTE btItemCount, BYTE btMaxValue)
- {
- ASSERT(btItemCount > 1 && btItemCount <= 9);
- ASSERT(btMaxValue > 0 && btMaxValue <= 9);
- LPDWORD pIndexValues = &m_dwGroupArrangeValueIndexs[btItemCount - 2][btMaxValue - 1][0];
- ASSERT(pIndexValues[0] != MAXDWORD);
- 
- int nIndex = g_pICstPubFunc->QuckFind_Half((LPINT)&pIndexValues[1], pIndexValues[0], nValue, TRUE);
- 
- return nIndex;
- }
- */
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
 int CIndicator::_GetXLValue(BYTE btType, DWORD dwIssueIndex)
@@ -3207,7 +3132,7 @@ int CIndicator::_GetXLValue(BYTE btType, DWORD dwIssueIndex)
     
 	// 计算斜连值
 	int nLeft = 0, nRight = 0;
-	for(i=0; i<m_btNumberCount; i++)
+	for(int i=0; i<m_btNumberCount; i++)
 	{
 		if(btType != 1)		// 需要计算左斜连值
 		{
@@ -3300,7 +3225,7 @@ int CIndicator::_GetRepeatCountValue(DWORD dwIID, DWORD dwIssueIndex)
 				btTemp[lpLastNNums[i]] = 1;
 			}
 			
-			for(i=0; i<m_btNumberCount; i++)
+			for(int i=0; i<m_btNumberCount; i++)
 			{
 				if(btTemp[m_lpNumsData[i]] == 1)
 				{
@@ -3325,7 +3250,7 @@ int CIndicator::_GetRepeatCountValue(DWORD dwIID, DWORD dwIssueIndex)
 			for(int j=0; j<nIssueCount; j++)
 			{
 				LPBYTE lpLastNNums = g_pIData->GetItemNums(nCompareIssueIndex + j);				
-				for(i=0; i<m_btNumberCount; i++)
+				for(int i=0; i<m_btNumberCount; i++)
 				{
 					if(btTemp[lpLastNNums[i]] == 1)
 					{
@@ -3404,7 +3329,7 @@ LPCDTVALUE CIndicator::_GetPrevDataValue(int nPosIndex, DWORD dwIssueIndex, int 
 			g_pICstPubFunc->QuickSort(btValues, m_btNumberCount);
 			
 			int nValue = 0, nRatio = 1;
-			for(i=m_btNumberCount-1; i>=0; i--)
+			for(int i=m_btNumberCount-1; i>=0; i--)
 			{
 				nValue += (btValues[i]) * nRatio;
 				nRatio *= 10;

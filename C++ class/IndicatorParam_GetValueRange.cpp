@@ -178,7 +178,7 @@ BOOL CIndicatorParam::GetValueRange(const CDTIPID &cdtIPID, ICondition *pICdtPar
 				}
 				else
 				{
-					DEBUGOUT("Error: In CIndicatorParam::GetValueRange, cdtIPID.dwSystemIPID=0X%02X not found!!!", cdtIPID.dwSystemIPID);
+					ASSERT(FALSE);
 				}
 			} break;
 		}
@@ -314,7 +314,7 @@ void CIndicatorParam::_FillValueRange_Abs(ICondition *pICdtParent)
 		return ;
 	}
 	
-	int nMaxValue = max(abs(lpParentValueRange->nMinValue), abs(lpParentValueRange->nMaxValue));
+	int nMaxValue = fmax(abs(lpParentValueRange->nMinValue), abs(lpParentValueRange->nMaxValue));
     /*	CDWordArray cAbsValueArray;
      cAbsValueArray.SetSize(nMaxValue + 1);
      for(int i=0; i<lpParentValueRange->nItemCount; i++)

@@ -189,7 +189,4 @@
     
     return YES;
 }
-- (IBAction)NumsTextDidEnd:(id)sender
-{
-}
 @end

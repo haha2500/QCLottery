@@ -24,5 +24,5 @@
 @property (weak, nonatomic) IBOutlet UITextField *testnumsText;
 @property (weak, nonatomic) IBOutlet UITextField *numsText;
 @property (weak, nonatomic) IBOutlet UIDatePicker *datePicker;
-- (IBAction)NumsTextDidEnd:(id)sender;
+
 @end

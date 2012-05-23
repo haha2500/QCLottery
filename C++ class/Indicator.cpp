@@ -7,6 +7,7 @@
 //
 
 #include "Indicator.h"
+#include "ICstPubFunc.h"
 
 //////////////////////////////////////////////////////////////////////
 // Construction/Destruction
@@ -63,8 +64,8 @@ void CIndicator::OnDataTypeChanged()
     
 	for(int i=0; i<m_btNumberCount; i++)
 	{
-		m_strPosNames[i] = g_pICstPubFunc->GetPosName(i, FALSE);
-		m_strPosShortNames[i] = g_pICstPubFunc->GetPosName(i, TRUE);
+		strcpy(m_strPosNames[i], g_pICstPubFunc->GetPosName(i, FALSE));
+		strcpy(m_strPosShortNames[i], g_pICstPubFunc->GetPosName(i, TRUE));
 	}
 }
 
@@ -1354,88 +1355,6 @@ BOOL CIndicator::IsDigitalValueName(const CDTIID &cdtIID, DWORD dwCustomData, LP
 	{
 		return FALSE;	// 非数字型
 	}
-}
-
-int CIndicator::GetValueExplain(CStringArray &strExplainArray, const CDTIID &cdtIID, DWORD dwCustomData, LPCDTVALUERANGE lpValueRange)
-{
-	if(cdtIID.btType & CDTIID_TYPE_DATAAREA)	// 分区指标
-	{
-		if(cdtIID.stCustomIID.wUseType <= CIDAUT_POS_ANY)
-		{			
-			LPDATAAREA lpCurDataArea = LPDATAAREA(dwCustomData);
-			if(lpCurDataArea == NULL || lpCurDataArea->btAreaCount != lpValueRange->nItemCount)
-			{
-				ASSERT(FALSE);
-				return 0;
-			}
-            
-			strExplainArray.SetSize(lpValueRange->nItemCount);
-			CDWordArray dwValueArray;
-			BYTE i = 0, j = 0, k = 0, btIndex = 0, btMinNumber = g_pIData->GetMinNumber(), btMaxNumber = g_pIData->GetMaxNumber();
-			
-			for(j=lpCurDataArea->btSubAreaMinValue; j<lpCurDataArea->btAreaCount+lpCurDataArea->btSubAreaMinValue; j++)
-			{
-				dwValueArray.SetSize(btMaxNumber);
-				btIndex = 0;
-				for(k=btMinNumber; k<=btMaxNumber; k++)
-				{
-					if(lpCurDataArea->btSubAreaValues[k] == j)
-					{
-						dwValueArray.SetAt(btIndex, k);
-						btIndex ++;
-					}
-				}
-				dwValueArray.SetSize(btIndex);
-				LPCSTR lpszTemp = g_pICstPubFunc->IntArrayToText(dwValueArray, btMaxNumber <= 9 ? TRUE : FALSE, btMaxNumber <= 9 ? 0 : 2);
-				i = BYTE(j - lpCurDataArea->btSubAreaMinValue);
-				strExplainArray[i].Format("%s：%s（%s）", lpValueRange->stValueItem[i].szBallName, lpValueRange->stValueItem[i].szValueName, lpszTemp);
-			}
-			return strExplainArray.GetSize();
-		}
-	}
-    
-	if(cdtIID.btType & CDTIID_TYPE_CUSTOM)	// 自定义指标
-	{
-	}
-	else if(cdtIID.dwSystemIID >= IID_STC_REMM_BEGIN && cdtIID.dwSystemIID <= IID_STC_REMM_END)	// 余数
-	{
-		int nDivisor = (cdtIID.dwSystemIID - IID_STC_REMM_BEGIN) / 100 + 2;
-		if(cdtIID.dwSystemIID - (nDivisor - 2) * 100 <= IID_STC_REMM_POS_ANY)
-		{			
-			strExplainArray.SetSize(lpValueRange->nItemCount);
-			int nAllNumsCount = g_pIData->GetAllNumberCount(), nMinNumber = g_pIData->GetMinNumber();			
-			CString strTemp;
-			for(int i=0; i<nDivisor; i++)
-			{
-				for(int j=0; j<nAllNumsCount; j++)
-				{
-					if((j + nMinNumber) % nDivisor == i)
-					{
-						strTemp += g_pIData->GetNumberText(j);
-						strTemp += ",";
-					}
-				}
-				strTemp.TrimRight(",");
-				strExplainArray[i].Format("%s：%s（%s）", lpValueRange->stValueItem[i].szBallName, lpValueRange->stValueItem[i].szValueName, strTemp);
-				strTemp.Empty();
-			}
-			return strExplainArray.GetSize();
-		}
-	}
-    
-	// 普通条件
-	if(IsDigitalValueName(cdtIID, dwCustomData, lpValueRange))
-	{
-		return 0;	// 数值型，不需要说明
-	}
-    
-	strExplainArray.SetSize(lpValueRange->nItemCount);
-	for(int i=0; i<lpValueRange->nItemCount; i++)
-	{
-		strExplainArray[i] = lpValueRange->stValueItem[i].szValueName;
-	}
-    
-	return strExplainArray.GetSize();
 }
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////

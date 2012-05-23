@@ -77,3 +77,5 @@ typedef void *HANDLE;
 #else
     #define ASSERT(x)
 #endif
+
+#define UNUSED_ALWAYS(x)
