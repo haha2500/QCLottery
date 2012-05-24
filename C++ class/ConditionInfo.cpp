@@ -49,11 +49,11 @@
                 return ; \
                 }
 
-#define		ADD_CONDITION(dwSysDefIID) \
+#define		ADD_CONDITION(dwSysDefIID, dwSysDefIPID, dwSysDefIPID2) \
                 lpCdtInfo = new CONDITIONINFO; \
                 lpCdtInfo->dwParentID = dwParentID[nGroupLevel]; \
                 lpCdtInfo->dwGroupID = 0; \
-                lpCdtInfo->cdtID.InitSystemID((dwSysDefIID), IPID_NONE, IPID_NONE); \
+                lpCdtInfo->cdtID.InitSystemID((dwSysDefIID), dwSysDefIPID, dwSysDefIPID2); \
                 cSysConditionInfoPointArray.SetAt(wIndex++, (DWORD)lpCdtInfo);
 
 
@@ -592,23 +592,74 @@ void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray
 		return ;		// 已经装载过，则忽略
 	}
     
-	int i = 0, j = 0, k = 0, nTemp = 0, nNumberCount = g_pIData->GetNumberCount();
-	char szTemp[128] = {0};
+	int i = 0, /*j = 0, k = 0, nTemp = 0, */nNumberCount = g_pIData->GetNumberCount();
+//	char szTemp[128] = {0};
     
  	BEGIN_LOAD()
     if (bBase)  // 基本条件
     {
         for(i=0; i<nNumberCount; i++)
         {
-            BEGIN_ADD_GROUP(g_pICstPubFunc->GetPosName(i), CDTID_FIXGROUP_POS)   // 第n位号码
-                ADD_CONDITION(IID_STC_POS_1 + i)						
+            BEGIN_ADD_GROUP(g_pICstPubFunc->GetPosName(i), CDTID_FIXGROUP_POS + i)   // 第n位号码
+                ADD_CONDITION(IID_STC_POS_1 + i, IPID_NONE, IPID_NONE)	
+                ADD_CONDITION(IID_STC_POS_1 + i, IPID_S_ODDEVEN, IPID_NONE)
+                ADD_CONDITION(IID_STC_POS_1 + i, IPID_S_BIGSMALL, IPID_NONE)
+                ADD_CONDITION(IID_STC_POS_1 + i, IPID_S_DZX, IPID_NONE)
+                ADD_CONDITION(IID_STC_POS_1 + i, IPID_S_012, IPID_NONE)
+                ADD_CONDITION(IID_STC_POS_1 + i, IPID_S_PRIMECOMPOSITE, IPID_NONE)
+                ADD_CONDITION(IID_STC_POS_1 + i, IPID_D_DISTANCE, IPID_NONE)
             END_ADD_GROUP()
         }
+        BEGIN_ADD_GROUP("和值", CDTID_FIXGROUP_SUM)
+            ADD_CONDITION(IID_STC_SUM, IPID_NONE, IPID_NONE)	
+            ADD_CONDITION(IID_STC_SUM, IPID_S_ODDEVEN, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUM, IPID_S_BIGSMALL, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUM, IPID_S_DZX, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUM, IPID_S_012, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUM, IPID_S_PRIMECOMPOSITE, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUM, IPID_D_DISTANCE, IPID_NONE)
+        END_ADD_GROUP()
+        BEGIN_ADD_GROUP("合值", CDTID_FIXGROUP_SUMTAIL)
+            ADD_CONDITION(IID_STC_SUMTAIL, IPID_NONE, IPID_NONE)	
+            ADD_CONDITION(IID_STC_SUMTAIL, IPID_S_ODDEVEN, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUMTAIL, IPID_S_BIGSMALL, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUMTAIL, IPID_S_DZX, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUMTAIL, IPID_S_012, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUMTAIL, IPID_S_PRIMECOMPOSITE, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUMTAIL, IPID_D_DISTANCE, IPID_NONE)
+        END_ADD_GROUP()
+        BEGIN_ADD_GROUP("跨度", CDTID_FIXGROUP_SPAN)
+            ADD_CONDITION(IID_STC_SPAN, IPID_NONE, IPID_NONE)	
+            ADD_CONDITION(IID_STC_SPAN, IPID_S_ODDEVEN, IPID_NONE)
+            ADD_CONDITION(IID_STC_SPAN, IPID_S_BIGSMALL, IPID_NONE)
+            ADD_CONDITION(IID_STC_SPAN, IPID_S_DZX, IPID_NONE)
+            ADD_CONDITION(IID_STC_SPAN, IPID_S_012, IPID_NONE)
+            ADD_CONDITION(IID_STC_SPAN, IPID_S_PRIMECOMPOSITE, IPID_NONE)
+            ADD_CONDITION(IID_STC_SPAN, IPID_D_DISTANCE, IPID_NONE)
+        END_ADD_GROUP()
         
     }
     else        // 高级条件
     {
-        
+        BEGIN_ADD_GROUP("N次和", CDTID_FIXGROUP_SUM_N)
+            ADD_CONDITION(IID_STC_SUM_N, IPID_NONE, IPID_NONE)	
+            ADD_CONDITION(IID_STC_SUM_N, IPID_S_ODDEVEN, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUM_N, IPID_S_BIGSMALL, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUM_N, IPID_S_DZX, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUM_N, IPID_S_012, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUM_N, IPID_S_PRIMECOMPOSITE, IPID_NONE)
+            ADD_CONDITION(IID_STC_SUM_N, IPID_D_DISTANCE, IPID_NONE)
+        END_ADD_GROUP()
+        BEGIN_ADD_GROUP("均值", CDTID_FIXGROUP_AVG)
+            ADD_CONDITION(IID_STC_AVG, IPID_NONE, IPID_NONE)	
+            ADD_CONDITION(IID_STC_AVG, IPID_S_ODDEVEN, IPID_NONE)
+            ADD_CONDITION(IID_STC_AVG, IPID_S_BIGSMALL, IPID_NONE)
+            ADD_CONDITION(IID_STC_AVG, IPID_S_DZX, IPID_NONE)
+            ADD_CONDITION(IID_STC_AVG, IPID_S_012, IPID_NONE)
+            ADD_CONDITION(IID_STC_AVG, IPID_S_PRIMECOMPOSITE, IPID_NONE)
+            ADD_CONDITION(IID_STC_AVG, IPID_D_DISTANCE, IPID_NONE)
+        END_ADD_GROUP()
+
     }
     END_LOAD()
  /*

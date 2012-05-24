@@ -602,6 +602,8 @@
 #define		CDTID_FIXGROUP_DHK							0X00001060								// 胆合跨
 #define		CDTID_FIXGROUP_POS							0X00001070								// 按位
 #define		CDTID_FIXGROUP_SUM							0X00001080								// 和值
+#define		CDTID_FIXGROUP_SUMTAIL						0X00001081								// 合值
+#define		CDTID_FIXGROUP_SUM_N						0X00001081								// N次和
 #define		CDTID_FIXGROUP_SPAN							0X00001090								// 跨度
 #define		CDTID_FIXGROUP_AVG							0X00001098								// 均值
 #define		CDTID_FIXGROUP_AC							0X000010A0								// AC值

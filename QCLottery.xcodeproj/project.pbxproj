@@ -267,8 +267,8 @@
 		EEA611571562639500482FFE /* C++ class */ = {
 			isa = PBXGroup;
 			children = (
-				EEA611581562639500482FFE /* BallBitmap.cpp */,
 				EEA611591562639500482FFE /* BallBitmap.h */,
+				EEA611581562639500482FFE /* BallBitmap.cpp */,
 				EEA6116E1562639500482FFE /* IData.h */,
 				EEA6115B1562639500482FFE /* Data.h */,
 				EEA6115A1562639500482FFE /* Data.cpp */,
