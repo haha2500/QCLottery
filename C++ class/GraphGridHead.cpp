@@ -353,8 +353,7 @@ CGRect CGraphGridHead::GetCellRect(int nColIndex)
 	{
 		if(m_btShowFlag & GHSF_COLUMN)	// 含列名
 		{
-			int nColCount = m_pGraphGridPublic->GetColumnCount();
-			ASSERT(nColIndex >= 0 && nColIndex < nColCount);
+			ASSERT(nColIndex >= 0 && nColIndex < m_pGraphGridPublic->GetColumnCount());
 			rect = GetRect();
             
 			if(m_bIsHead)	// 作为表头

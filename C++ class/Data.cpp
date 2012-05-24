@@ -199,6 +199,7 @@ BOOL CData::DownloadLtyNums(BOOL &bModified)
         
         if(!m_pInitDataFactory->AddItemInfo(dwDateTime, dwIssue, btData))
         {
+            CloseLotteryFile(FALSE);
             return FALSE;
         }
         bModified = TRUE;

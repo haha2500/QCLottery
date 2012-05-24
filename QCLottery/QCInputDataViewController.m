@@ -60,10 +60,7 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    if (dataChanged)
-    {
-        g_pIData->CloseLotteryFile(); 
-    }
+    g_pIData->CloseLotteryFile(dataChanged); 
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation

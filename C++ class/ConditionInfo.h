@@ -36,7 +36,7 @@ public:	// 用于条件扩展树
 	
 private:	
 	void _LoadMineConditions();		// 装载我的条件信息
-	void _LoadSysConditions(CDWordArray &cSysConditionInfoPointArray);              // 装载系统条件信息
+	void _LoadSysConditions(CDWordArray &cSysConditionInfoPointArray, BOOL bBase = TRUE);              // 装载系统条件信息
 	void _LoadAreaConditions(LPFIXCONDITIONGROUP lpParent, BYTE btAreaCount);		// 装载分区条件信息
     
 /*	void _GetExtendConditions(CDWordArray &cdtExtendIDPointArray, BOOL bDefault = FALSE);
@@ -52,7 +52,8 @@ private:
 	BOOL _IsFCGroupValid(DWORD dwGroupID);*/
     
 private:
-	CDWordArray m_cSysConditionInfoPointArray;			// 系统条件信息组指针集合
+	CDWordArray m_cSysBaseConditionInfoPointArray;		// 系统基本条件信息组指针集合
+    CDWordArray m_cSysAdvConditionInfoPointArray;		// 系统高级条件信息组指针集合
 	CDWordArray m_cMineConditionInfoPointArray;         // 我的条件信息组指针集合
 	CDWordArray m_cSysConditionInfoPointArray_CdtExt;   // 系统条件信息组指针集合（用于条件扩展）
     

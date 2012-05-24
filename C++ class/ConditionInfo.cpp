@@ -10,6 +10,7 @@
 #include "Def_ConditionID.h"
 #include "Def_CfgItem_Data.h"
 #include <math.h>
+#include "ICstPubFunc.h"
 
 
 #define		BEGIN_LOAD() \
@@ -70,7 +71,8 @@ CConditionInfo::CConditionInfo()
 	m_lpDataAreas = NULL;
     
 	// 装载系统条件信息
-	_LoadSysConditions(m_cSysConditionInfoPointArray);
+	_LoadSysConditions(m_cSysBaseConditionInfoPointArray, TRUE);
+    _LoadSysConditions(m_cSysAdvConditionInfoPointArray, FALSE);
 }
 
 CConditionInfo::~CConditionInfo()
@@ -79,7 +81,8 @@ CConditionInfo::~CConditionInfo()
 //	_ReleaseFixConditionGroup(&m_stSysFixCdtGroupRoot);
 //	_ReleaseFixConditionGroup(&m_stMineFixCdtGroupRoot);
 //	_ReleaseFixConditionGroup(&m_stSysFixCdtGroupRoot_CdtExt);
-	m_cSysConditionInfoPointArray.RemoveAll();
+    m_cSysBaseConditionInfoPointArray.RemoveAll();
+	m_cSysAdvConditionInfoPointArray.RemoveAll();
 	m_cMineConditionInfoPointArray.RemoveAll();
 	m_cSysConditionInfoPointArray_CdtExt.RemoveAll();
 }
@@ -582,39 +585,57 @@ void CConditionInfo::_LoadMineConditions()
 	}*/
 }
 
-void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray)
+void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray, BOOL bBase)
 {
 	if(cSysConditionInfoPointArray.GetSize() > 0)
 	{
 		return ;		// 已经装载过，则忽略
 	}
     
-	int i = 0, j = 0, k = 0, nTemp = 0;
+	int i = 0, j = 0, k = 0, nTemp = 0, nNumberCount = g_pIData->GetNumberCount();
 	char szTemp[128] = {0};
     
-	BEGIN_LOAD()
-    BEGIN_ADD_GROUP("数字", CDTID_FIXGROUP_NUMBERS)
-    BEGIN_ADD_GROUP("任意码", CDTID_FIXGROUP_NUMBERS_ANY)
-    ADD_CONDITION(IID_STC_POS_ANY)						// 任意单码
-    ADD_CONDITION(IID_STC_TWONUM_ANY)					// 任意二码
-    END_ADD_GROUP()
-    BEGIN_ADD_GROUP("单选二码", CDTID_FIXGROUP_NUMBERS_TWONUMSIN)
-    ADD_CONDITION(IID_STC_TWONUMSIN_ANY)				// 任意单选二码
-    for(i=0; i<7; i++)
+ 	BEGIN_LOAD()
+    if (bBase)  // 基本条件
     {
-        for(j=i+1; j<8; j++)
+        for(i=0; i<nNumberCount; i++)
         {
-            ADD_CONDITION(IID_STC_TWONUMSIN_MN + i * 10 + j)	// 指定位置的单选二码
+            BEGIN_ADD_GROUP(g_pICstPubFunc->GetPosName(i), CDTID_FIXGROUP_POS)   // 第n位号码
+                ADD_CONDITION(IID_STC_POS_1 + i)						
+            END_ADD_GROUP()
         }
+        
     }
-    END_ADD_GROUP()
-    BEGIN_ADD_GROUP("数字个数", CDTID_FIXGROUP_NUMBERS_COUNT)
-    for(i=0; i<15; i++)
+    else        // 高级条件
     {
-        ADD_CONDITION(IID_STC_NUMBER_0NUM + i)				// 数字N个数
+        
     }
-    END_ADD_GROUP()
-    BEGIN_ADD_GROUP("相同数字", CDTID_FIXGROUP_NUMBERS_SAME)
+    END_LOAD()
+ /*
+        BEGIN_ADD_GROUP("数字", CDTID_FIXGROUP_NUMBERS)
+            BEGIN_ADD_GROUP("任意码", CDTID_FIXGROUP_NUMBERS_ANY)
+                ADD_CONDITION(IID_STC_POS_ANY)						// 任意单码
+                ADD_CONDITION(IID_STC_TWONUM_ANY)					// 任意二码
+            END_ADD_GROUP()
+            BEGIN_ADD_GROUP("单选二码", CDTID_FIXGROUP_NUMBERS_TWONUMSIN)
+                ADD_CONDITION(IID_STC_TWONUMSIN_ANY)				// 任意单选二码
+                for(i=0; i<7; i++)
+                {
+                    for(j=i+1; j<7; j++)
+                    {
+                        ADD_CONDITION(IID_STC_TWONUMSIN_MN + i * 10 + j)	// 指定位置的单选二码
+                    }
+                }
+            END_ADD_GROUP()
+            BEGIN_ADD_GROUP("数字个数", CDTID_FIXGROUP_NUMBERS_COUNT)
+            for(int i=0; i<10; i++)
+            {
+                ADD_CONDITION(IID_STC_NUMBER_0NUM + i)				// 数字N个数
+            }
+            END_ADD_GROUP() 
+        END_ADD_GROUP()
+  
+   BEGIN_ADD_GROUP("相同数字", CDTID_FIXGROUP_NUMBERS_SAME)
     ADD_CONDITION(IID_STC_NUMBER_SAMECOMBO)				// 相同数字组合
     ADD_CONDITION(IID_STC_NUMBER_MAXCOUNT)				// 任意数字最大出现个数
     ADD_CONDITION(IID_STC_NUMBER_SAMEGROUP_2)			// 2个相同数字组数
@@ -1129,8 +1150,8 @@ void CConditionInfo::_LoadSysConditions(CDWordArray &cSysConditionInfoPointArray
     END_ADD_GROUP()
  //   BEGIN_ADD_GROUP("开奖号与试机号环差尾数", CDTID_FIXGROUP_TESTNUMS_ITEM_BEGIN + 7)
     END_ADD_GROUP()
-    
-	END_LOAD()
+    */
+	
 }
 
 #define		ADD_AREA_CONDITION(wUseTypeIn) { \

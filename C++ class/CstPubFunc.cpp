@@ -127,7 +127,7 @@ LPBYTE CCstPubFunc::TextToBitBuf(LPCSTR lpszText, DWORD &dwBitCountOut, int nMin
 					break;	
 				}
 				nValueMin = lpszText[i] - '0';
-				bHasValueMin = TRUE;
+
 				if(!_SetBitValue(lpBitBuf, nValueMin, nMinValue, nMaxValue, bFill0Prev, bGroData))
 				{
 					DELETE_BUFFER(lpBitBuf);
@@ -243,9 +243,9 @@ LPBYTE CCstPubFunc::TextToBitBuf(LPCSTR lpszText, DWORD &dwBitCountOut, int nMin
 				for(int k=nValueMin; k<=nValueMax; k++)
 					_SetBitValue(lpBitBuf, k, nMinValue, nMaxValue, bFill0Prev, bGroData);
                 
-				nValueMax = nValueMin = 0;
-				bHasValueMax = bHasValueMin = FALSE;
-				bIsNegativeMax = bIsNegativeMin = FALSE;
+				nValueMin = 0;
+				bHasValueMin = FALSE;
+				bIsNegativeMin = FALSE;
 				i = j;	// 重置下标
 			}
 			else	// 以前无值，则是负号
@@ -1017,7 +1017,7 @@ BOOL CCstPubFunc::_TextToIntArray(LPCSTR lpszText, CDWordArray &cValueArrayOut, 
 					break;	
 				}
 				nValueMin = lpszText[i] - '0';
-				bHasValueMin = TRUE;
+
 				if(!_SetIntValue(cValueArrayOut, nValueIndex, nValueMin, nMinValue, nMaxValue, bFill0Prev))
 				{
 					return FALSE;
@@ -1126,9 +1126,9 @@ BOOL CCstPubFunc::_TextToIntArray(LPCSTR lpszText, CDWordArray &cValueArrayOut, 
 				for(int k=nValueMin; k<=nValueMax; k++)
 					_SetIntValue(cValueArrayOut, nValueIndex, k, nMinValue, nMaxValue, bFill0Prev);
                 
-				nValueMax = nValueMin = 0;
-				bHasValueMax = bHasValueMin = FALSE;
-				bIsNegativeMax = bIsNegativeMin = FALSE;
+				nValueMin = 0;
+				bHasValueMin = FALSE;
+				bIsNegativeMin = FALSE;
 				i = j;	// 重置下标
 			}
 			else	// 以前无值，则是负号

@@ -840,7 +840,7 @@ BYTE CIndicator::_GetPosMinValue(BYTE btPosIndex, BOOL bSingle)
 int CIndicator::_GetACValueRange(int &nMin)
 {
 	nMin = 0;
-	int nMax = g_pICstPubFunc->GetArrangeComboValue(m_btNumberCount, 2);
+	int nMax = 0;
 	int nAllNumsCount = (m_btMaxNumber - m_btMinNumber + 1);
     
 	if(m_btDataType & DATA_TYPE_REPEATABLE)	// 可重复的
@@ -1464,7 +1464,7 @@ void CIndicator::_FillValueRange_TwoNums(DWORD dwID)
 
 void CIndicator::_FillValueRange_Order(DWORD dwID)
 {
-	int nMin = m_btMinNumber, nMax = m_btMaxNumber;
+	int nMin = 0, nMax = 0;
 	int nMinMin = m_btMinNumber, nMinMid = m_btMinNumber, nMinMax = m_btMinNumber;
 	int nMaxMin = m_btMaxNumber, nMaxMid = m_btMaxNumber, nMaxMax = m_btMaxNumber;
     
@@ -1544,7 +1544,6 @@ void CIndicator::_FillValueRange_Space(DWORD dwID)
             nMin = (m_btMaxNumber - m_btMinNumber) / m_btNumberCount; // m_btNumberCount > 3 ? 2 : (m_btNumberCount > 2 ? 3 : 2);
             if((m_btMaxNumber - m_btMinNumber) % m_btNumberCount != 0)
                 nMin ++;
-            nMax = (_GetPosMaxValue(0, TRUE) - m_btMinNumber) + (m_btMaxNumber - _GetPosMinValue(BYTE(m_btNumberCount-1), TRUE));
             
             if(m_btDataType & DATA_TYPE_REPEATABLE)
                 nMax = m_btMaxNumber - m_btMinNumber;

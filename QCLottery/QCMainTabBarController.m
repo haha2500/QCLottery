@@ -119,6 +119,22 @@
     [popoverController presentPopoverFromBarButtonItem:bbi permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 }
 
+- (void)showPopoverControllerInCenter:(UIViewController *)viewController
+{
+    if (popoverController != nil)
+    {
+        [popoverController dismissPopoverAnimated:NO];
+        popoverController = nil;
+    }
+    popoverController = [[UIPopoverController alloc] initWithContentViewController:viewController];
+    [popoverController setDelegate:self];
+    [popoverController setPopoverContentSize:viewController.view.frame.size];
+    
+    CGRect rectView = self.view.frame;
+    CGRect rect = CGRectMake(rectView.size.width / 2 - 2, rectView.size.height / 2 - 2, 4, 4);
+    [popoverController presentPopoverFromRect:rect inView:self.view permittedArrowDirections:0 animated:YES];
+}
+
 #pragma mark -- UIPopoverControllerDelegate相关函数
 - (void)popoverControllerDidDismissPopover:(UIPopoverController *)popoverController
 {
@@ -213,8 +229,7 @@
     rect.size.height += nav.navigationBar.frame.size.height;
     nav.view.frame = rect;
     
-     UIBarButtonItem *bbi = [[[self navigationItem] leftBarButtonItems] objectAtIndex:0];
-    [self showPopoverController:nav atBarButtonItem:bbi];
+    [self showPopoverControllerInCenter:nav];
 }
     
 #pragma mark -- UITabBarControllerDelegate相关函数

@@ -1433,7 +1433,7 @@ int CIndicator::_GetACValue()
 int CIndicator::_GetDetractValue()
 {
 	// 以双色球为例，所谓散度，指的是01~33这33个号码与6个开奖号码之差的绝对值的最小值中的最大的一个
-	int i, j, nMin = m_btMaxNumber, nTemp = 0, nValue = 0;
+	int i, j, nMin = 0, nTemp = 0, nValue = 0;
 	
 	for(i=m_btMinNumber; i<=m_btMaxNumber; i++)
 	{
@@ -1465,7 +1465,7 @@ int CIndicator::_GetDeparture(DWORD dwIssueIndex)
 	}
     
 	// 以双色球为例，所谓偏度，指的是本期6个开奖号码与上期6个开奖号码之差的绝对值的最小值中的最大的一个
-	int i, j, nMin = m_btMaxNumber, nMax = 0, nTemp = 0;
+	int i, j, nMin = 0, nMax = 0, nTemp = 0;
 	LPBYTE lpLastNums = NULL;
 	
 	lpLastNums = g_pIData->GetItemNums(dwPrevIssueIndex);
@@ -2512,13 +2512,13 @@ LPCDTVALUE CIndicator::_GetTwoPosValue(DWORD dwIID)
         case IID_STC_TWOPOS_MIN:
 		{
 			int nValues[256] = {0};
-			nValue = _CalcAllTwoPos(nTypeIndex, TRUE, nValues);
+			_CalcAllTwoPos(nTypeIndex, TRUE, nValues);
 			nValue = nValues[0];
 		} break;
         case IID_STC_TWOPOS_MID:
 		{
 			int nValues[256] = {0};
-			nValue = _CalcAllTwoPos(nTypeIndex, TRUE, nValues);
+			_CalcAllTwoPos(nTypeIndex, TRUE, nValues);
 			nValue = nValues[1];
 		} break;
         case IID_STC_TWOPOS_MAX:
@@ -2531,13 +2531,13 @@ LPCDTVALUE CIndicator::_GetTwoPosValue(DWORD dwIID)
         case IID_STC_TWOPOS_ARR_SIN:
 		{
 			int nValues[256] = {0};
-			nValue = _CalcAllTwoPos(nTypeIndex, FALSE, nValues);
+			_CalcAllTwoPos(nTypeIndex, FALSE, nValues);
 			nValue = nValues[0] * 100 + nValues[1] * 10 + nValues[2];
 		} break;
         case IID_STC_TWOPOS_ARR_GRO:
 		{
 			int nValues[256] = {0};
-			nValue = _CalcAllTwoPos(nTypeIndex, TRUE, nValues);
+			_CalcAllTwoPos(nTypeIndex, TRUE, nValues);
 			nValue = nValues[0] * 100 + nValues[1] * 10 + nValues[2];
 		} break;
         default: // IID_STC_TWOPOS_MN
