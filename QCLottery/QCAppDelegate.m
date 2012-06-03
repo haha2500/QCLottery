@@ -75,12 +75,14 @@ IConditionMan *g_pIConditionMan = NULL;
     
     // 创建全局公共对象指针
     g_pICstPubFunc = (ICstPubFunc *)new CCstPubFunc;
-    g_pIConditionMan = (IConditionMan *)new CConditionMan;
     
     // 创建数据对象指针，并载入数据
     g_pIData = (IData *)new CData;
     g_pIData->OpenLotteryFile();
     g_pIData->ResetCurUsedData();
     g_pIData->CloseLotteryFile();
+    
+    // 创建条件管理对象指针
+    g_pIConditionMan = (IConditionMan *)new CConditionMan;
 }
 @end
